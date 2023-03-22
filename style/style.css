@@ -5,31 +5,31 @@
 }
 
 * {
-  font-family: cursive,sans-serif;
+  font-family: "Roboto", sans-serif;
 }
-body{
-    overflow-x: hidden;
+
+body {
+  overflow-x: hidden;
 }
+
 /* The Footer Styling   */
 /* Mohamed Matrab Section */
-footer{
-    /* width: 100%; */
+
+footer {
+  width: 100%;
 }
+
 footer .footer-container {
   width: 100%;
   height: 20rem;
   position: absolute;
   bottom: 0;
+  right: 0;
   display: flex;
   white-space: normal;
   padding: 2rem;
-  background: rgb(243, 243, 243);
+  background: rgb(245, 244, 244);
   /* border: 2px solid; */
-  /* background: linear-gradient(
-    to bottom right,
-    rgba(243, 243, 243, 1) 0%,
-    rgb(232, 248, 252) 100%
-  ); */
 }
 
 /* Sections of the footer */
@@ -48,15 +48,37 @@ footer .footer-container {
   flex-direction: row;
   align-items: center;
 }
+
+.footer-section div h3 {
+  cursor: pointer;
+  position: relative;
+}
+
+.footer-section div h3::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  transform: scaleX(0);
+  bottom: -0.3rem;
+  left: 0;
+  background-color: black;
+  transform-origin: left;
+  transition: all 0.25s ease;
+}
+
+.footer-section div h3:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
 h3 {
-  font-family:  cursive;
+  /* font-family:  cursive; */
   font-size: 0.9rem;
   margin-left: 0.5rem;
 }
 
 h1 {
-  font-family: cursive, "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
   margin-left: 1rem;
   font-size: 1.2rem;
 }
@@ -66,12 +88,7 @@ h1 {
   flex-direction: row;
 }
 
-.footer-icons i{
-  /* font-size: 2rem;
-  width: 20px;
-  height: 20px;
-  margin: 0 10px;
-  color: white;*/
+.footer-icons i {
   display: inline-block;
   font-size: 1.2rem;
   margin: 0 10px;
@@ -83,12 +100,64 @@ h1 {
   padding: 0.5em 0.6em;
 }
 
-/* i{
-    font-size: 1rem;
-} */
-
-#footer-subscribe {
+#footer-subscribe  {
   display: flex;
-  align-items: center;
-  align-content: center;
+}
+
+#footer-subscribe h1{
+  font-size: 1.1rem;
+}
+#footer-subscribe-input{
+  width: 100%;
+  border: 0.15rem solid;
+  /* box-shadow: ; */
+  border-radius: 0.2rem;
+  height: 2rem;
+  margin: 0.2rem;
+  padding: 0.2rem;
+}
+
+#footer-submit-subscribe{
+  width: 50%;
+  height: 1.7rem;
+  margin: 0.2rem;
+  padding: 0.2rem 1rem;
+}
+
+/* CSS */
+#footer-submit-subscribe{
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  font-size: 100%;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 60%;
+}
+
+#footer-submit-subscribe:disabled {
+  cursor: default;
+}
+
+#footer-submit-subscribe:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
 }
