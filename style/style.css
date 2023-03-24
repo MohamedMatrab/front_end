@@ -53,6 +53,14 @@ footer .footer-container {
   flex-direction: row;
   align-items: center;
   margin: 0.4rem 0;
+  transform-origin: right;
+  /* animation-delay: 0.3s; */
+  transition-duration: 0.5s;
+  transition:0.1s ease-in;
+}
+
+.footer-section div:hover {
+  color: #65d8ea;
 }
 
 .footer-section h1 {
@@ -60,14 +68,11 @@ footer .footer-container {
   margin-bottom: 1.5rem;
 }
 
+
 .footer-section div h3 {
   cursor: pointer;
   position: relative;
   font-size: 0.9rem;
-}
-
-.footer-section div:hover {
-  color: #65d8ea;
 }
 
 h3 {
