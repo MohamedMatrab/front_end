@@ -7,9 +7,14 @@
 * {
   font-family: "Roboto", sans-serif;
 }
+
 html {
   height: 100%;
   max-width: 100%;
+}
+
+#porfolio-page{
+  margin-bottom: 3rem;
 }
 
 .heading-section{
@@ -49,11 +54,15 @@ html {
 .mygroup-select{
   width: 60%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   margin: auto;
 }
-
+.mygroup-select label{
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
 .mygroup-select select{
   width: 70%;
   align-self: flex-start;
@@ -134,4 +143,14 @@ html {
 .image-section:hover .description-image {
   opacity:100%;
   bottom: 4rem;
+}
+@media (max-width:580px) {
+  .mygroup-select{
+    flex-direction: column;
+    justify-self: flex-start;
+    align-items: flex-start;
+  }
+  .heading-section h1{
+    font-size: 2.5rem;
+  }
 }
