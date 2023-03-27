@@ -13,153 +13,19 @@ html {
 }
 body {
   height: 100%;
+  width: 100%;
   overflow-x: hidden;
   max-width: 100%;
+  margin: 0;
+  padding: 0;
   /* max-height: 100%; */
 }
-
-
-#porfolio-page{
-  margin-bottom: 3rem;
-}
-
-.heading-section{
-  width: 100%;
-  height: 6rem;
-  display: flex;
-  position: relative;
-  top: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 2rem;
-  background: #0f4883;
-}
-
-.heading-section h1{
-  margin: auto;
-  font-size: 3rem;
-  font-weight: 600;
-  color: white;
-  position: relative;
-}
-
-.heading-section h1::after{
-  content: "";
-  width: 31%;
-  height: 0.3rem;
-  position: absolute;
-  bottom: 0;
-  left: 1rem;
-  background:white;
-}
-
-.mygroup-select{
-  width: 60%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-.mygroup-select label{
-  font-size: 1.2rem;
-  margin-right: 1rem;
-}
-.mygroup-select select{
-  width: 70%;
-  align-self: flex-start;
-}
-
-.galerie-group {
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.image-section {
-  width: 21rem;
-  height: 21rem;
-  margin: 1.5rem;
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0px 0px 2px 0.5px rgba(0, 0, 0, 0.3);
-  /* transition: all 1s ease-in-out; */
-  /* cursor: pointer; */
-}
-
-.image-section img {
-  width: 100%;
-  height: 100%;
-  /* border-radius: 1rem; */
-  /* border: 2px solid; */
-  transition: all 0.6s ease-in-out;
-}
-
-.image-section:hover img{
-  transform: scale(1.1);
-}
-.image-section::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0;
-  /* border-radius: 1rem; */
-  transform-origin: left;
-  transition: all 0.3s ease-in;
-  background: black;
-}
-
-.image-section .description-image {
-  width: 80%;
-  height: 2rem;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 0.7rem;
-  text-align: center;
-  margin: auto;
-  position: relative;
-  bottom: 2rem;
-  opacity:0;
-  /* transform-origin: right; */
-  /* transition-delay: 0.1s; */
-  transition:  0.5s ease-out;
-  background: #65d8ea;
-}
-.image-section:hover::after {
-  opacity: 40%;
-}
-.image-section .description-image span{
-  font-family: cursive;
-}
-.image-section:hover .description-image {
-  opacity:100%;
-  bottom: 4rem;
-}
-
 /* The Footer Styling   */
 /* Mohamed Matrab Section */
 
 footer {
   width: 100%;
   height: 17rem;
-  position: absolute;
-  bottom: 0;
-  right: 0;
   background: white;
   color: #454e55;
 }
@@ -238,7 +104,7 @@ h1 {
   padding: 0.5em 0.6em;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
-#dentall_all {
+#dent_all {
   color: #65d8ea;
 }
 .fa-chevron-right {
@@ -329,19 +195,5 @@ h1 {
     width: 100%;
     margin: 0;
     margin-top: 0.2rem;
-  }
-}
-
-@media (max-width:580px) {
-  .mygroup-select{
-    flex-direction: column;
-    justify-self: flex-start;
-    align-items: flex-start;
-  }
-  .mygroup-select select{
-    width: 90%;
-  }
-  .heading-section h1{
-    font-size: 2.5rem;
   }
 }

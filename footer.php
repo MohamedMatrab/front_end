@@ -12,11 +12,9 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style/style.css" />
+    <link rel="stylesheet" href="style/style-footer.css" />
   </head>
   <body>
-    <!-- Mohamed Branch  -->
-
     <!-- Footer -->
     <footer>
       <div class="footer-container">
@@ -24,7 +22,7 @@
         <!-- Center Info And Logo  -->
 
         <div class="footer-section">
-          <h1>Dent<span id="dentall_all">All</span></h1>
+          <h1>Dent<span id="dent_all">All</span></h1>
           <p>
             Far far away, behind the word mountains, far from the countries.
           </p>
