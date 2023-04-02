@@ -13,3 +13,12 @@
     function appointAction() {
         require_once 'views/Appointment.php' ;
     }
+function loginAction() {
+        require_once 'views/login.php' ;
+    }
+    function signupAction() {
+        require_once 'views/signup.php' ;
+    }
+    function portfolioAction() {
+        require_once 'views/portfolio.php' ;
+    }
