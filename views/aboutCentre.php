@@ -25,22 +25,22 @@
                 </div>
                 <div class="carousel-inner pb-3">
                 <div class="carousel-item active">
-                    <img src="images/centre1.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/about/centre1.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/centre.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/about/centre.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/centre3.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/about/centre3.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/centre4.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/about/centre4.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/centre5.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/about/centre5.jpg" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="images/centre6.jpg" class="d-block w-100" alt="...">
+                    <img src="assets/about/centre6.jpg" class="d-block w-100" alt="...">
                 </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -93,6 +93,5 @@
         </div>
     </div>
 </div>
-
 <?php $content = ob_get_clean() ; ?>
 <?php include_once 'views/layout.php' ; ?> 

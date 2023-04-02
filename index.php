@@ -9,7 +9,9 @@ if (isset($_GET['action'])) {
       case 'aboutcentre' : aboutCentreAction() ; break ;
       case 'aboutdoctor' : aboutDoctorAction() ; break ;
       case 'appoint' : appointAction() ; break ;
-
+      case 'login' : loginAction() ; break ;
+      case 'portfolio' : portfolioAction() ; break ;
+      case 'singup' : sinupAction() ; break ;
    }
 }else {
    indexAction();

@@ -23,7 +23,7 @@
                 </div>
                 <div class="social d-flex justify-content-between align-items-center col-2">
                     <a  href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a  class="d-block ms-2" href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a  href=""><i class="fa-brands fa-facebook d-block ms-2"></i></a>
                 </div>
             </div>
             <div class="logo-toggler">
@@ -58,7 +58,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Réalistaions</a>
+                    <a class="nav-link " aria-current="page" href="index.php?action=portfolio">Réalistaions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " aria-current="page" href="#">Actualités</a>
@@ -73,7 +73,7 @@
                     <a class="nav-link rdv" aria-current="page" href="index.php?action=appoint">Rendez-vous</a>
                 </li>
                 <div class="d-flex align-items-center ms-1 mt-sm-2 mt-lg-0">
-                    <a class=" btn-log   " aria-current="page" href="#">LOGIN</a>
+                    <a class=" btn-log   " aria-current="page" href="index.php?action=login">LOGIN</a>
                 </div>
             </ul>
             
@@ -82,10 +82,12 @@
     </nav>
     <?=$content;?>
 
-    
+    <?php 
+    include_once "views/footer.php" ?> 
     <script src="js/all.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
+    
 
 </body>
 </html>
