@@ -29,6 +29,9 @@ h1 {
   align-items: center;
 }
 .container {
+  width: 25em !important;
+}
+.sign-up {
   width: 25rem;
   height: 35rem;
   background: white;
@@ -39,7 +42,9 @@ h1 {
   justify-content: space-evenly;
   border-radius: 1rem;
   box-shadow: 0 0 6px #dedede;
-  margin: 1.5rem auto;
+  margin: 1.5rem auto 18em;
+  position: relative;
+  top: 3em;
 }
 .form-login {
   display: flex;
@@ -93,6 +98,11 @@ h1 {
 }
 .terms-conditions {
   margin-left: 0.5rem;
+}
+.terms-conditions a ,
+.signin a{
+  color: var(--bs-link-color) !important;
+  text-decoration: underline !important;
 }
 .agreement {
   width: 20rem;

@@ -1,9 +1,9 @@
-<?php
-
-   $title = "Dentiste:Centre Page" ;
-   ob_start();
-?>
+<head>
+    <title>Dentiste : log in</title>
+</head>
 <link rel="stylesheet" href="style/style-login.css" >
+<link rel="stylesheet" href="style/bootstrap.min.css" >
+<link rel="stylesheet" href="style/bootstrap.min.css" >
 <div class="container log">
     <div class="titling">
       <h1 style="color: #0f4883">
@@ -30,14 +30,12 @@
         </label>
       </div>
       <button type="submit" value="login" name="login" class="btn btn-primary">
-        Login
+        Login 
       </button>
       <div class="signup">
-        Don't have account ?<a href=""> sign up</a>
+        Don't have account ?<a href="index.php?action=signup"> sign up</a>
       </div>
     </form>
   </div>
-
-<?php $content = ob_get_clean() ; ?>
-<?php include_once 'views/layout.php' ; ?> 
-
+<script src="js/all.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>

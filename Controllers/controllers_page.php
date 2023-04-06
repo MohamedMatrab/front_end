@@ -13,7 +13,7 @@
     function appointAction() {
         require_once 'views/Appointment.php' ;
     }
-function loginAction() {
+    function loginAction() {
         require_once 'views/login.php' ;
     }
     function signupAction() {
@@ -21,4 +21,10 @@ function loginAction() {
     }
     function portfolioAction() {
         require_once 'views/portfolio.php' ;
+    }
+    function detailsAction() {
+        require_once 'views/service_details.php' ;
+    }
+    function contactAction() {
+        require_once 'views/contact.php' ;
     }

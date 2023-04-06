@@ -97,7 +97,7 @@ a {
 /* End Global Rules */
 /* Start Main Hedaer Of Each Page */
 .landing-page {
-  background-image: url(../assets/about/centre.jpg);
+  background-image: url(../images/centre.jpg);
   position: relative;
   background-size: 100%;
   height: 45vh;
@@ -158,13 +158,19 @@ header {
 .head-top .social i {
   color: #ddd;
 }
-.head-top .social a:hover {
+.head-top .social a:hover,
+.nav-link:not([data-log ="log"]):hover {
   transform: scale(1.05);
 }
 .navbar {
   background-color: rgb(15 116 143 / 100%);
 }
-
+/*.fixed-top {
+  position: fixed !important;
+  width: 100%;
+  top: 0;
+  z-index: 1020;
+}*/
 .nav-link {
   color: var(--transparent-color);
   padding: 2px 5px;
@@ -195,9 +201,7 @@ header {
 .nav-link[data-lg="logo"]:hover {
   color: #0f4883;
 }
-.nav-link:hover {
-  transform: scale(1.05);
-}
+
 .nav-link:focus {
   color: #6e6e6e;
 }
@@ -281,12 +285,25 @@ nav .container {
     display: none;
   }
 }
+@media (max-width: 992px) {
+  .nav-item {
+    width: 100% !important;
+  }
+  .nav-link:hover {
+    display: block;
+    width: inherit;
+    position: relative;
+    left: -10;
+    left: 8px;
+    border-radius: 0 !important;
+  }
+}
 
 /* End Media */
 
 /* Start Landing Page */
 .landing {
-  min-height: 80vh;
+  min-height: 100vh;
   background-color: var(--transparent-color);
   position: relative;
   overflow: hidden;
@@ -297,7 +314,7 @@ nav .container {
   position: absolute;
   width: 300%;
   height: 100%;
-  top: 50%;
+  top: 65%;
   left: 50%;
   bottom: 0px;
   border-radius: 50%;
@@ -316,7 +333,7 @@ nav .container {
 
 .landing .content {
   position: absolute;
-  top: 20%;
+  top: 35%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 29;
@@ -360,6 +377,19 @@ nav .container {
   padding-bottom: var(--padding-bottom);
   position: relative;
   z-index: 1000;
+}
+.More {
+  color: white;
+  font-size: 1.5em;
+  border: 1px solid white;
+  text-transform: uppercase;
+  display: block;
+  padding: 0.5em 1em;
+  width: fit-content;
+  background-color: var(--transparent-color);
+}
+.More:hover {
+  transform: scale(1.05);
 }
 /* ===================================*/
 

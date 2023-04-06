@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="style/bootstrap.min.css" >
     <link rel="stylesheet" href="style/bootstrap.min.css" >
     <link rel="stylesheet" href="style/main.css" >
+    <link rel="stylesheet" href="assets/twbs/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg sticky-top navbar-light">
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
         <div class="container">
             <div class="head-top mb-1 row">
                 <div class="contact col-8 ">
@@ -23,11 +24,11 @@
                 </div>
                 <div class="social d-flex justify-content-between align-items-center col-2">
                     <a  href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a  href=""><i class="fa-brands fa-facebook d-block ms-2"></i></a>
+                    <a  class="d-block ms-2" href=""><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
             <div class="logo-toggler">
-                    <a class="nav-link me-3  " aria-current="page" href="index.php">Dent<span>All</span></a>
+                    <a class="nav-link me-3  " aria-current="page" href="index.php" data-lg ="logo">Dent<span>All</span></a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa-solid fa-bars"></i>
@@ -52,7 +53,7 @@
                 Spécialités
                 </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Esthétique dentaire</a></li>
+                        <li><a class="dropdown-item" href="index.php?action=ésthétique dentaire">Esthétique dentaire</a></li>
                         <li><a class="dropdown-item" href="#">Blanchement</a></li>
                         <li><a class="dropdown-item" href="#">Hollywood smile</a></li>
                     </ul>
@@ -67,7 +68,7 @@
                     <a class="nav-link" aria-current="page" href="#">Témoingnages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " aria-current="page" href="#">Contact</a>
+                    <a class="nav-link " aria-current="page" href="index.php?action=contact">Contact</a>
                 </li>
                 <li class="nav-item mt-sm-2 mt-lg-0">
                     <a class="nav-link rdv" aria-current="page" href="index.php?action=appoint">Rendez-vous</a>
@@ -82,12 +83,10 @@
     </nav>
     <?=$content;?>
 
-    <?php 
-    include_once "views/footer.php" ?> 
+    <?php include_once "views/footer.php" ; ?>
     <script src="js/all.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
-    
 
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 
-   $title = "Dentiste:Centre Page" ;
+   $title = "Dentiste: Portfolio" ;
    ob_start();
 ?>
 <link rel="stylesheet" href="style/style-portfolio.css" >

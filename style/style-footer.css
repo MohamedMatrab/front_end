@@ -28,6 +28,7 @@ footer {
   height: 17rem;
   background: white;
   color: #454e55;
+  margin-top: 150px;
 }
 
 footer .footer-container {
@@ -66,7 +67,7 @@ footer .footer-container {
   margin: 0 10px;
   cursor: pointer;
   border-radius: 60px;
-  background: #65d8ea;
+  background: var(--transparent-color);
   color: white;
   padding: 0.5em 0.6em;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
@@ -115,7 +116,7 @@ footer .footer-container {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
 #dent_all {
-  color: #65d8ea;
+  color: var(--transparent-color);
 }
 .fa-chevron-right {
   font-size: 0.6rem;

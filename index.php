@@ -10,8 +10,11 @@ if (isset($_GET['action'])) {
       case 'aboutdoctor' : aboutDoctorAction() ; break ;
       case 'appoint' : appointAction() ; break ;
       case 'login' : loginAction() ; break ;
+      case 'signup' : signupAction() ; break ;
       case 'portfolio' : portfolioAction() ; break ;
-      case 'singup' : sinupAction() ; break ;
+      case 'service' : serviceAction() ; break ;
+      case 'ésthétique dentaire' : detailsAction() ; break ; 
+      case 'contact' : contactAction() ; break ; 
    }
 }else {
    indexAction();

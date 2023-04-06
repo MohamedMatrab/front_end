@@ -1,10 +1,11 @@
-<?php
+<head>
+    <title>Dentiste : Sing up</title>
+</head>
 
-   $title = "Dentiste:Centre Page" ;
-   ob_start();
-?>
 <link rel="stylesheet" href="style/style-signup.css" >
-<div class="container">
+<link rel="stylesheet" href="style/bootstrap.min.css" >
+<link rel="stylesheet" href="style/bootstrap.min.css" >
+<div class="container sign-up">
   <div class="titling">
     <h1 class="color-h1">
       Dent<span class="color-span">All</span>
@@ -74,11 +75,12 @@
       name="login"
       class="btn btn-primary"
     >
-      Sign Up
+      Sign Up 
     </button>
-    <div class="signin">Already have account ?<a href=""> Sign In</a></div>
+    <div class="signin">Already have account ?<a href="index.php?action=login"> Sign In</a></div>
   </form>
 </div>
 <script src="js/script-signup.js"></script>
-<?php $content = ob_get_clean() ; ?>
-<?php include_once 'views/layout.php' ; ?> 
+<script src="js/all.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+
