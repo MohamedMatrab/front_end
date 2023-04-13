@@ -15,6 +15,10 @@ if (isset($_GET['action'])) {
       case 'service' : serviceAction() ; break ;
       case 'ésthétique dentaire' : detailsAction() ; break ; 
       case 'contact' : contactAction() ; break ; 
+
+      case 'RDV' : PrendreRdv() ; break ;
+
+      case 'alert' : AlertWarning() ; break ;
    }
 }else {
    indexAction();

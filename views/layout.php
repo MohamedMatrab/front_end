@@ -23,8 +23,8 @@
                     <a class="fs-6" href="tel:+212648256644">Call Us +212 6 48 25 66 44</a>
                 </div>
                 <div class="social d-flex justify-content-between align-items-center col-2">
-                    <a  href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a  class="d-block ms-2" href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a  class="a-icon" href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a  class="d-block ms-2 a-icon" href=""><i class="fa-brands fa-facebook"></i></a>
                 </div>
             </div>
             <div class="logo-toggler">
@@ -86,7 +86,7 @@
     <?php include_once "views/footer.php" ; ?>
     <script src="js/all.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 
 </body>
 </html>
