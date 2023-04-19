@@ -87,13 +87,13 @@ a {
 }
 .a-icon {
   color: white !important ;
-  user-select: none ;
+  user-select: none;
 }
 .drop-down li {
-  margin-bottom: 1em ;
+  margin-bottom: 1em;
 }
 .black {
-  color: black ;
+  color: black;
 }
 /* End Global Rules */
 /* Start Main Hedaer Of Each Page */
@@ -147,24 +147,24 @@ header {
 }
 
 .head-top .contact {
-  display: flex ;
-  align-items: center ;
+  display: flex;
+  align-items: center;
 }
 
 .head-top .contact .fa-phone {
-  margin-right: 10px ;
+  margin-right: 10px;
 }
 .head-top .contact .fa-phone,
 .head-top .contact a,
 .head-top .social i {
-  color: #ddd ;
+  color: #ddd;
 }
 .head-top .social a:hover,
 .nav-link:not([data-log="log"]):hover {
-  transform: scale(1.05) ;
+  transform: scale(1.05);
 }
 .navbar {
-  background-color: rgb(15 116 143 / 100%) ;
+  background-color: rgb(15 116 143 / 100%);
 }
 /*.fixed-top {
   position: fixed !important;
@@ -208,14 +208,14 @@ header {
 }
 
 .fa-bars {
-  color: white ;
-  height: 2rem ;
+  color: white;
+  height: 2rem;
 }
 .navbar-toggler:focus {
-  box-shadow: none ;
+  box-shadow: none;
 }
 .navbar-collapse.show {
-  padding-top: 15px ;
+  padding-top: 15px;
 }
 .btn-log,
 button[data="valider"] {
@@ -237,10 +237,10 @@ button[data="valider"] {
   color: white !important;
 }
 .login {
-  position: absolute ;
-  top: 15px ;
-  left: 50% ;
-  transform: translateX(-50%) ;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .rdv {
   background-color: var(--second-color) !important;
@@ -249,11 +249,11 @@ button[data="valider"] {
 }
 
 nav .container {
-  flex-direction: column ;
+  flex-direction: column;
 }
 .dropdown-menu a:hover,
 .dropdown-menu a:focus {
-  background-color: #ddd ;
+  background-color: #ddd;
 }
 /* End Header */
 
@@ -263,23 +263,23 @@ nav .container {
     display: none !important;
   }
   nav .container {
-    flex-direction: row ;
+    flex-direction: row;
   }
 }
 @media (max-width: 1200px) {
   .navbar-nav > li:last-child a {
-    width: 205px ;
+    width: 205px;
   }
 }
 @media (max-width: 990px) {
   .landing .content {
-    position: absolute ;
-    top: 20% ;
-    z-index: 1400 ;
+    position: absolute;
+    top: 20%;
+    z-index: 1400;
   }
   .landing .row > button {
-    margin-right: 1rem ;
-    margin-bottom: 1em ;
+    margin-right: 1rem;
+    margin-bottom: 1em;
   }
 }
 @media (min-width: 992px) {
@@ -463,10 +463,130 @@ span {
   color: red;
 }
 /* Start date picker */
-.disabled.disabled-date{
+.disabled.disabled-date {
   background-color: #ff000069 !important;
   color: white !important;
   cursor: no-drop !important;
+  border-radius: 50% !important;
+}
+.today {
+  background-color: var(--transparent-color) !important;
+}
+.datepicker {
+  top: 1340px;
+}
+@media (min-width: 807px) {
+  .datepicker-days,
+  .table-condensed {
+    width: 35vw !important;
+  }
+}
+@media (min-width: 779px) {
+  .datepicker-days,
+  .table-condensed {
+    width: 40vw !important;
+  }
+}
+@media (min-width: 1000px) {
+  .datepicker-days,
+  .table-condensed {
+    width: 20vw !important;
+  }
+}
+.datepicker-days,
+.table-condensed {
+  width: 50vw;
+}
+
+.datepicker-days tbody {
+  height: 25vh;
+}
+.datepicker-days tr:nth-child(2) {
+  margin-bottom: 3px;
+}
+/* Days Of Week */
+.dow {
+  color: #999;
+  font-weight: 400;
+}
+.month,
+.year {
+  color: black;
 }
 /* End date picker */
+
+/* Start Succes Page */
+.succes {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: white;
+  color: #fff;
+  text-align: center;
+  z-index: 9999;
+  opacity: 1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 30em;
+  height: 20em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.succes_icons i {
+  color: var(--cadetblue-color);
+  background-color: white;
+  box-shadow: 0px 0px 10px #ddd;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto 1em;
+}
+
+.succes p,
+.succes h2 {
+  color: black;
+}
+.succes a {
+  display: block;
+  color: white;
+  background-color: var(--cadetblue-color);
+  border-radius: 6px;
+  padding: 0.4em 1em;
+  width: fit-content;
+  margin: 0 auto;
+  font-size: 22px;
+  text-transform: uppercase;
+}
+.succes a:hover {
+  color: white;
+}
+.app_fixe {
+  /* Appliquer la superposition semi-transparente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Empêcher la sélection du contenu sous l'alerte */
+.app_fixe::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* End Succes Page */
 /*End Appointment Page */
