@@ -26,9 +26,9 @@ body {
 footer {
   width: 100%;
   height: 17rem;
-  background: white;
+  background: #f3f3f3 !important;
   color: #454e55;
-  margin-top: 150px;
+  margin-top: 0.5rem;
 }
 
 footer .footer-container {
@@ -40,7 +40,10 @@ footer .footer-container {
   padding: 2rem;
   justify-content: flex-start;
 }
-
+a{
+  text-decoration: none;
+  color: rgb(29, 29, 29);
+}
 .footer-section {
   width: 22%;
   height: 100%;
@@ -51,7 +54,7 @@ footer .footer-container {
   align-items: flex-start;
 }
 
-.footer-section div {
+.footer-section a div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -72,17 +75,12 @@ footer .footer-container {
   padding: 0.5em 0.6em;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
 }
-.footer-section div:hover {
-  color: #65d8ea;
+.footer-section a div:hover {
+  color: cadetblue;
   transform: scale(1.05);
 }
 
-.footer-section h1 {
-  /* font-weight: 600; */
-  margin-bottom: 1.5rem;
-}
-
-.footer-section div h3 {
+.footer-section a div h3 {
   cursor: pointer;
   /* position: relative; */
   font-size: 0.9rem;
@@ -95,8 +93,10 @@ footer .footer-container {
 
 .footer-section h1 {
   margin-left: 1rem;
+  font-weight: bold;
   font-size: 1.2rem;
   color: #0f4883;
+  margin-bottom: 1.5rem;
 }
 
 .footer-section .footer-icons {
@@ -123,6 +123,7 @@ footer .footer-container {
   /* font-style: bold; */
   position: relative;
   top: -0.2rem;
+  color: var(--transparent-color);
 }
 .fa-location-dot,
 .fa-phone,
@@ -131,7 +132,7 @@ footer .footer-container {
   align-self: flex-start;
   position: relative;
   /* top: 1.3rem; */
-  color: #65d8ea;
+  color: var(--transparent-color);
 }
 
 .icon-container {
@@ -144,7 +145,7 @@ footer .footer-container {
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  bottom: 125%;
+  bottom: -100%;
   left: 50%;
   transform: translateX(-50%);
   background-color: #333;
@@ -155,7 +156,7 @@ footer .footer-container {
 }
 
 .icon-container:hover .tooltip {
-  /* visibility: visible; */
+  visibility: visible;
   opacity: 1;
 }
 
@@ -181,13 +182,16 @@ footer .footer-container {
   footer {
     max-width: 100%;
     height: fit-content;
-    /* width: 100%; */
     position: relative;
     bottom: 0;
   }
 
   footer .footer-container {
     flex-direction: column;
+  }
+
+  .icon-container .tooltip{
+    display: none;
   }
 
   .footer-section {
