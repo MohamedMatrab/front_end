@@ -5,9 +5,11 @@ ob_start();
 
 <?php
 include_once "Models/connect.php";
-function print_available_options()
+$conn = new connect();
+$conn->portfolioTable();
+$conn->serviceTable();
+function print_available_options($conn)
 {
-  $conn = new connect();
   $sql = "SELECT * FROM service;";
   $stmt = $conn->getConnect()->prepare($sql);
   $stmt->execute();
@@ -29,7 +31,7 @@ function print_available_options()
     <select class="form-select" name="select-services" id="select-services">
       <option value="all">Tous</option>
       <?php
-      print_available_options();
+      print_available_options($conn);
       ?>
     </select>
   </div>
