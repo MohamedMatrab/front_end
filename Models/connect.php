@@ -3,7 +3,7 @@ class connect {
     private $connect;
     function __construct() {
         try {
-            $this->connect = new pdo("mysql:host=localhost; dbname=bd_dentiste","root","meriem2002");
+            $this->connect = new pdo("mysql:host=localhost; dbname=dentist","root","");
         }catch (PDOException $e){
             echo "Not Connected :" . $e->getMessage();
         }
@@ -14,11 +14,9 @@ class connect {
             $requete->execute(array($CIN , $date_rendez , $Heure_rendez, $id_medecin )) ;
         }catch (PDOException $e){
             echo "Not Connected :" . $e->getMessage();
-            
         }
         
     }
-
     function import_Heures_occupees_dans_un_jour_donne($date_Reserve,$Heure_reserve) {
         $requete = $this->connect->prepare("SELECT Heure_rendez 
         FROM rendez_vous
@@ -39,5 +37,15 @@ class connect {
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute() ;
         return json_decode(json_encode($requete->fetchAll()), true);
+    }
+    function getConnect(){
+        $pdo=$this->connect;
+        return $pdo;
+    }
+    function isTableExist($tableName){
+        $stmt=$this->connect->prepare("SHOW TABLES LIKE '".$tableName."'");
+        if($stmt->rowCount() == 1)
+            return true;
+        return false;
     }
 }

@@ -20,7 +20,7 @@ body {
 }
 
 #porfolio-page {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem !important;
 }
 
 .heading-section {
@@ -77,10 +77,12 @@ body {
 .galerie-group {
   width: 100%;
   max-width: 100%;
+  min-height: 18rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  transition: all 2s ease-in-out;
 }
 
 .image-section {
@@ -91,6 +93,7 @@ body {
   position: relative;
   overflow: hidden;
   box-shadow: 0px 0px 2px 0.5px rgba(0, 0, 0, 0.3);
+  transition: all 1s ease-in-out;
   /* transition: all 1s ease-in-out; */
   /* cursor: pointer; */
 }
@@ -135,10 +138,11 @@ body {
   position: relative;
   bottom: 2rem;
   opacity: 0;
-  /* transform-origin: right; */
-  /* transition-delay: 0.1s; */
   transition: 0.5s ease-out;
   background: #65d8ea;
+}
+.description-image span {
+  color: black !important;
 }
 .image-section:hover::after {
   opacity: 40%;
