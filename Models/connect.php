@@ -88,4 +88,8 @@ class connect
             $stmt->execute();
         }
     }
+    function close_connection()
+    {
+        $this->connect = null;
+    }
 }
