@@ -5,6 +5,18 @@ require_once 'Models/connect.php' ;
         require_once 'views/home.php' ;
     }
 
+    function dashWelcomeAction(){
+        require_once 'views/dash_welcome.php' ;
+    }
+    function dash_portfolio(){
+        require_once 'views/dash_portfolio.php' ;
+    }
+    function editImageAction(){
+        require_once 'views/edit_image.php' ;
+    }
+    function addImageAction(){
+        require_once 'views/add_image.php' ;
+    }
     function aboutCentreAction() {
         require_once 'views/aboutCentre.php' ;
     }

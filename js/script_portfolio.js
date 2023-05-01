@@ -13,7 +13,26 @@ $(document).ready(function () {
       success: function (response) {
         let images = response["images"];
         for (let image of images) {
-          $(".galerie-group").append(image);
+          //div image section 
+          let img_sec = document.createElement('div');
+          img_sec.classList.add('image-section');
+          //image
+          let img = new Image();
+          img.src=image['src'];
+          //a element
+          let a=document.createElement('a');
+          a.href="#";
+          let desc_img = document.createElement('div');
+          desc_img.classList.add('description-image');
+          //span in desc-image
+          let span =document.createElement('span');
+          span.textContent=image['title'];
+          desc_img.append(span);
+          a.append(desc_img);
+          img_sec.append(img);
+          img_sec.append(a);
+          
+          $(".galerie-group").append(img_sec);
         }
       },
     });

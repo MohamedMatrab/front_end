@@ -20,17 +20,15 @@
     </div>
     <form action="" method="post" class="form-login">
       <div class="mb-3 mt-3">
-        <!-- <label for="email" class="form-label">Email :</label> -->
-        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" />
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required/>
       </div>
       <div class="mb-3">
-        <!-- <label for="pswd" class="form-label">Password :</label> -->
-        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" />
+        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" required/>
       </div>
       <div class="form-check mb-3">
         <label class="form-check-label">
           <div>
-            <input class="form-check-input" type="checkbox" name="remember" />
+            <input class="form-check-input" type="checkbox" name="remember"/>
             Remember me
           </div>
           <a href="#">Forgot Password ?</a>

@@ -20,26 +20,26 @@
     </div>
     <form action="" method="post" class="form-login">
       <div class="form-group mb-3">
-        <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-name" />
-        <input type="text" class="form-control" id="last-name" placeholder="Last Name" name="last-name" />
+        <input type="text" class="form-control" id="first-name" placeholder="First Name" name="first-name" required/>
+        <input type="text" class="form-control" id="last-name" placeholder="Last Name" name="last-name" required/>
       </div>
       <div class="mb-3">
-        <input type="tel" class="form-control" id="phone" placeholder="Enter Phone Number" name="phone" />
+        <input type="tel" class="form-control" id="phone" placeholder="Enter Phone Number" name="phone" required/>
       </div>
       <div class="mb-3">
-        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" />
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required/>
       </div>
       <div class="mb-3">
-        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" />
+        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" required/>
         <label for="pswd" class="form-label" id="password_strength"></label>
       </div>
       <div class="mb-3">
-        <input type="password" id="pswd-confirm" class="form-control" placeholder="Confirm Password" />
+        <input type="password" id="pswd-confirm" class="form-control" placeholder="Confirm Password" required/>
         <label for="pswd" class="form-label" id="password_similar"></label>
       </div>
       <div class="agreement mb-3 mt-3">
         <label for="accept agreements" class="form-check-label" id="accept-agreement">
-          <input type="checkbox" checked="cheched" class="form-check-input" />
+          <input type="checkbox" checked="cheched" class="form-check-input" required/>
           <p class="terms-conditions">
             J'accepte Les <a href="#">Termes et Conditions</a>
           </p>
