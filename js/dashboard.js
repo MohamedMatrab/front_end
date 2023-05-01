@@ -109,15 +109,15 @@ linkeds.forEach((linked) => {
   linked.addEventListener("click", () => {
     let action = linked.getAttribute("data-id");
     if (action == "dashboard") {
-      window.location.replace("dashboard.php");
+      window.location.href="dashboard.php";
     } else {
-      window.location.replace("dashboard.php?action=" + action);
+      window.location.href="dashboard.php"+action;
     }
   });
 });
 
 logo.addEventListener("click", () => {
-  window.location.replace("dashboard.php");
+  window.location.href="dashboard.php";
 });
 
 window.addEventListener("resize", () => {
