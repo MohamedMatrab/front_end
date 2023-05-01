@@ -111,7 +111,7 @@ linkeds.forEach((linked) => {
     if (action == "dashboard") {
       window.location.href="dashboard.php";
     } else {
-      window.location.href="dashboard.php"+action;
+      window.location.href="dashboard.php?action="+action;
     }
   });
 });
