@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+<?php
+include_once "Models/verify_permissions.php";
+if (!isset($_SESSION['USER']) || $_SESSION['USER']['role'] == 0) {
+  $_SESSION['message'] = "Access denied !";
+  header("Location: dashboard.php?action=login");
+  exit(0);
+}
+?>
+<?php
+include_once "Models/connect.php";
+$obj = new connect();
+$user_id = $_SESSION['USER']['id'];
+$stmt = $obj->getConnect()->prepare("SELECT img,fname,lname,role FROM users WHERE id = $user_id LIMIT 1");
+$success = $stmt->execute();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
 <html lang="en">
 
 <head>
@@ -63,7 +79,7 @@
               </span>
             </li>
             <div class="drop-down-content">Notifications</div>
-            <li class="nav-item me-3">
+            <li class="nav-item me-3" id="logout">
               <span class="icon-header me-1">
                 <i class="bi bi-box-arrow-right"></i>
               </span>
@@ -77,10 +93,10 @@
     <!-- Start Sidebar -->
     <div class="navigation">
       <div class="profile">
-        <img src="images/R.png" alt="profile" class="profile-img" />
+        <img src="<?= is_null($row['img']) ? "images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($row['$img']); ?>" alt="profile" class="profile-img" />
         <div class="admin-data">
-          <span style="font-weight: 600">Mohamed Matrab</span>
-          <span>Docteur</span>
+          <span style="font-weight: 600"><?= $row['fname'] . " " . $row['lname'] ?></span>
+          <span><?= $row['role'] == 1 ? 'Docteur' : 'Secrétaire '; ?></span>
         </div>
       </div>
       <div id="navigation-title">NAVIGATION</div>

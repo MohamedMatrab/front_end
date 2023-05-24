@@ -15,6 +15,18 @@ if (isset($_GET['action'])) {
         case 'add_image':
             addImageAction();
             break;
+        case 'login':
+            dashLoginAction();
+            break;
+        case 'users':
+            dashUsersAction();
+            break;
+        case 'add_admin':
+            addAdminsAction();
+            break;
+        case 'edit_user_info':
+            EditUserInfoAction();
+            break;
     }
 } else {
     dashWelcomeAction();

@@ -17,6 +17,18 @@ require_once 'Models/connect.php' ;
     function addImageAction(){
         require_once 'views/add_image.php' ;
     }
+    function dashLoginAction(){
+        require_once 'views/dash_login.php' ;
+    }
+    function dashUsersAction(){
+        require_once 'views/users.php' ;
+    }
+    function addAdminsAction(){
+        require_once 'views/add_admin.php' ;
+    }
+    function EditUserInfoAction(){
+        require_once 'views/edit_user_info.php' ;
+    }
     function aboutCentreAction() {
         require_once 'views/aboutCentre.php' ;
     }

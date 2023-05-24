@@ -81,11 +81,35 @@ class connect
             return;
         } else {
             $sql = "CREATE TABLE service(
-                service_id VARCHAR(20) PRIMARY KEY NOT NULL,
+                service_id INT PRIMARY KEY AUTO_INCREMENT,
                 title VARCHAR(50)
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
+        }
+    }
+    function usersTable()
+    {
+        $tableName = 'users';
+        if ($this->isTableExist($tableName)) {
+            return;
+        } else {
+            $sql = "CREATE TABLE users(
+                    id INT PRIMARY KEY AUTO_INCREMENT,
+                    fname VARCHAR(30),
+                    lname VARCHAR(30),
+                    email VARCHAR(50),
+                    password VARCHAR(70),
+                    phone_num VARCHAR(50),
+                    cin VARCHAR(50),
+                    ville VARCHAR(30),
+                    img MEDIUMBLOB,
+                    adresse VARCHAR(100),
+                    date_naissance DATE,
+                    role ENUM('0', '1', '2')
+             )";
+             $stmt=$this->connect->prepare($sql);
+             $stmt->execute();
         }
     }
     function close_connection()
