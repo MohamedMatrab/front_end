@@ -46,7 +46,8 @@ ob_start();
                             </thead>
                             <tbody>
                                 <?php
-                                $request = $obj->getConnect()->prepare("SELECT * FROM users ");
+                                $id = $_SESSION['USER']['id'];
+                                $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
                                 $request->execute();
                                 $count = $request->rowCount();
                                 if ($count > 0) {
