@@ -181,6 +181,9 @@ button {
 .box {
   position: relative;
 }
+.box form{
+  margin: 0;
+}
 .input {
   padding: 1rem;
   height: 2rem;
@@ -304,6 +307,7 @@ ul {
 .nav-list {
   width: 100%;
   display: flex;
+  padding: 0 !important;
   flex-direction: column;
 }
 .nav-section {
@@ -374,6 +378,7 @@ ul {
 }
 .nav-list li ul {
   display: none;
+  padding: 0 !important;
   flex-direction: column;
 }
 .sub-title {

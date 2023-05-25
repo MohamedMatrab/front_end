@@ -61,10 +61,8 @@ $(document).ready(function () {
           icon.classList.add("bi-pencil-square");
           edit.append(icon);
           edit.addEventListener("click", () => {
-            window.open(
-              "dashboard.php?action=edit_image&id=" + image["id"],
-              "_blank"
-            );
+            window.location.href =
+              "dashboard.php?action=edit_image&id=" + image["id"];
           });
           //delete icon
           let del = document.createElement("div");
@@ -99,5 +97,5 @@ $(document).ready(function () {
 });
 
 add_image.addEventListener("click", () => {
-  window.open("dashboard.php?action=add_image" , "_blank");
+  window.location.href = "dashboard.php?action=add_image";
 });

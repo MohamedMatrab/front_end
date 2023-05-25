@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = "Dentiste: Portfolio";
 ob_start();
 ?>

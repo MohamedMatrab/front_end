@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $link = '../dashboard.php';
     if (isset($_POST['submit']) && isset($_POST['service_id']) && isset($_POST['title']) && isset($_FILES['my_image']) && !empty($_FILES['my_image']['name'])) {
@@ -17,10 +17,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!in_array($exctention, $allowed_exs)) {
             $em = "This Format is not allowed ,provide an image.";
-            header("Location: $link?action=add_image&error=$em");
+            $_SESSION['message'] = $em;
+            header("Location: $link?action=add_image");
         } elseif ($size >  4 * 1024 * 1024) {
             $em = "File is Too Large, Maximum Size 4MB .";
-            header("Location: $link?action=add_image&error=$em");
+            $_SESSION['message'] = $em;
+            header("Location: $link?action=add_image");
         } else {
             include_once "connect.php";
             $obj = new connect();
@@ -38,10 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
 
             $em = "Uploaded Successfully !";
-            header("Location: $link?action=add_image&error=$em");
+            $_SESSION['message'] = $em;
+            header("Location: $link?action=portfolio");
         }
     } else {
         $em = "You did'nt choose an image !";
-        header("Location: $link?action=add_image&error=$em");
+        $_SESSION['message'] = $em;
+        header("Location: $link?action=add_image");
     }
 }

@@ -1,5 +1,6 @@
 <?php
-$title = "Dentiste: Portfolio";
+session_start();
+$title = "Portfolio";
 ob_start();
 ?>
 
@@ -26,6 +27,7 @@ function print_available_options($conn)
   <h2 class="main-header">Works Portfolio</h2>
 </div>
 <div id="porfolio-page">
+  <?php include_once 'views/p_message.php' ?>
   <div class=" mt-3 mb-3 mygroup-select">
     <label for="Type Of Service">Services : </label>
     <select class="form-select" name="select-services" id="select-services">

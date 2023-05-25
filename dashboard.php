@@ -17,6 +17,7 @@ if (isset($_GET['action'])) {
         case 'add_image':
             addImageAction();
             break;
+<<<<<<< HEAD
         case 'all_reservations' : 
             if (isset($_GET['id'])) {
 
@@ -39,6 +40,20 @@ if (isset($_GET['action'])) {
         case 'more_details' :
             insert_more_details($_POST['poids'],$_POST['taille'],$_GET['ID']) ;
             break ;
+=======
+        case 'login':
+            dashLoginAction();
+            break;
+        case 'users':
+            dashUsersAction();
+            break;
+        case 'add_admin':
+            addAdminsAction();
+            break;
+        case 'edit_user_info':
+            EditUserInfoAction();
+            break;
+>>>>>>> refs/remotes/origin/main
     }
 } else {
     dashWelcomeAction();
