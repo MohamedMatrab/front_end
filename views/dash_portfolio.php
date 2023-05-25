@@ -34,12 +34,15 @@ function print_available_options($conn)
       print_available_options($conn);
       ?>
     </select>
+    <div id="add_image">
+      <i class="bi bi-plus-lg"></i>
+    </div>
   </div>
   <div class="galerie-group">
   </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="js/script_portfolio.js"></script>
+<script defer src="js/dash_portfolio.js"></script>
 <?php $content = ob_get_clean(); ?>
-<?php include_once 'views/layout.php'; ?>
+<?php include_once 'views/dashboard.php'; ?>

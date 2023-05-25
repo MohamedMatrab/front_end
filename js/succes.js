@@ -1,14 +1,40 @@
-let body_container = document.querySelector("body") ;
+$(document).ready(function () {
+    function submitData(data) {
+    $.ajax({
+        type: "POST",
+        url: "Models/appointment.php",
+        data: {
+            data : JSON.stringify(data),
+        },
+        dataType: "json",
+        success: function (response) {
+            let state = response['pass'] ;
+            console.log(state);
+            
+            if (state['state'] == true) {
+                window.location.href = "index.php?action=RDV" ;
+            }
+        }
+    });
+    }
 
-const Html_succes = `<div class="succes">
-<div>
-  <div class="succes_icons"><i class="bi bi-person-check-fill"></i></div>
-  <h2>Congratulations!</h2>
-  <p>Notre équipe prendra contact avec vous prochainement</p>
-  <a href="index.php?action=appoint">Ok</a>
-</div>
-</div>` ;
-
-let container = document.querySelector(".app_container_") ;
-container.classList.add("app_fixe") ;
-body_container.insertAdjacentHTML("beforeend",Html_succes);
+    $('button[name="valider"]').click(function() {
+            var formData = $('#formulaire').serialize();
+            var data = {
+                firstName: $('#inputFirstName').val(),
+                lastName: $('#inputLastName').val(),
+                email: $('#email').val(),
+                cin: $('#inputCin').val(),
+                dateBirth: $('#inputDateOfbirth').val(),
+                // city : $('#inputCity').val(),
+                address: $('#inputAddress').val(),
+                tel: $('#inputNumber').val(),
+                service: $('#inputService').val(),
+                date: $('#datepicker').val(),
+                heure: $('#form-select-hour').val()
+            };
+            $(this).trigger('reset');
+            submitData(data) ;               
+    });  
+    
+});

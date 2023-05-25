@@ -10,10 +10,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Bootstrap Datepicker CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
   <div class="landing-page">
     <h2 class="main-header">Rendez-vous</h2>
   </div>
-   
   <div class="container pt-5 pb-5">
     <div class="desp">
       <h3 class="fs-5">Formulaire de prise de rendez vous :</h3>
@@ -22,27 +22,27 @@
     </div>
     <h3 class="fs-5 mb-5 br">Informations personnelles : </h3>
 
-    <form class="g-3" method="post" action="index.php?action=RDV">
+    <form class="g-3" method="post"  id="formulaire">
       <div class="row br-top py-4 br-bott">
         <div class="col-4" ><label for="inputLastName" class="form-label">Prénom <span>*</span></label></div>
-        <div class="col-8"><input type="text" class="form-control" id="inputLastName" required placeholder="Prénom" name="Prenom"></div>
+        <div class="col-8"><input type="text" class="form-control" id="inputLastName" required placeholder="Prénom" data="Prénom" name="Prenom"></div>
       </div>
 
       <div class="row  py-4 br-bott">
         <div class="col-4"><label for="inputFirstName" class="form-label">Nom <span>*</span></label></div>
-        <div class="col-8"><input type="text" class="form-control" id="inputFirstName" required placeholder="Nom" name="Nom"></div>
+        <div class="col-8"><input type="text" class="form-control" id="inputFirstName" required placeholder="Nom" data="Nom" name="Nom"></div>
       </div>
 
       <div class="row  py-4 br-bott">
         <div class="col-4"><label for="inputCin" class="form-label">CIN (Carte d'identité nationale) <span>*</span></label></div>
-        <div class="col-8"><input type="text" class="form-control" id="inputCin" required placeholder="CIN (Carte d'identité nationale)" name="CIN"></div>
+        <div class="col-8"><input type="text" class="form-control" id="inputCin" required placeholder="CIN (Carte d'identité nationale)" data="CIN (Carte d'identité nationale)" name="CIN"></div>
       </div>
 
       <div class="row  py-4 br-bott">
         <div class="col-4"><label for="inputSexe" class="form-label">Sexe <span>*</span></label></div>
         <div class="col-8">
           <select class="form-select" aria-label="Default select example" name="Sexe">
-            <option value="1">--please choose an option--</option>
+            <option value="1"></option>
             <option value="2">Homme</option>
             <option value="3">Femme</option>
           </select>
@@ -56,17 +56,17 @@
 
       <div class="row  py-4 br-bott">
         <div class="col-4"><label for="inputCity" class="form-label">Ville <span>*</span></label></div>
-        <div class="col-8"><input type="text" class="form-control" id="inputCity" required placeholder="Ville" name="Ville"></div>
+        <div class="col-8"><input type="text" class="form-control" id="inputCity" required placeholder="Ville" data="Ville" name="Ville"></div>
       </div>
 
       <div class="row py-4 br-bott">
         <div class="col-4"><label for="inputAddress" class="form-label">Adresse</label></div>
-        <div class="col-8"><input type="text" class="form-control" id="inputAddress" placeholder="Adresse" name="Adresse"></div>
+        <div class="col-8"><input type="text" class="form-control" id="inputAddress" placeholder="Adresse" data="Adresse" name="address"></div>
       </div>
 
       <div class="row py-4 br-bott">
         <div class="col-4"><label for="inputNumero" class="form-label">Numéro <span>*</span></label></div>
-        <div class="col-8"><input type="tel" class="form-control" id="inputNumber" required placeholder="tél" name="tel"></div>
+        <div class="col-8"><input type="tel" class="form-control" id="inputNumber" required placeholder="tél" data="tél" name="tel"></div>
       </div>
 
       <div class="row py-4 br-bott">
@@ -76,20 +76,10 @@
         </div>
       </div>
 
-      <div class="row  py-4 br-bott">
-        <div class="col-4"><label for="inputServive" class="form-label">Services <span>*</span></label></div>
-        <div class="col-8">
-          <select class="form-select" aria-label="Default select example" name="services" autocomplete="off">
-            <option value="1"></option>
-            <option value="esthétique dentaire">esthétique dentaire</option>
-            <option value="Facettes dentaires">Facettes dentaires</option>
-            <option value="Implants dentaires">Implants dentaires</option>
-            <option value="Prothèses dentaires">Prothèses dentaires</option>
-            <option value="Blanchiment dentaire">Blanchiment dentaire</option>
-            <option value="hollywood smile">hollywood smile</option>
-
-
-          </select>
+      <div class="row  py-4 br-bott all-Services">
+        <div class="col-4"><label for="inputService" class="form-label">Services <span>*</span></label></div>
+        <div class="col-8 inactive " style="position: relative ;">
+          <input type="text" class="form-select" name="services" autocomplete="off" id="inputService">
         </div>
       </div>
 
@@ -97,15 +87,12 @@
         <div class="col-4"><label for="from" class="form-label">Rendez-vous<span>*</span></label></div>
         <div class="col-4">
           <div class="form-group">
-            <input type="text" class="form-control datepicker" placeholder="Date" name="date_rendez" autocomplete="off">
+            <input type="text" class="form-control datepicker" placeholder="select a date" data="Date" name="date_rendez" autocomplete="off" id="datepicker">
           </div>
         </div>
-        <div class="col-4 error_hour">
+        <div class="col-4 horaire">
           <div class="form-group">
-            <select class="form-select" 
-                    aria-label="Default select example"
-                    name="Heure_rendez" id="form-select-hour" autocomplete="off"> 
-            </select>
+            <input type="text" class="form-select timepicker"  placeholder="select an hour" name="Heure_rendez" id="form-select-hour" autocomplete="off" id="time">
           </div>
           
         </div>
@@ -138,6 +125,7 @@
 
   <!-- jQuery library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
   <!-- Popper JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Bootstrap 4 JS -->
@@ -145,11 +133,10 @@
   <!-- Bootstrap Datepicker JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
   
-  <script src="js/main.js"></script>
-  <script src="js/datepicker.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-
+  <script src="js/echec.js"></script>
+  <script src="js/succes.js"></script>
+  <script src="js/appointment.js"></script>
 <?php $content = ob_get_clean() ; ?>
 <?php include_once 'views/layout.php' ; ?> 
-
-    
+  

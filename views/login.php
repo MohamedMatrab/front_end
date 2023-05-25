@@ -1,10 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <title>Dentiste : log in</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="style/bootstrap.min.css" />
+  <link rel="stylesheet" href="style/style-login.css" />
 </head>
-<link rel="stylesheet" href="style/style-login.css" >
-<link rel="stylesheet" href="style/bootstrap.min.css" >
-<link rel="stylesheet" href="style/bootstrap.min.css" >
-<div class="container log">
+
+<body>
+  <div class="container">
     <div class="titling">
       <h1 style="color: #0f4883">
         Dent<span style="color: #65d8ea">All</span>
@@ -13,29 +20,30 @@
     </div>
     <form action="" method="post" class="form-login">
       <div class="mb-3 mt-3">
-        <!-- <label for="email" class="form-label">Email :</label> -->
-        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" />
+        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required/>
       </div>
       <div class="mb-3">
-        <!-- <label for="pswd" class="form-label">Password :</label> -->
-        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" />
+        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" required/>
       </div>
       <div class="form-check mb-3">
         <label class="form-check-label">
           <div>
-            <input class="form-check-input" type="checkbox" name="remember" />
+            <input class="form-check-input" type="checkbox" name="remember"/>
             Remember me
           </div>
           <a href="#">Forgot Password ?</a>
         </label>
       </div>
       <button type="submit" value="login" name="login" class="btn btn-primary">
-        Login 
+        Login
       </button>
       <div class="signup">
         Don't have account ?<a href="index.php?action=signup"> sign up</a>
       </div>
     </form>
   </div>
-<script src="js/all.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+<script src="js/bootstrap.min.js"></script>
+
+</html>

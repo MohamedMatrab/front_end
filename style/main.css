@@ -343,23 +343,6 @@ nav .container {
 .landing .text {
   color: white;
 }
-.landing .text a,
-.rdv-box a {
-  color: var(--transparent-color);
-  border-color: var(--second-color);
-  background-color: var(--second-color);
-  padding: 0px 15px;
-}
-.rdv-box {
-  color: white;
-  background-color: var(--second-color);
-  border-radius: 10px;
-  padding: 15px 8px;
-  text-align: center;
-}
-.rdv-box a {
-  background-color: black;
-}
 
 .btn-lang {
   background-color: #266b66cf !important;
@@ -371,6 +354,13 @@ nav .container {
   background-color: white !important;
   color: #266b66cf !important;
 }
+@media (max-width: 666px) {
+  .landing .text .row {
+    gap: 4px;
+  }
+}
+
+
 /* End Landing Page */
 
 /*Start About Page */
@@ -389,6 +379,21 @@ nav .container {
   padding: 0.5em 1em;
   width: fit-content;
   background-color: var(--transparent-color);
+}
+.More:hover {
+  transform: scale(1.05);
+}
+@media (max-width: 666px) {
+  .about .information {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 992px) {
+  .More {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
 }
 .More:hover {
   transform: scale(1.05);
@@ -462,6 +467,17 @@ nav .container {
 span {
   color: red;
 }
+.select-services {
+  padding: 1em;
+  position: absolute;
+  background-color: white;
+  z-index: 999;
+}
+.select-services ul {
+  list-style: none;
+  padding: 0.5em 1em;
+}
+
 /* Start date picker */
 .disabled.disabled-date {
   background-color: #ff000069 !important;
@@ -522,7 +538,7 @@ span {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: white;
+  background-color: #ddddddf0;
   color: #fff;
   text-align: center;
   z-index: 9999;
@@ -533,6 +549,7 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 16px;
 }
 .succes_icons i {
   color: var(--cadetblue-color);
@@ -567,25 +584,9 @@ span {
   color: white;
 }
 .app_fixe {
-  /* Appliquer la superposition semi-transparente */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  z-index: 0;
-}
-
-/* Empêcher la sélection du contenu sous l'alerte */
-.app_fixe::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  filter: blur(2px) !important;
+  transition: 0.3s ease-in-out !important;
+  pointer-events: none !important;
 }
 
 /* End Succes Page */

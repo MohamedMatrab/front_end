@@ -86,7 +86,9 @@
     <?php include_once "views/footer.php" ; ?>
     <script src="js/all.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js" type="module"></script>
+    <script src="js/main.js" ></script>
+    <script src="js/validation.js" ></script>
 </div>
 </body>
 </html>
+

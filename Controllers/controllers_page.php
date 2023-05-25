@@ -1,5 +1,5 @@
 <?php
-require_once 'Models/connect.php';
+require_once 'Models/connect.php' ;
 require ('controllers_reservations.php') ;
 
 // Require and include the 'home.php' view file
@@ -43,9 +43,10 @@ function detailsAction() {
 }
 
 // Require and include the 'contact.php' view file
-function contactAction() {
+    function contactAction() {
     require_once 'views/contact.php';
-}
+    }
 
 
-?>
+
+
