@@ -1,6 +1,8 @@
 <?php
-    ob_start();
-?>    
+session_start();
+$title = "history";
+ob_start();
+?> 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" /> 
 
     <section class="appointment" id="appointment">

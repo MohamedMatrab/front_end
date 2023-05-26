@@ -360,7 +360,6 @@ nav .container {
   }
 }
 
-
 /* End Landing Page */
 
 /*Start About Page */
@@ -466,16 +465,6 @@ nav .container {
 }
 span {
   color: red;
-}
-.select-services {
-  padding: 1em;
-  position: absolute;
-  background-color: white;
-  z-index: 999;
-}
-.select-services ul {
-  list-style: none;
-  padding: 0.5em 1em;
 }
 
 /* Start date picker */
@@ -588,6 +577,46 @@ span {
   transition: 0.3s ease-in-out !important;
   pointer-events: none !important;
 }
-
+#appointment .select-services {
+  box-sizing: content-box;
+  margin: 0;
+  list-style: none;
+  padding: 0 1px;
+  text-align: center;
+  width: 100%;
+  background-color: #fff;
+  border: 1px solid #aaa;
+}
+#appointment .select-services.inactive {
+  display: none;
+}
+#appointment .select-services.active {
+  display: block;
+}
+#appointment .select-services ul {
+  padding: 0;
+  overflow: auto;
+  overflow-x: hidden;
+  box-sizing: content-box;
+  display: block;
+  margin: 0;
+}
+#appointment .select-services ul li {
+  margin: 0;
+  padding: 0;
+}
+#appointment .select-services ul li a {
+  border: 1px solid transparent;
+  color: #222;
+  display: block;
+  padding: 0.4em 0.6em;
+  cursor: default;
+}
+#appointment .select-services ul li a:hover {
+  background-color: #dadada;
+  border: 1px solid #999;
+  font-weight: 400;
+  color: #212121;
+}
 /* End Succes Page */
 /*End Appointment Page */

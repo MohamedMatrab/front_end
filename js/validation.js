@@ -1,29 +1,34 @@
 // Récupérer toutes les entrées du formulaire
-const Inputs = document.querySelectorAll('#formulaire input');
+const Inputs = document.querySelectorAll("#formulaire input");
 const InputsHours = document.getElementById("form-select-hour");
-document.addEventListener('keydown', function(event) {
-  if (event.key === 'ArrowDown') {
-    event.preventDefault(); 
+document.addEventListener("keydown", function (event) {
+  if (event.key === "ArrowDown") {
+    event.preventDefault();
 
-    const activeIndex = Array.from(Inputs).findIndex(input => document.activeElement === input);
+    const activeIndex = Array.from(Inputs).findIndex(
+      (input) => document.activeElement === input
+    );
 
     if (activeIndex !== -1 && activeIndex < Inputs.length - 1) {
       Inputs[activeIndex + 1].focus();
     }
   }
-  if (event.key === 'ArrowUp') {
-    event.preventDefault(); 
-    const activeIndex = Array.from(Inputs).findIndex(input => document.activeElement === input);
+  if (event.key === "ArrowUp") {
+    event.preventDefault();
+    const activeIndex = Array.from(Inputs).findIndex(
+      (input) => document.activeElement === input
+    );
     if (activeIndex !== -1 && activeIndex < Inputs.length - 1) {
       Inputs[activeIndex - 1].focus();
     }
   }
 
+  if (event.key === "ArrowRigh") {
+    event.preventDefault();
 
-  if (event.key === 'ArrowRigh') {
-    event.preventDefault(); 
-
-    const activeIndex = Array.from(Inputs).findIndex(input => document.activeElement === input);
+    const activeIndex = Array.from(Inputs).findIndex(
+      (input) => document.activeElement === input
+    );
 
     if (activeIndex !== -1 && activeIndex === formInputs.length - 2) {
       Inputs[activeIndex + 1].focus();
@@ -32,15 +37,25 @@ document.addEventListener('keydown', function(event) {
 });
 
 Inputs.forEach((el) => {
-  el.addEventListener("focus",()=>{
+  el.addEventListener("focus", () => {
     el.placeholder = " ";
-    if (el.parentElement.childElementCount === 2 ) {
-      el.parentElement.lastElementChild.remove();
+    console.log(el.parentElement.childElementCount);
+    if (el.parentElement.childElementCount >= 2) {
+      let alert = document.querySelector("span");
+      if (alert) {
+        alert.remove();
+      }
     }
-  })
-  el.addEventListener("blur",()=>{
-    if (!(el.classList.contains("datepicker") || el.classList.contains("timepicker")) ) {
-      if(el.value.length === 0) {
+  });
+  el.addEventListener("blur", () => {
+    if (
+      !(
+        el.classList.contains("datepicker") ||
+        el.classList.contains("timepicker") ||
+        el.classList.contains("form-select")
+      )
+    ) {
+      if (el.value.length === 0 || el.value.length === null) {
         let error = document.createElement("span");
         let i = document.createElement("i");
         i.className = "bi bi-exclamation-circle";
@@ -50,10 +65,7 @@ Inputs.forEach((el) => {
         error.style.fontSize = "12px";
         el.parentElement.appendChild(error);
       }
-      el.placeholder = el.getAttribute("data") ;
+      el.placeholder = el.getAttribute("data");
     }
-    
-  })
-  
+  });
 });
-

@@ -1,6 +1,7 @@
 <?php
-
-    ob_start();
+session_start();
+$title = "patient | details";
+ob_start();
 ?>
     <!-- <div class="logo dg-lg"><div>dent<span>All</span></div></div> -->
     <div class="container" id="file">

@@ -1,6 +1,7 @@
 <?php
-
-   ob_start();
+session_start();
+$title = "All reservations";
+ob_start();
 ?>
     <section class="appointment" id="appointment">
         <div class="container">

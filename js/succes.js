@@ -17,7 +17,6 @@ $(document).ready(function () {
         }
     });
     }
-
     $('button[name="valider"]').click(function() {
             var formData = $('#formulaire').serialize();
             var data = {

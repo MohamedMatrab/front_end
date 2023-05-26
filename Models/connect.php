@@ -82,7 +82,6 @@ class connect
             $stmt->execute();
         }
     }
-<<<<<<< HEAD
 
     function historiqueTable(){
         $tableName = 'historique';
@@ -225,8 +224,7 @@ class connect
         $requete->execute() ;
         return $requete->fetchAll() ;
     }
-    function close_connection(){
-=======
+
     function usersTable()
     {
         $tableName = 'users';
@@ -253,7 +251,6 @@ class connect
     }
     function close_connection()
     {
->>>>>>> refs/remotes/origin/main
         $this->connect = null;
     }
 }

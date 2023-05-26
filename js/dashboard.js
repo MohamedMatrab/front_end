@@ -141,7 +141,7 @@ document.addEventListener("click", function (e) {
     box_input.classList.remove("input_box");
   }
 });
-<<<<<<< HEAD
+
 
 
 let btn_valider = document.querySelectorAll(".valider") ;
@@ -161,7 +161,6 @@ document.addEventListener('keydown', function(event) {
     } 
 }) ;
 
-=======
 console.log(logout);
 $(document).ready(function () {
   logout.addEventListener("click", () => {
@@ -179,4 +178,4 @@ $(document).ready(function () {
     });
   });
 });
->>>>>>> refs/remotes/origin/main
+

@@ -52,36 +52,42 @@ $(document).ready(function () {
         let boxinputService = document.querySelector(
           ".all-Services .col-8"
         );
-        inputService.addEventListener("click", (e) => {
-          if (boxinputService.classList.contains("inactive")) {
-            boxinputService.classList.add("active");
-            boxinputService.classList.remove("inactive");
-            let div = document.createElement("div");
-            div.className = "select-services";
-            boxinputService.appendChild(div);
+        let div = document.createElement("div");
+        div.classList.add(...['select-services','inactive']);
+        boxinputService.appendChild(div);
+        let ul = document.createElement("ul");
+        ul.className = "all-items";
+        div.appendChild(ul);
+        let AllServices = [];
+        services.forEach((el) => {
+          let li = document.createElement("li");
+          li.className = "ui-item";
+          ul.appendChild(li);
 
-            let ul = document.createElement("ul");
-            ul.className = "all-items";
-            div.appendChild(ul);
-
-            services.forEach((el) => {
-              let li = document.createElement("li");
-              li.className = "ui-item";
-              ul.appendChild(li);
-
-              let a = document.createElement("a");
-              a.className = "item";
-              a.innerHTML = el["title"];
-              li.appendChild(a);
-            });
-          }else {
-            boxinputService.classList.add("inactive");
-            boxinputService.classList.remove("active");
-            let Div = document.querySelector(".select-services");
-            console.log(Div);
-            Div.remove();
-          }
+          let a = document.createElement("a");
+          a.className = "item";
+          a.innerHTML = el["title"];
+          li.appendChild(a);
+          AllServices.push(li);
+        }) ;
+        inputService.addEventListener("focus", (e) => {
+          div.classList.remove('inactive');
+          div.classList.add('active');
+          AllServices.forEach((el) => {
+            el.addEventListener('click' , (element)=>{
+              e.target.value = element.target.innerHTML ;
+              div.classList.add('inactive');
+              div.classList.remove('active');
+            })
+          })
         });
+        let app_container = document.querySelector(".app_container_");
+        app_container.addEventListener("click", (e)=> {
+          if (!(e.target.classList.contains("form-select") || e.target.classList.contains("ui-item") )) {
+            div.classList.add('inactive');
+            div.classList.remove('active');
+          }
+        })
       }
     });
   }

@@ -1,5 +1,6 @@
 <?php 
    require 'Controllers/controllers_page.php' ;
+   require 'Controllers/controllers_reservations.php' ;
    
 
 if (isset($_GET['action'])) {

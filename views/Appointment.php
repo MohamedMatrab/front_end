@@ -14,7 +14,7 @@
   <div class="landing-page">
     <h2 class="main-header">Rendez-vous</h2>
   </div>
-  <div class="container pt-5 pb-5">
+  <div class="container pt-5 pb-5" id="appointment">
     <div class="desp">
       <h3 class="fs-5">Formulaire de prise de rendez vous :</h3>
       <p class="mb-0">Veuillez compléter attentivement les données ci-après.</p>
@@ -79,7 +79,7 @@
       <div class="row  py-4 br-bott all-Services">
         <div class="col-4"><label for="inputService" class="form-label">Services <span>*</span></label></div>
         <div class="col-8 inactive " style="position: relative ;">
-          <input type="text" class="form-select" name="services" autocomplete="off" id="inputService">
+          <input type="text" class="form-select" name="services" required autocomplete="off" id="inputService">
         </div>
       </div>
 
@@ -87,12 +87,12 @@
         <div class="col-4"><label for="from" class="form-label">Rendez-vous<span>*</span></label></div>
         <div class="col-4">
           <div class="form-group">
-            <input type="text" class="form-control datepicker" placeholder="select a date" data="Date" name="date_rendez" autocomplete="off" id="datepicker">
+            <input type="text" class="form-control datepicker" placeholder="select a date" data="Date" name="date_rendez" required autocomplete="off" id="datepicker">
           </div>
         </div>
         <div class="col-4 horaire">
           <div class="form-group">
-            <input type="text" class="form-select timepicker"  placeholder="select an hour" name="Heure_rendez" id="form-select-hour" autocomplete="off" id="time">
+            <input type="text" class="form-select timepicker"  placeholder="select an hour" name="Heure_rendez" required id="form-select-hour" autocomplete="off" id="time">
           </div>
           
         </div>
