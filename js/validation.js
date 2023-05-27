@@ -37,14 +37,12 @@ document.addEventListener("keydown", function (event) {
 });
 
 Inputs.forEach((el) => {
-  el.addEventListener("focus", () => {
-    el.placeholder = " ";
-    console.log(el.parentElement.childElementCount);
-    if (el.parentElement.childElementCount >= 2) {
-      let alert = document.querySelector("span");
-      if (alert) {
-        alert.remove();
-      }
+  el.addEventListener("focus", (e) => {
+    e.target.placeholder = " ";
+    console.log(e.target.parentElement.childElementCount);
+    if (e.target.parentElement.childElementCount === 2) {
+      let alert = document.querySelector("#appointment .row .col-8 span");
+      alert.remove();
     }
   });
   el.addEventListener("blur", () => {
