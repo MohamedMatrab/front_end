@@ -46,7 +46,7 @@
           </p>
         </label>
       </div>
-      <button type="submit" value="signup" name="signup" class="btn btn-primary">
+      <button type="submit" id="signup_btn" value="signup" name="signup" class="btn btn-primary">
         S'inscrire
       </button>
       <div class="signin">Vous avez déjà un compte ?<a href="index.php?action=login"> Se Connecter</a></div>

@@ -19,7 +19,7 @@ function valiatePhoneNum($phone_num)
 function validatePassword($password)
 {
     global $link;
-    if (preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $password)) {
+    if (preg_match('/^(?=.*\d)(?=.*[$@$!%*#?&])(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $password)) {
         return $password;
     }
     $_SESSION['message'] = "Mot de Passe Invalide !";

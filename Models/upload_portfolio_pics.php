@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $obj = new connect();
             $obj->portfolioTable();
             $obj->serviceTable();
+            $obj->reAutoIncrement('portfolio');
+
             $imageData = file_get_contents($tmp_name);
             $query = "INSERT INTO portfolio(image,title,description,service_id) VALUES(:image,:title,:description,:service_id)";
             $stmt = $obj->getConnect()->prepare($query);
