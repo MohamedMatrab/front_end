@@ -1,4 +1,5 @@
 <?php
+session_start();
 $title = "Add Image";
 ob_start();
 ?>
@@ -10,10 +11,9 @@ $obj = new connect();
 <head>
     <link rel="stylesheet" href="style/add-img-style.css">
 </head>
-
+<?php include_once 'views/p_message.php' ?>
 <div class="form-container">
     <form action="Models/upload_portfolio_pics.php" method="POST" enctype="multipart/form-data">
-        <?= isset($_GET['error']) ? '<h4 class="error" >' . $_GET['error'] . '</h4>' : ''; ?>
         <div class="mb-3 mt-3">
             <label for="title">Title<span>*</span> :</label>
             <input type="text" class="form-control" name="title" id="title" maxlength="50" required>
@@ -23,11 +23,16 @@ $obj = new connect();
             <textarea class="form-control" name="description" id="description" cols="30" rows="6" maxlength="250"></textarea>
         </div>
         <div class="mb-3">
-            <label for="description">Select Service<span>*</span> :</label>
+            <label for="service_id">Select Service<span>*</span> :</label>
             <select name="service_id" class="form-select form-control" id="service_id" required>
                 <?php
                 $stmt = $obj->getConnect()->prepare("SELECT * FROM service");
-                $stmt->execute();
+                $success = $stmt->execute();
+                if (!$success) {
+                    $em = "Prolem Getting Services to Show ! make sure that services data exist !";
+                    header("Location: dashboard.php?action=portfolio?error=$em");
+                    exit(0);
+                }
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $val = $row['service_id'];
                     $s_title = $row['title'];
@@ -39,7 +44,7 @@ $obj = new connect();
 
         </div>
         <div class="mb-3">
-            <label for="image">Select Image<span>*</span> : </label>
+            <label for="my_image">Select Image<span>*</span> : </label>
             <input type="file" class="form-control" name="my_image" value="my_image" id="my_image" required>
         </div>
         <div class="mt-3">

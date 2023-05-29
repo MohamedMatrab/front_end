@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 if (isset($_POST['image_id'])) {
     include_once "../Models/connect.php";
@@ -12,7 +13,9 @@ if (isset($_POST['image_id'])) {
     }
     if ($success) {
         echo json_encode(['success' => true]);
+        $_SESSION['message']="Deleted Successfully !";
     } else {
         echo json_encode(['success' => false]);
+        $_SESSION['message']="Error When deleting image !";
     }
 }

@@ -24,6 +24,9 @@ $(document).ready(function () {
           a.href="#";
           let desc_img = document.createElement('div');
           desc_img.classList.add('description-image');
+          //icon of preview image
+          let preview = document.createElement('i');
+          preview.classList.add('');
           //span in desc-image
           let span =document.createElement('span');
           span.textContent=image['title'];

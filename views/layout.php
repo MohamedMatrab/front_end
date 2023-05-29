@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<div class="app_container_">
 <nav class="navbar navbar-expand-lg fixed-top navbar-light">
         <div class="container">
             <div class="head-top mb-1 row">
@@ -86,7 +86,8 @@
     <?php include_once "views/footer.php" ; ?>
     <script src="js/all.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js" type="module"></script>
-
+    <script src="js/validation.js" ></script>
+</div>
 </body>
 </html>
+

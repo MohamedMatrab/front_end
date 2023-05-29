@@ -1,31 +1,36 @@
-<!DOCTYPE html>
+<?php
+session_start();
+if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 0) {
+  header("Location: index.php");
+  exit(0);
+}
+include_once "Models/connect.php";
+$obj = new connect();
+$obj->usersTable();
+?>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
   <link rel="stylesheet" href="style/bootstrap.min.css" />
   <link rel="stylesheet" href="style/style-login.css" />
 </head>
 
 <body>
+  <?php include_once 'views/p_message.php' ?>
   <div class="container">
     <div class="titling">
       <h1 style="color: #0f4883">
         Dent<span style="color: #65d8ea">All</span>
       </h1>
-      <h1 style="font-size: 1.7rem">Rejoignez-nous</h1>
+      <h1 style="font-size: 1.7rem">Bienvenue</h1>
     </div>
-    <form action="" method="post" class="form-login">
+    <form action="Models/login_action.php" method="post" class="form-login">
       <div class="mb-3 mt-3">
-        <!-- <label for="email" class="form-label">Email :</label> -->
-        <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" />
+        <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" name="email" required />
       </div>
       <div class="mb-3">
-        <!-- <label for="pswd" class="form-label">Password :</label> -->
-        <input type="password" id="pswd" class="form-control" placeholder="Enter Password" />
+        <input type="password" name="password" id="pswd" class="form-control" placeholder="Enter Password" required />
       </div>
       <div class="form-check mb-3">
         <label class="form-check-label">

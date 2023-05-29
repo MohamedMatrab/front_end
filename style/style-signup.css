@@ -122,9 +122,11 @@ p {
 
 #password_strength,
 #password_similar {
-  margin-left: 0.3rem;
-  display: none;
-  font-size: 0.8rem;
+  margin-right: 0.4rem;
+  display: block !important;
+  font-size: 0.7rem;
+  height: 1.5rem;
+  margin: 0 !important;
 }
 .agreement {
   display: flex;

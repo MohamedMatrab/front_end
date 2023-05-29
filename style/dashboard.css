@@ -65,7 +65,7 @@ a {
   /* margin-bottom: 1rem; */
   background: white;
   box-shadow: 0px 0px 10px #dedede;
-  position: sticky;
+  position: sticky !important;
   top: 0;
   left: 0;
   z-index: 2;
@@ -180,6 +180,9 @@ button {
 }
 .box {
   position: relative;
+}
+.box form{
+  margin: 0;
 }
 .input {
   padding: 1rem;
@@ -304,6 +307,7 @@ ul {
 .nav-list {
   width: 100%;
   display: flex;
+  padding: 0 !important;
   flex-direction: column;
 }
 .nav-section {
@@ -321,10 +325,10 @@ ul {
 .nav-section:hover {
   background: #f5f5f5 !important;
 }
-.disabled {
+.navigation .disabled {
   position: relative;
 }
-.disabled::after {
+.navigation .disabled::after {
   content: "";
   position: absolute;
   clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
@@ -337,10 +341,10 @@ ul {
   opacity: 1;
   transition: 0.3s;
 }
-.active {
+.navigation .active {
   position: relative;
 }
-.active::after {
+.navigation .active::after {
   content: "";
   position: absolute;
   clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
@@ -374,6 +378,7 @@ ul {
 }
 .nav-list li ul {
   display: none;
+  padding: 0 !important;
   flex-direction: column;
 }
 .sub-title {
@@ -410,7 +415,7 @@ ul {
   height: fit-content;
   position: relative;
   transition: 0.5s ease-in-out;
-  margin: 0 ;
+  margin: 0;
   z-index: 0;
 }
 .blured {
@@ -455,3 +460,420 @@ ul {
   }
 }
 /* Media Query End */
+/* Start Content Appointment */
+.appointment {
+  position: absolute;
+  top: 6vh;
+  padding-bottom: 100px;
+  left: 8%;
+}
+.appointment p {
+  color: #969494;
+  margin-bottom: 0;
+}
+
+.appointment h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.appointment .patient {
+  width: 70vw;
+}
+.appointment .patient .name {
+  background-color: var(--transparent-color);
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.appointment .patient .name p {
+  color: whitesmoke;
+  font-size: 1.5rem;
+}
+.appointment .patient .description {
+  background-color: white;
+  padding: 1.5rem;
+}
+.appointment .patient .description .action{
+  margin-top: 0rem;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.appointment .patient .action .valider,
+.appointment .patient  .ajouter,
+.appointment .patient .annuler{
+  padding: 0.5em 0.8em;
+  border-radius: 0.7em;
+  font-weight: bold;
+}
+.appointment .patient .action .annuler{
+  background-color: rgb(211, 50, 50);
+  color: white;
+}
+.appointment .patient .action .valider{
+  background-color: var(--cadetblue-color);
+  color: white;
+}
+.appointment .patient  .ajouter{
+  background-color: white;
+  color: var(--cadetblue-color) ;
+}
+.appointment .patient .action .valider:hover,
+.appointment .patient .action .annuler:hover,
+.appointment .patient  .ajouter:hover{
+  opacity: 0.5 ;
+}
+
+.appointment .table {
+  background-color: white;
+}
+.appointment .thead-dark {
+  background-color: var(--transparent-color);
+  color: white;
+  letter-spacing: 0.1em;
+}
+.appointment .table-appoint {
+  width: 88vw;
+}
+.appointment .tab a {
+  color: white;
+  background-color: var(--cadetblue-color);
+  border-radius: 6px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.appointment .tab a:hover {
+  background-color: var(--second-color);
+}
+.appointment th {
+  font-weight: 400;
+}
+.dataTables_length {
+  display: none;
+}
+.appointment .paginate_button a {
+  margin-right: 10px;
+  margin-top: 5px;
+  background-color: #ddde;
+  padding: 5px 10px;
+  border-radius: 6px;
+  display: block;
+  color: white;
+}
+.appointment .active a,
+.appointment .paginate_button:nth-child(1) a,
+.appointment .paginate_button:last-child a {
+  background-color: var(--cadetblue-color);
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+.appointment .disabled a {
+  cursor: default;
+  background-color: #ddde !important;
+}
+
+.appointment a.dossier i {
+  font-size: 28px;
+  color: var(--transparent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.appointment a.dossier i:hover{
+  transform:  scale(1.04);
+}
+
+@media (min-width:1000px) {
+  .appointment .table-appoint {
+    width: 60vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-30%);
+  }
+}
+
+/* End Content Appointment */
+
+/* Start Patient details */
+.dg-lg {
+  border-radius: 50%;
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 3rem;
+  left: 11rem;
+}
+.dg-lg div {
+  font-size: 2rem;
+}
+.dg-lg::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(to right, var(--transparent-color) , white ,  var(--logo-color)) border-box;
+  border-radius: 50em;
+  border: 4px solid transparent;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+#file {
+  background-color: white ;
+  box-shadow: 0 0 6px #dedede;
+  padding: 5em;
+  margin: 7rem auto ;
+  border-radius: 2em;
+  width: 70vw;
+}
+#file .head  {
+  text-align: center;
+  margin-bottom: 4em;
+}
+#file .head .name_pt {
+  color: #0C7675;
+  text-transform: capitalize;
+}
+#file .row .col-6 {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+#file .row p{
+  margin-left:  1em;
+}
+#file .row h3 ,
+#file .info_appoint .box h3{
+  color: var(--transparent-color);
+  text-transform: capitalize;
+}
+
+#file .date {
+  font-weight: bold;
+  background-color: var(--transparent-color);
+  color: #f4e9e9;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+  position: relative;
+  user-select: none ;
+}
+#file .date:hover {
+  /* background-color: #eee;
+  color: #0f4883; */
+  background-color: rgb(15 116 143 / 50%);
+  transform: scale(1.01);
+  transition: 0.3s;
+}
+
+#file .date::after {
+  content: "";
+  position: absolute;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  height: 0.5rem;
+  width: 0.75rem;
+  background-color: #f4e9e9;
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  transition: 0.3s;
+}
+#file .date:hover::after {
+  color: #0f4883;
+}
+#file .info_appoint {
+  margin-bottom: 4rem;
+  position: relative;
+  border: 1px solid  #ddd;
+  padding: 2em;
+  border-radius: 6px;
+}
+#file .info_appoint .rflex {
+  display: flex;
+  align-items: baseline;
+}
+#file  .rflex h3{
+  color: #0C7675;
+  text-transform: capitalize;
+}
+#file .row  {
+  border: 1px #ddd solid;
+  padding: 3px 10px;
+  border-radius: 6px;
+}
+
+#file .col-12 {
+  display: flex;
+  flex-direction: row;
+}
+.sr-only {
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+input[type="file"] {
+  background: unset;
+  border-color: inherit;
+  border-radius: 0;
+  border-width: 0;
+  font-size: unset;
+  line-height: inherit;
+  padding: 0;
+}
+#file .info_appoint .image {
+  margin: 0;
+}
+#file .content {
+  margin-top: 2em;
+}
+#file .info_appoint .content label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+#file .info_appoint .ajout_image {
+  border: 2px dashed #ddd  ;
+  border-radius: 6px ;
+  padding: 1em 0;
+
+}
+#file .info_appoint .content p{
+  font-weight: bold;
+  color: #0C7675;
+  cursor: pointer;
+}
+
+#file .bg {
+  color: #818080;
+}
+/* #file .info_appoint.hidde  {
+  display: none;
+} */
+
+#file .rflex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#file .rflex h3 {
+  flex-basis: 30%;
+}
+#file .rflex p {
+  flex: 1;
+}
+
+#file .info_appoint button {
+  background-color: var(--transparent-color);
+  border-radius: 6px;
+  color: white;
+  padding: 5px 10px;
+  margin-top: 1em;
+  text-align: end;
+  position: relative;
+  left: 70%;
+}
+
+#file .image .imageOrdonnance img {
+  height: 200px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+#file .info_appoint .ajout_image .content.hidden {
+  display: none;
+}
+#file .form-control {
+  width: 50% ;
+  font-size: 1rem;
+}
+#file .imageOrdo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+#file .imageOrdonnance {
+  position: relative;
+}
+#file .imageOrdonnance .bi-zoom-in {
+  content: "\f62c";
+  font-size: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 1;
+}
+#file .imageOrdo .bi-arrows-angle-contract {
+  position: absolute;
+  left: 117%;
+  top: 16px;
+  font-size: 30px;
+  cursor: pointer;
+}
+#file .imageOrdo img{
+  width: 36%;
+}
+#file .imageOrdo.cover {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 65%;
+  height: 100%;
+  z-index: 9999;;
+}
+.bg {
+  background-color: #81808000 !important;
+  box-shadow: none !important ;
+}
+
+@media (max-width:1110px) {
+  #file .rflex h3 {
+    flex-basis: 100%;
+  }
+  #file .row p{
+    margin-left:  0em;
+  }
+}
+@media (max-width:800px) {
+  #file {
+    padding: 5em 1.7em ;
+  }
+}
+@media (max-width:671px) {
+  #file {
+    padding: 3em 0.7em ;
+  }
+}
+@media (max-width:690px) {
+  #file {
+    width: 87vw; ;
+  }
+}
+@media (max-width:690px) {
+  .appointment .patient {
+    width: 94vw;
+  }
+  .appointment {
+    left: 0;
+  }
+}
+/* End Patient details */

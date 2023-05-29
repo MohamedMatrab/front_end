@@ -11,6 +11,7 @@ const box_i = box.querySelector("i");
 const box_input = box.querySelector(".input");
 const linkeds = document.querySelectorAll(".linked");
 const logo = document.querySelector(".logo");
+const logout = document.getElementById("logout");
 
 let prev = navSections[0];
 let prevDrop = h_dropDowns[0].nextElementSibling;
@@ -109,15 +110,15 @@ linkeds.forEach((linked) => {
   linked.addEventListener("click", () => {
     let action = linked.getAttribute("data-id");
     if (action == "dashboard") {
-      window.location.replace("dashboard.php");
+      window.location.href = "dashboard.php";
     } else {
-      window.location.replace("dashboard.php?action=" + action);
+      window.location.href = "dashboard.php?action=" + action;
     }
   });
 });
 
 logo.addEventListener("click", () => {
-  window.location.replace("dashboard.php");
+  window.location.href = "dashboard.php";
 });
 
 window.addEventListener("resize", () => {
@@ -140,3 +141,41 @@ document.addEventListener("click", function (e) {
     box_input.classList.remove("input_box");
   }
 });
+
+
+
+let btn_valider = document.querySelectorAll(".valider") ;
+btn_valider.forEach((el)=> {
+    console.log(el);
+    el.addEventListener("click" , ()=>{
+        el.innerHTML = '';
+        el.innerHTML = `<i class="bi bi-check-lg"></i>`;
+    });
+})
+
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); 
+        document.getElementById('more_details').submit();
+    } 
+}) ;
+
+console.log(logout);
+$(document).ready(function () {
+  logout.addEventListener("click", () => {
+    $.ajax({
+      type: "POST",
+      url: "Models/dash_logout.php",
+      data: { logout: true },
+      dataType: "json",
+      success: function (response) {
+        if (response) {
+          window.location.reload();
+        }
+        console.log("Hello World");
+      },
+    });
+  });
+});
+

@@ -1,5 +1,6 @@
 .dashboard-content {
   display: flex !important;
+  flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
   padding: 1rem;
@@ -31,7 +32,7 @@
   font-weight: 600;
   color: rgb(15 116 143 / 70%);
 }
-.error{
+.error {
   color: rgb(255, 255, 255);
   margin: auto;
   border-radius: 1rem;

@@ -21,8 +21,8 @@
     <h2 class="main-heading px-3 py-1 text-align-center">ABOUT US</h2>
     <div class="container ">
       <div class="row">
-        <img src="assets/about/about.jpg" class="col-6" alt="">
-        <div class="information col-6">
+        <img src="assets/about/about.jpg" class="col-lg-6 col-sm-12" alt="">
+        <div class="information col-lg-6 col-sm-12">
           <p>Le centre dentaire MOQADEM situé en plein cœur de Marrakech, d’accès simple vous assure un accueil professionnel et chaleureux grâce à une équipe trilingue : arabe français anglais.
               Disposant d’un équipement des plus modernes à la pointe de la technologie et surtout respectant les normes d hygiène internationales, les soins y sont donnés avec une grande qualité et conscience.
               Au sein de notre centre dentaire MOQADEM, nous réalisons vos soins dentaires sur rendez-vous du lundi au vendredi de 9h à 19h.
