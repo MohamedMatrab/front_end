@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $id = $_GET['id'];
 
         if (!in_array($exctention, $allowed_exs)) {
-            $em = "This Format is not allowed ,provide an image.";
+            $em = "Ce format n'est pas autorisé, fournissez une image.";
             $_SESSION['message']=$em;
             header("Location: $link?action=edit_image&id=$id");
         } elseif ($size >  4 * 1024 * 1024) {
-            $em = "File is Too Large, Maximum Size 4MB .";
+            $em = "Le fichier est trop volumineux, taille maximale 4 Mo.";
             $_SESSION['message']=$em;
             header("Location: $link?action=edit_image&&id=$id");
         } else {
@@ -41,11 +41,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $success = $stmt->execute();
 
             if ($success) {
-                $em = "Updated Successfully !";
+                $em = "Edité avec succès !";
                 $_SESSION['message']=$em;
                 header("Location: $link?action=portfolio");
             } else {
-                $em = "Problem in Update !";
+                $em = "Un problème est survenu !";
                 $_SESSION['message']=$em;
                 header("Location: $link?action=edit_image");
             }
@@ -65,11 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $success = $stmt->execute();
 
         if ($success) {
-            $em = "Updated Successfully !";
+            $em = "Edité avec succès !";
             $_SESSION['message']=$em;
             header("Location: $link?action=portfolio");
         } else {
-            $em = "Problem in Update !";
+            $em = "Un problème est survenu !";
             $_SESSION['message']=$em;
             header("Location: $link?action=edit_image");
         }

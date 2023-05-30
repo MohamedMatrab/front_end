@@ -1,91 +1,174 @@
-function getPswd() {
-  let pass = document.getElementById("pswd").value;
-  return pass;
+const password = document.getElementById("pswd");
+const passC = document.getElementById("pswd-confirm");
+const signUpBtn = document.getElementById("signup_btn");
+const dentall = document.getElementById("dentall");
+const checkBox = document.getElementById("agreement");
+const email = document.getElementById("email");
+const email_validate = document.getElementById("email_validate");
+const phone = document.getElementById("phone");
+const phone_validate = document.getElementById("phone_validate");
+const inputsId = ["first-name", "last-name"];
+let inputs = [];
+for (i = 0; i < inputsId.length; i++) {
+  inputs.push(document.getElementById(inputsId[i]));
 }
 
-function getPswdConfirm() {
-  let passC = document.getElementById("pswd-confirm").value;
-  return passC;
-}
+let similar = false,
+  valid = false,
+  emailValid = false,
+  phoneValid = false,
+  inputSet = false;
 
-function verifySimilar() {
-  let pass = getPswd();
-  let passC = getPswdConfirm();
-  const password_similar = document.getElementById("password_similar");
-  let color = "";
-  let passwordSimilar = "";
-  if (pass !== passC) {
-    color = "red";
-    passwordSimilar="passwords are not similar";
+signUpBtn.disabled = true;
+
+function validate() {
+  if (
+    inputSet &&
+    valid &&
+    similar &&
+    phoneValid &&
+    emailValid &&
+    checkBox.checked
+  ) {
+    signUpBtn.disabled = false;
+  } else {
+    signUpBtn.disabled = true;
   }
-  else{
-    color=""
-  }
 }
-
-function CheckPasswordStrength() {
-  let password = getPswd();
-  var password_strength = document.getElementById("password_strength");
-
-  //if textBox is empty
-  if (password.length == 0) {
-    password_strength.innerHTML = "";
+function verifyEmail() {
+  if (email.value.length == 0) {
+    email_validate.innerHTML = "";
     return;
   }
-
-  //Regular Expressions
-  var regex = new Array();
-  regex.push("[A-Z]"); //For Uppercase Alphabet
-  regex.push("[a-z]"); //For Lowercase Alphabet
-  regex.push("[0-9]"); //For Numeric Digits
-  regex.push("[$@$!%*#?&]"); //For Special Characters
-
-  var passed = 0;
-
-  //Validation for each Regular Expression
-  for (var i = 0; i < regex.length; i++) {
-    if (new RegExp(regex[i]).test(password)) {
-      passed++;
-    }
+  let emailValidation = "";
+  let color = "";
+  let regex = /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+.[a-zA-Z0-9-.]+)$/;
+  if (regex.test(email.value)) {
+    color = "green";
+    emailValidation = "Email Valide !";
+    emailValid = true;
+  } else {
+    color = "red";
+    emailValidation = "Email Invalide !";
+    emailValid = false;
   }
+  validate();
+  if (emailValidation === "") {
+    email_validate.innerHTML = "";
+  } else {
+    email_validate.innerHTML = emailValidation;
+    email_validate.style.color = color;
+  }
+}
+function verifyPhone() {
+  if (phone.value.length == 0) {
+    phone_validate.innerHTML = "";
+    return;
+  }
+  let phoneValidation = "";
+  let color = "";
+  let regex = /^(?:\+?\d{1,3})?\d{9}$/;
+  if (regex.test(phone.value)) {
+    color = "green";
+    phoneValidation = "Numéro de Téléphone Valide !";
+    phoneValid = true;
+  } else {
+    color = "red";
+    phoneValidation = "Numéro de Téléphone Invalide !";
+    phoneValid = false;
+  }
+  validate();
+  if (phoneValidation === "") {
+    phone_validate.innerHTML = "";
+  } else {
+    phone_validate.innerHTML = phoneValidation;
+    phone_validate.style.color = color;
+  }
+}
+function verifyInput() {
+  let cdt = true;
+  for (i = 0; i < inputs.length; i++) {
+    cdt = cdt && inputs[i].value.trim() != "";
+  }
+  inputSet = cdt;
+  validate();
+}
+function verifySimilar() {
+  var password_similar = document.getElementById("password_similar");
 
-  //Validation for Length of Password
-  if (passed > 2 && password.length > 8) {
-    passed++;
+  //if textBox is empty
+  if (passC.value.length == 0) {
+    password_similar.innerHTML = "";
+    return;
   }
 
   //Display of Status
   var color = "";
   var passwordStrength = "";
-  switch (passed) {
-    case 0:
-      break;
-    case 1:
-      passwordStrength = "Password is Weak.";
-      color = "Red";
-      break;
-    case 2:
-      passwordStrength = "Password is Good.";
-      color = "darkorange";
-      break;
-    case 3:
-      break;
-    case 4:
-      passwordStrength = "Password is Strong.";
-      color = "Green";
-      break;
-    case 5:
-      passwordStrength = "Password is Very Strong.";
-      color = "darkgreen";
-      break;
-  }
-  if (passwordStrength === "") {
-    password_strength.style.display = "none";
+  //Validation for each Regular Expression
+  if (password.value === passC.value) {
+    color = "green";
+    passwordStrength = "Les mots de passe fournis sont les memes !";
+    similar = true;
   } else {
-    password_strength.style.display = "block";
+    color = "red";
+    passwordStrength = "Les mots de passe fournis sont differents !";
+    similar = false;
+  }
+
+  validate();
+  if (passwordStrength === "") {
+    password_similar.innerHTML = "";
+  } else {
+    password_similar.innerHTML = passwordStrength;
+    password_similar.style.color = color;
+  }
+}
+function CheckPasswordStrength() {
+  verifySimilar();
+  var password_strength = document.getElementById("password_strength");
+
+  //if textBox is empty
+  if (password.value.length == 0) {
+    password_strength.innerHTML = "";
+    return;
+  }
+
+  //lenght 8 ,uppercase at least ,lowercase at least,spacial character at least,digit at least
+  var regex = /^(?=.*d)(?=.*[$@$!%*#?&])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+  //Display of Status
+  var color = "";
+  var passwordStrength = "";
+  //Validation for each Regular Expression
+  if (regex.test(password.value)) {
+    color = "green";
+    passwordStrength = "Mot de passe fort !";
+    valid = true;
+  } else {
+    color = "red";
+    passwordStrength = "Mot de passe faible !";
+    valid = false;
+  }
+  validate();
+  if (passwordStrength === "") {
+    password_strength.innerHTML = "";
+  } else {
     password_strength.innerHTML = passwordStrength;
     password_strength.style.color = color;
   }
 }
-const input_password = document.getElementById("pswd");
-input_password.addEventListener("change", CheckPasswordStrength);
+
+passC.addEventListener("change", verifySimilar);
+password.addEventListener("change", CheckPasswordStrength);
+dentall.addEventListener("click", () => {
+  let url = window.location.href;
+  url = url.replace("index.php?action=signup", "");
+  window.location.href = url;
+});
+checkBox.addEventListener("click", validate);
+inputs.forEach((el) => {
+  el.addEventListener("change", verifyInput);
+});
+email.addEventListener("change", verifyEmail);
+phone.addEventListener("change", verifyPhone);
