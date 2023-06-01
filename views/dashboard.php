@@ -15,7 +15,7 @@ $user_id = $_SESSION['USER']['id'];
 $stmt = $obj->getConnect()->prepare("SELECT img,fname,lname,role FROM users WHERE id = $user_id LIMIT 1");
 $success = $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-?>  
+?>
 
 <html lang="en">
 
@@ -82,10 +82,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             </li>
             <div class="drop-down-content">Notifications</div>
             <li class="nav-item me-3" id="logout">
-              <span class="icon-header me-1">
-                <i class="bi bi-box-arrow-right"></i>
-              </span>
-              <span class="bar_name">Log Out</span>
+              <a href="Models/logout.php?logout=1" id="link_out">
+                <span class="icon-header me-1">
+                  <i class="bi bi-box-arrow-right"></i>
+                </span>
+                <span class="bar_name">Log Out</span>
+              </a>
             </li>
           </ul>
         </div>

@@ -157,22 +157,3 @@ document.addEventListener("keydown", function (event) {
     document.getElementById("more_details").submit();
   }
 });
-
-console.log(logout);
-$(document).ready(function () {
-  logout.addEventListener("click", () => {
-    $.ajax({
-      type: "POST",
-      url: "Models/dash_logout.php",
-      data: { logout: true },
-      dataType: "json",
-      success: function (response) {
-        if (response) {
-          url = window.location.href;
-          url = url.replace("dashboard.php", "dashboard.php?action=login");
-          window.location.href = url;
-        }
-      },
-    });
-  });
-});

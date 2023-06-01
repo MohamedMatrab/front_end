@@ -170,6 +170,17 @@ button {
   font-weight: bold;
   color: var(--transparent-color);
 }
+#link_out span{
+  text-decoration: none;
+  color: #969494;
+}
+#link_out span i{
+  color: var(--transparent-color);
+}
+#link_out span:hover{
+  font-weight: bold;
+  color: var(--transparent-color);
+}
 .icon-header {
   font-size: 1.2em;
   color: var(--transparent-color);
