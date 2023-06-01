@@ -166,6 +166,10 @@ button {
   position: relative;
   margin: 0 0.5rem;
 }
+.nav-item:hover{
+  font-weight: bold;
+  color: var(--transparent-color);
+}
 .icon-header {
   font-size: 1.2em;
   color: var(--transparent-color);

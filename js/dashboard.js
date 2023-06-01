@@ -142,24 +142,21 @@ document.addEventListener("click", function (e) {
   }
 });
 
+let btn_valider = document.querySelectorAll(".valider");
+btn_valider.forEach((el) => {
+  console.log(el);
+  el.addEventListener("click", () => {
+    el.innerHTML = "";
+    el.innerHTML = `<i class="bi bi-check-lg"></i>`;
+  });
+});
 
-
-let btn_valider = document.querySelectorAll(".valider") ;
-btn_valider.forEach((el)=> {
-    console.log(el);
-    el.addEventListener("click" , ()=>{
-        el.innerHTML = '';
-        el.innerHTML = `<i class="bi bi-check-lg"></i>`;
-    });
-})
-
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); 
-        document.getElementById('more_details').submit();
-    } 
-}) ;
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("more_details").submit();
+  }
+});
 
 console.log(logout);
 $(document).ready(function () {
@@ -171,11 +168,11 @@ $(document).ready(function () {
       dataType: "json",
       success: function (response) {
         if (response) {
-          window.location.reload();
+          url = window.location.href;
+          url = url.replace("dashboard.php", "dashboard.php?action=login");
+          window.location.href = url;
         }
-        console.log("Hello World");
       },
     });
   });
 });
-

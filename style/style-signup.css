@@ -13,12 +13,15 @@ html {
 body {
   height: fit-content;
   overflow-x: hidden;
-  min-width: 100%;
-  background: #f3f3f3;
+  min-height: 100%;
+  background-image: url('../images/centre.jpg');
+  background-size: cover;
+  background-attachment: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  backdrop-filter: brightness(0.9) blur(9px);
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -57,7 +60,6 @@ p {
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
-
 .container {
   width: 25rem;
   height: fit-content;
@@ -147,9 +149,14 @@ p {
 #dentall {
   cursor: pointer;
 }
+a {
+  text-decoration: underline !important;
+}
 @media (max-width: 450px) {
   body {
+    justify-content: start;
     background: white;
+    background-image: none;
   }
   .container {
     box-shadow: none;

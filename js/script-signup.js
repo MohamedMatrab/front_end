@@ -12,7 +12,7 @@ let inputs = [];
 for (i = 0; i < inputsId.length; i++) {
   inputs.push(document.getElementById(inputsId[i]));
 }
-
+let error_icon = "<span><i class='bi bi-exclamation-circle'></i></span>";
 let similar = false,
   valid = false,
   emailValid = false,
@@ -38,18 +38,20 @@ function validate() {
 function verifyEmail() {
   if (email.value.length == 0) {
     email_validate.innerHTML = "";
+    emailValid=false;
+    validate();
     return;
   }
   let emailValidation = "";
   let color = "";
-  let regex = /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+.[a-zA-Z0-9-.]+)$/;
+  let regex = /^([a-zA-Z0-9_.+-]+)@([a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)$/;
   if (regex.test(email.value)) {
     color = "green";
-    emailValidation = "Email Valide !";
+    emailValidation ='';
     emailValid = true;
   } else {
     color = "red";
-    emailValidation = "Email Invalide !";
+    emailValidation = error_icon+" Email Invalide !";
     emailValid = false;
   }
   validate();
@@ -63,6 +65,8 @@ function verifyEmail() {
 function verifyPhone() {
   if (phone.value.length == 0) {
     phone_validate.innerHTML = "";
+    phoneValid=false;
+    validate();
     return;
   }
   let phoneValidation = "";
@@ -70,11 +74,11 @@ function verifyPhone() {
   let regex = /^(?:\+?\d{1,3})?\d{9}$/;
   if (regex.test(phone.value)) {
     color = "green";
-    phoneValidation = "Numéro de Téléphone Valide !";
+    phoneValidation = '';
     phoneValid = true;
   } else {
     color = "red";
-    phoneValidation = "Numéro de Téléphone Invalide !";
+    phoneValidation = error_icon+" Numéro de Téléphone Invalide !";
     phoneValid = false;
   }
   validate();
@@ -99,6 +103,8 @@ function verifySimilar() {
   //if textBox is empty
   if (passC.value.length == 0) {
     password_similar.innerHTML = "";
+    similar = false;
+    validate();
     return;
   }
 
@@ -108,11 +114,11 @@ function verifySimilar() {
   //Validation for each Regular Expression
   if (password.value === passC.value) {
     color = "green";
-    passwordStrength = "Les mots de passe fournis sont les memes !";
+    passwordStrength = '';
     similar = true;
   } else {
     color = "red";
-    passwordStrength = "Les mots de passe fournis sont differents !";
+    passwordStrength = error_icon+" Les mots de passe fournis sont differents !";
     similar = false;
   }
 
@@ -131,11 +137,13 @@ function CheckPasswordStrength() {
   //if textBox is empty
   if (password.value.length == 0) {
     password_strength.innerHTML = "";
+    valid = false;
+    validate();
     return;
   }
 
   //lenght 8 ,uppercase at least ,lowercase at least,spacial character at least,digit at least
-  var regex = /^(?=.*d)(?=.*[$@$!%*#?&])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+  var regex = /^(?=.*\d)(?=.*[$@$!%*#?&])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
 
   //Display of Status
   var color = "";
@@ -143,11 +151,11 @@ function CheckPasswordStrength() {
   //Validation for each Regular Expression
   if (regex.test(password.value)) {
     color = "green";
-    passwordStrength = "Mot de passe fort !";
+    passwordStrength = '';
     valid = true;
   } else {
     color = "red";
-    passwordStrength = "Mot de passe faible !";
+    passwordStrength = error_icon+" Mot de passe faible !";
     valid = false;
   }
   validate();
@@ -159,8 +167,8 @@ function CheckPasswordStrength() {
   }
 }
 
-passC.addEventListener("change", verifySimilar);
-password.addEventListener("change", CheckPasswordStrength);
+passC.addEventListener("input", verifySimilar);
+password.addEventListener("input", CheckPasswordStrength);
 dentall.addEventListener("click", () => {
   let url = window.location.href;
   url = url.replace("index.php?action=signup", "");
@@ -168,7 +176,7 @@ dentall.addEventListener("click", () => {
 });
 checkBox.addEventListener("click", validate);
 inputs.forEach((el) => {
-  el.addEventListener("change", verifyInput);
+  el.addEventListener("input", verifyInput);
 });
-email.addEventListener("change", verifyEmail);
-phone.addEventListener("change", verifyPhone);
+email.addEventListener("input", verifyEmail);
+phone.addEventListener("input", verifyPhone);

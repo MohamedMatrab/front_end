@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sign Up</title>
   <link rel="stylesheet" href="style/bootstrap.min.css" />
-  <link rel="stylesheet" href="style/main.css" />
   <link rel="stylesheet" href="style/style-signup.css" />
   <link rel="stylesheet" href="assets/twbs/bootstrap-icons/font/bootstrap-icons.css">
 </head>
@@ -27,11 +26,11 @@
       </div>
       <div class="mb-3">
         <input type="email" class="form-control" id="email" placeholder="Entrez l'email" name="email" required />
-        <label for="pswd" class="form-label" id="email_validate"></label>
+        <label for="email" class="form-label" id="email_validate"></label>
       </div>
       <div class="mb-3">
         <input type="tel" class="form-control" id="phone" placeholder="Entrez le numéro de téléphone" name="phone" required />
-        <label for="pswd" class="form-label" id="phone_validate"></label>
+        <label for="phone" class="form-label" id="phone_validate"></label>
       </div>
       <div class="mb-3">
         <input type="password" id="pswd" name="password" class="form-control" placeholder="Entrer le mot de passe" required />
@@ -39,10 +38,10 @@
       </div>
       <div class="mb-3">
         <input type="password" id="pswd-confirm" name="confirm_password" class="form-control" placeholder="Confirmez le mot de passe" required />
-        <label for="pswd" class="form-label" id="password_similar"></label>
+        <label for="pswd-confirm" class="form-label" id="password_similar"></label>
       </div>
       <div class="agreement mb-3">
-        <label for="accept agreements" class="form-check-label" id="accept-agreement">
+        <label for="agreement" class="form-check-label" id="accept-agreement">
           <input type="checkbox" id="agreement" class="form-check-input" name="agreement" required />
           <p class="terms-conditions">
             J'accepte Les <a href="#">Termes et Conditions</a>

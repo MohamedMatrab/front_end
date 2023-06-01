@@ -1,7 +1,9 @@
 <?php
 include_once "Models/verify_permissions.php";
 if (!isset($_SESSION['USER']) || $_SESSION['USER']['role'] == 0) {
-  $_SESSION['message'] = "Access denied !";
+  if (!isset($_SESSION['message'])) {
+    $_SESSION['message'] = "Accès refusé !";
+  }
   header("Location: dashboard.php?action=login");
   exit(0);
 }
@@ -13,7 +15,7 @@ $user_id = $_SESSION['USER']['id'];
 $stmt = $obj->getConnect()->prepare("SELECT img,fname,lname,role FROM users WHERE id = $user_id LIMIT 1");
 $success = $stmt->execute();
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
+?>  
 
 <html lang="en">
 
@@ -173,6 +175,7 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
   <script src="https://kit.fontawesome.com/10196ca7d5.js" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 
