@@ -18,27 +18,28 @@ if (isset($_GET['action'])) {
             addImageAction();
             break;
 
-        case 'all_reservations':
+        case 'all_reservations' : 
             if (isset($_GET['id'])) {
 
                 if ($_GET['state'] === 'annuler') {
-                    Delete_from_rendez($_GET['id']);
-                } else if ($_GET['state'] === 'consulter') {
+                    Delete_from_rendez($_GET['id']) ;
+                }else if ($_GET['state'] === 'consulter') {
                     Ajout_History($_GET['id']);
-                    Delete_from_rendez($_GET['id']);
+                    Delete_from_rendez($_GET['id']) ;
                 }
             }
-            dashb_appointment();
-            break;
-        case 'historique':
-            dashb_history();
-            break;
-        case 'ulpoad_details':
-            upload_details($_GET['ID']);
-            break;
-        case 'more_details':
-            insert_more_details($_POST['poids'], $_POST['taille'], $_GET['ID']);
-            break;
+            dashb_appointment() ; 
+            break ;
+        case 'historique' : 
+            dashb_history() ; 
+            break ;
+        case 'ulpoad_details' : 
+            upload_details($_GET['ID']) ;
+            break ;
+        break ;
+        case 'more_details' :
+            insert_more_details($_POST['poids'],$_POST['taille'],$_GET['ID']) ;
+            break ;
 
         case 'login':
             dashLoginAction();
@@ -52,8 +53,7 @@ if (isset($_GET['action'])) {
         case 'edit_user_info':
             EditUserInfoAction();
             break;
-        default:
-            dashWelcomeAction();
+
     }
 } else {
     dashWelcomeAction();

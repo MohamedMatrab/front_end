@@ -1,6 +1,6 @@
 <?php
 session_start();
-$link = '../index.php';
+$link = '../index.php?action=signup';
 include_once 'connect.php';
 include_once 'validation_functions.php';
 $obj = new connect();
@@ -9,14 +9,18 @@ $obj->reAutoIncrement('users');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    if (isset($_POST['signup'])) {
+    if (isset($_POST['signup']) && isset($_POST['first-name']) && isset($_POST['last-name']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password'])) {
         $fname = validate($_POST['first-name']);
         $lname = validate($_POST['last-name']);
         $email = validateEmail($_POST['email']);
         $phone = valiatePhoneNum($_POST['phone']);
         $password = validatePassword($_POST['password']);
         $confirm_password = $_POST['confirm_password'];
-
+        if (!isset($_POST['agreement'])) {
+            $_SESSION['message'] = "Il faut accepter les termes et conditions pour s'inscrire !";
+            header("location: $link");
+            exit(0);
+        }
         if ($password == $confirm_password) {
             //check email
             $check_email = $obj->getConnect()->prepare('SELECT * FROM users WHERE email = :email');
@@ -27,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($countE > 0) {
                 $_SESSION['message'] = "L'email existe déjà !";
-                header("location: $link?action=signup");
+                header("location: $link");
                 exit(0);
             }
             //check phone number
@@ -39,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if ($countPh > 0) {
                 $_SESSION['message'] = "Le numéro de téléphone existe déjà !";
-                header("location: $link?action=signup");
+                header("location: $link");
                 exit(0);
             }
             //if information not repeated 
@@ -55,22 +59,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $user_query_run = $user_query->execute();
 
             if ($user_query_run) {
-                $_SESSION['message'] = "Enregistré Avec Succès !";
-                header("location: $link?action=signup");
+                $_SESSION['message'] = "Inscrit(e) Avec Succès !";
+                header("location: ../index.php");
                 exit(0);
             } else {
                 $_SESSION['message'] = "Erreur lors de l'inscription !";
-                header("location: $link?action=signup");
+                header("location: $link");
                 exit(0);
             }
         } else {
             $_SESSION['message'] = "Les mots de passe fournis ne correspondent pas !";
-            header("location: $link?action=signup");
+            header("location: $link");
             exit(0);
         }
+    } else {
+        $_SESSION['message'] = "Donnees insuffisants !";
+        header("location: $link");
+        exit(0);
     }
 } else {
     $_SESSION['message'] = "Vous ne pouvez pas accéder à cette page !";
-    header("location: $link?action=signup");
+    header("location: ../index.php");
     exit(0);
 }

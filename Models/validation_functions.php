@@ -9,11 +9,11 @@ function validate($data)
 function valiatePhoneNum($phone_num)
 {
     global $link;
-    if (preg_match('/^(?:\+?\d{1,3})?[1-9]\d{9}$/', $phone_num)) {
+    if (preg_match('/^(?:\+?\d{1,3})?\d{9}$/', $phone_num)) {
         return $phone_num;
     }
     $_SESSION['message'] = 'Numero de telephone invalide !';
-    header("location: $link?action=signup");
+    header("location: $link");
     exit(0);
 }
 function validatePassword($password)
@@ -23,7 +23,7 @@ function validatePassword($password)
         return $password;
     }
     $_SESSION['message'] = "Mot de Passe Invalide !";
-    header("location: $link?action=signup");
+    header("location: $link");
     exit(0);
 }
 function validateEmail($email)
@@ -33,6 +33,6 @@ function validateEmail($email)
         return $email;
     }
     $_SESSION['message'] = "Adresse Email Invalide !";
-    header("location: $link?action=signup");
+    header("location: $link");
     exit(0);
 }

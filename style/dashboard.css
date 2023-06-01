@@ -65,7 +65,7 @@ a {
   /* margin-bottom: 1rem; */
   background: white;
   box-shadow: 0px 0px 10px #dedede;
-  position: sticky !important;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 2;
@@ -165,6 +165,21 @@ button {
   cursor: pointer;
   position: relative;
   margin: 0 0.5rem;
+}
+.nav-item:hover{
+  font-weight: bold;
+  color: var(--transparent-color);
+}
+#link_out span{
+  text-decoration: none;
+  color: #969494;
+}
+#link_out span i{
+  color: var(--transparent-color);
+}
+#link_out span:hover{
+  font-weight: bold;
+  color: var(--transparent-color);
 }
 .icon-header {
   font-size: 1.2em;

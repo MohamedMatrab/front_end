@@ -142,40 +142,18 @@ document.addEventListener("click", function (e) {
   }
 });
 
-
-
-let btn_valider = document.querySelectorAll(".valider") ;
-btn_valider.forEach((el)=> {
-    console.log(el);
-    el.addEventListener("click" , ()=>{
-        el.innerHTML = '';
-        el.innerHTML = `<i class="bi bi-check-lg"></i>`;
-    });
-})
-
-
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); 
-        document.getElementById('more_details').submit();
-    } 
-}) ;
-
-console.log(logout);
-$(document).ready(function () {
-  logout.addEventListener("click", () => {
-    $.ajax({
-      type: "POST",
-      url: "Models/dash_logout.php",
-      data: { logout: true },
-      dataType: "json",
-      success: function (response) {
-        if (response) {
-          window.location.reload();
-        }
-        console.log("Hello World");
-      },
-    });
+let btn_valider = document.querySelectorAll(".valider");
+btn_valider.forEach((el) => {
+  console.log(el);
+  el.addEventListener("click", () => {
+    el.innerHTML = "";
+    el.innerHTML = `<i class="bi bi-check-lg"></i>`;
   });
 });
 
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("more_details").submit();
+  }
+});

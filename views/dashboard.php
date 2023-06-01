@@ -1,7 +1,9 @@
 <?php
 include_once "Models/verify_permissions.php";
 if (!isset($_SESSION['USER']) || $_SESSION['USER']['role'] == 0) {
-  $_SESSION['message'] = "Access denied !";
+  if (!isset($_SESSION['message'])) {
+    $_SESSION['message'] = "Accès refusé !";
+  }
   header("Location: dashboard.php?action=login");
   exit(0);
 }
@@ -80,10 +82,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             </li>
             <div class="drop-down-content">Notifications</div>
             <li class="nav-item me-3" id="logout">
-              <span class="icon-header me-1">
-                <i class="bi bi-box-arrow-right"></i>
-              </span>
-              <span class="bar_name">Log Out</span>
+              <a href="Models/logout.php?logout=1" id="link_out">
+                <span class="icon-header me-1">
+                  <i class="bi bi-box-arrow-right"></i>
+                </span>
+                <span class="bar_name">Log Out</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -166,14 +170,14 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
       </ul>
     </div>
     <div class="dashboard-content">
-      <?= isset($content) ? $content : ''; ?>
+      <?= isset($content) ? $content : '<h1>content Here</h1>'; ?>
     </div>
     <!-- End Sidebar -->
   </div>
   <script src="https://kit.fontawesome.com/10196ca7d5.js" crossorigin="anonymous"></script>
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
-  <script src="js/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
 
