@@ -26,7 +26,7 @@ $(document).ready(function () {
         success: function (response) {
           success = response.success;
           if (success) {
-            sessionStorage.selectVal = 'all';
+            sessionStorage.selectVal = "all";
             window.location.reload();
           }
         },
@@ -44,41 +44,51 @@ $(document).ready(function () {
       dataType: "json",
       success: function (response) {
         let images = response["images"];
-        for (let image of images) {
-          //div image section
-          let img_sec = document.createElement("div");
-          img_sec.classList.add("image-section");
-          img_sec.value = image["id"];
-          //image
-          let img = new Image();
-          img.src = image["src"];
-          //edit element
-          let edit = document.createElement("div");
-          edit.classList.add("edit");
-          let icon = document.createElement("i");
-          icon.classList.add("bi");
-          icon.classList.add("bi-pencil-square");
-          edit.append(icon);
-          edit.addEventListener("click", () => {
-            window.location.href =
-              "dashboard.php?action=edit_image&id=" + image["id"];
-          });
-          //delete icon
-          let del = document.createElement("div");
-          del.classList.add("del");
-          del.addEventListener("click", () => {
-            image_id = image["id"];
-            delHandler();
-          });
-          let icon_d = document.createElement("i");
-          icon_d.classList.add("bi");
-          icon_d.classList.add("bi-trash");
-          del.append(icon_d);
+        if (images.length  > 0) {
+          for (let image of images) {
+            //div image section
+            let img_sec = document.createElement("div");
+            img_sec.classList.add("image-section");
+            img_sec.value = image["id"];
+            //image
+            let img = new Image();
+            img.src = image["src"];
+            //edit element
+            let edit = document.createElement("div");
+            edit.classList.add("edit");
+            let icon = document.createElement("i");
+            icon.classList.add("bi");
+            icon.classList.add("bi-pencil-square");
+            edit.append(icon);
+            edit.addEventListener("click", () => {
+              window.location.href =
+                "dashboard.php?action=edit_image&id=" + image["id"];
+            });
+            //delete icon
+            let del = document.createElement("div");
+            del.classList.add("del");
+            del.addEventListener("click", () => {
+              image_id = image["id"];
+              delHandler();
+            });
+            let icon_d = document.createElement("i");
+            icon_d.classList.add("bi");
+            icon_d.classList.add("bi-trash");
+            del.append(icon_d);
 
-          img_sec.append(img);
-          img_sec.append(edit, del);
+            img_sec.append(img);
+            img_sec.append(edit, del);
 
-          $(".galerie-group").append(img_sec);
+            $(".galerie-group").append(img_sec);
+          }
+        } else {
+          url = window.location.href;
+          url = url.replace("?action=portfolio", "");
+          let p =
+            '<div class="text-center alert alert-info w-50 h-50" style="margin-top:2rem;">Pas d\'images pour ce service ! Vous Pouvez <a href="' +
+            url +
+            '" class="alert-link">Revenir page d\'accueil </a>.</div>';
+          document.querySelector(".galerie-group").innerHTML = p;
         }
       },
     });
