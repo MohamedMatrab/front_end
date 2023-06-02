@@ -87,7 +87,7 @@ $(document).ready(function () {
           let p =
             '<div class="text-center alert alert-info w-50 h-50" style="margin-top:2rem;">Pas d\'images pour ce service ! Vous Pouvez <a href="' +
             url +
-            '" class="alert-link">Revenir page d\'accueil </a>.</div>';
+            '" class="alert-link">Revenir  à la page d\'accueil </a>.</div>';
           document.querySelector(".galerie-group").innerHTML = p;
         }
       },
