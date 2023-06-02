@@ -36,3 +36,13 @@ function validateEmail($email)
     header("location: $link");
     exit(0);
 }
+function validateId($id)
+{
+    global $link;
+    if (preg_match('/^\d+$/', $id)) {
+        return $id;
+    }
+    $_SESSION['message'] = "Id Invalid !";
+    header("location: $link");
+    exit(0);
+}

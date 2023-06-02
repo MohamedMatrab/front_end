@@ -36,7 +36,6 @@ if (isset($_GET['action'])) {
         case 'ulpoad_details' : 
             upload_details($_GET['ID']) ;
             break ;
-        break ;
         case 'more_details' :
             insert_more_details($_POST['poids'],$_POST['taille'],$_GET['ID']) ;
             break ;
