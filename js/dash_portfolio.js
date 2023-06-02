@@ -1,6 +1,5 @@
 const selectServices = document.getElementById("select-services");
 const add_image = document.getElementById("add_image");
-console.log("portfolio");
 
 let service_id = "";
 if (sessionStorage.selectVal != null) {
@@ -27,7 +26,7 @@ $(document).ready(function () {
         success: function (response) {
           success = response.success;
           if (success) {
-            sessionStorage.selectVal = selectServices.value;
+            sessionStorage.selectVal = 'all';
             window.location.reload();
           }
         },
