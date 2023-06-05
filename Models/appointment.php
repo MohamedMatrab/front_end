@@ -2,7 +2,7 @@
 header("Content-Type: application/json");
 require_once 'connect.php';
     try {
-        if (isset($_POST['data'])) { 
+        if (isset($_POST['data'])) {
             $data = json_decode($_POST['data']);
             // Créer un nouvel objet de la classe "connect" pour se connecter à la base de données
             $obj = new connect(); 

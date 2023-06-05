@@ -44,7 +44,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (response) {
         let images = response["images"];
-        if (images.length  > 0) {
+        if (images.length > 0) {
           for (let image of images) {
             //div image section
             let img_sec = document.createElement("div");

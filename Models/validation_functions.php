@@ -46,3 +46,43 @@ function validateId($id)
     header("location: $link");
     exit(0);
 }
+function occurence_users($value, $property, $obj, $link, $message)
+{
+    $check_property = $obj->getConnect()->prepare("SELECT COUNT(*) FROM users WHERE $property = :$property");
+    $check_property->bindValue(":$property", $value);
+    $check_property->execute();
+
+    $count = $check_property->fetchColumn();
+
+    if ($count > 0) {
+        $_SESSION['message'] = $message;
+        header("location: $link");
+        exit(0);
+    }
+}
+function occurence_email($email, $prevEmail = "")
+{
+    global $link;
+    global $obj;
+    if ($email != $prevEmail) {
+        occurence_users($email, 'email', $obj, $link, "L'email est déjà utilisé !");
+    }
+}
+function occurence_phone_num($phone_num, $prev_phone_num = "")
+{
+    global $link;
+    global $obj;
+    if ($phone_num != $prev_phone_num) {
+        occurence_users($phone_num, 'phone_num', $obj, $link, "Le numéro de téléphone déjà utilisé !");
+    }
+}
+function similarity($password_confirm, $password)
+{
+    global $link;
+    if ($password === $password_confirm) {
+        return $password_confirm;
+    }
+    $_SESSION['message'] = "Les mots de passe fournis ne correspondent pas !";
+    header("location: $link");
+    exit(0);
+}

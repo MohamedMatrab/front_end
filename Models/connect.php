@@ -252,6 +252,7 @@ class connect
                     img MEDIUMBLOB,
                     adresse VARCHAR(100),
                     date_naissance DATE,
+                    sexe ENUM('1','2'),
                     role ENUM('0', '1', '2')
              )";
             $stmt = $this->connect->prepare($sql);
