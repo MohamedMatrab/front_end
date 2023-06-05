@@ -25,15 +25,9 @@ if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password']
 
         $_SESSION['USER']['id'] = $row['id'];
         $_SESSION['USER']['role'] = $row['role'];
-        if ($row['role'] == 0) {
-            $_SESSION['message'] = "Connecté avec succès !";
-            header("location: ../index.php");
-            exit(0);
-        } else {
-            $_SESSION['message'] = "Connecté avec succès !";
-            header("location: ../dashboard.php");
-            exit(0);
-        }
+        $_SESSION['message'] = "Connecté avec succès !";
+        header("location: ../index.php");
+        exit(0);
     } else {
         $_SESSION['message'] = "Email ou mot de passe invalide !";
         header("location: $link");

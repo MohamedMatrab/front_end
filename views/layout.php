@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
 </head>
-
+<?php include_once 'Models/verify_permissions.php'?>
 <body>
     <div class="app_container_">
         <nav class="navbar navbar-expand-lg fixed-top navbar-light">
@@ -36,7 +36,7 @@
                     <i class="fa-solid fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse shadow p-2 mb-1 mt-1 " id="navbarSupportedContent">
-                    <ul class="navbar-nav me-3 mb-2 mb-lg-0 align-items-center ">
+                    <ul class="navbar-nav mb-2 mb-lg-0 align-items-center ">
                         <li class="logo">
                             <a class="nav-link me-3" aria-current="page" href="index.php" data-lg="logo">Dent<span>All</span></a>
                         </li>
@@ -75,16 +75,45 @@
                         <li class="nav-item mt-sm-2 mt-lg-0">
                             <a class="nav-link rdv" aria-current="page" href="index.php?action=appoint">Rendez-vous</a>
                         </li>
-                        <div class="d-flex align-items-center ms-1 mt-sm-2 mt-lg-0">
-                            <a class=" btn-log   " aria-current="page" href="index.php?action=login">LOGIN</a>
-                        </div>
+                        <?php
+                        if (!isset($_SESSION['USER'])) {
+                        ?>
+                            <div class="d-flex align-items-center ms-1 mt-sm-2 mt-lg-0">
+                                <a class=" btn-log" aria-current="page" href="index.php?action=login">LOGIN</a>
+                            </div>
+                        <?php
+                        } else {
+                            include_once 'Models/get_user_info.php';
+                        ?>
+                            <div class="header_profile nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="<?= is_null($user['img']) ? "images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" class="profile-img" />
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <?php
+                                    if ($_SESSION['USER']['role'] == 0) {
+                                    ?>
+                                        <li><a class="dropdown-item" href="index.php?action=account">Mon Compte</a></li>
+                                        <li><a class="dropdown-item" href="index.php?action=">Gérer mes réservations</a></li>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <li><a class="dropdown-item" href="dashboard.php">Tableau de Bord</a></li>
+                                    <?php
+                                    }
+                                    ?>
+                                    <li><a class="dropdown-item" href="Models/logout.php?logout=0">Se Déconnecter</a></li>
+                                </ul>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </ul>
 
                 </div>
             </div>
         </nav>
         <?= $content; ?>
-
         <?php include_once "views/footer.php"; ?>
         <script src="js/all.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
@@ -92,4 +121,5 @@
     </div>
 </body>
 <?php include_once 'views/floating_message.php' ?>
+
 </html>

@@ -22,7 +22,6 @@ document.addEventListener("keydown", function (event) {
       Inputs[activeIndex - 1].focus();
     }
   }
-
   if (event.key === "ArrowRigh") {
     event.preventDefault();
 
