@@ -181,7 +181,7 @@ button {
 .box {
   position: relative;
 }
-.box form{
+.box form {
   margin: 0;
 }
 .input {
@@ -225,6 +225,51 @@ button {
 .i_box {
   opacity: 0 !important;
   z-index: -1 !important;
+}
+.count {
+  background-color: red;
+    color: white;
+    border-radius: 50%;
+    /* padding: 0.2em; */
+    width: 1.3em;
+    height: 1.3em;
+    text-align: center;
+    position: absolute;
+    z-index: 10;
+    top: -34%;
+}
+.notif {
+  flex-direction: column;
+  width: calc(100% + -25em);
+  /* padding: 1em; */
+  position: absolute;
+  left: 50%;
+  border-radius: 6px;
+  height: fit-content;
+}
+.notif .new_appoint a {
+  padding-left: 1em ;
+  padding: 0.5em ;
+  width: 100% ;
+  display: block ;
+  cursor: pointer ;
+  color: #0f4883 !important;
+  text-decoration: none !important;
+}
+.notif .new_appoint a:hover {
+  background-color: #ddd;  
+}
+.see_all {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.see_all a {
+  text-decoration: none !important;
+  color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));
+}
+.see_all a:hover {
+  color: var(--transparent-color);
 }
 /* End Header */
 
@@ -462,10 +507,9 @@ ul {
 /* Media Query End */
 /* Start Content Appointment */
 .appointment {
-  position: absolute;
-  top: 6vh;
   padding-bottom: 100px;
-  left: 8%;
+  margin-left: 10rem;
+  margin-top: 2rem;
 }
 .appointment p {
   color: #969494;
@@ -495,7 +539,7 @@ ul {
   background-color: white;
   padding: 1.5rem;
 }
-.appointment .patient .description .action{
+.appointment .patient .description .action {
   margin-top: 0rem;
   padding: 1rem 0;
   display: flex;
@@ -503,28 +547,28 @@ ul {
   gap: 2rem;
 }
 .appointment .patient .action .valider,
-.appointment .patient  .ajouter,
-.appointment .patient .annuler{
+.appointment .patient .ajouter,
+.appointment .patient .annuler {
   padding: 0.5em 0.8em;
   border-radius: 0.7em;
   font-weight: bold;
 }
-.appointment .patient .action .annuler{
+.appointment .patient .action .annuler {
   background-color: rgb(211, 50, 50);
   color: white;
 }
-.appointment .patient .action .valider{
+.appointment .patient .action .valider {
   background-color: var(--cadetblue-color);
   color: white;
 }
-.appointment .patient  .ajouter{
+.appointment .patient .ajouter {
   background-color: white;
-  color: var(--cadetblue-color) ;
+  color: var(--cadetblue-color);
 }
 .appointment .patient .action .valider:hover,
 .appointment .patient .action .annuler:hover,
-.appointment .patient  .ajouter:hover{
-  opacity: 0.5 ;
+.appointment .patient .ajouter:hover {
+  opacity: 0.5;
 }
 
 .appointment .table {
@@ -585,15 +629,15 @@ ul {
   justify-content: center;
   cursor: pointer;
 }
-.appointment a.dossier i:hover{
-  transform:  scale(1.04);
+.appointment a.dossier i:hover {
+  transform: scale(1.04);
 }
 
-@media (min-width:1000px) {
+@media (min-width: 1000px) {
   .appointment .table-appoint {
     width: 60vw;
     position: relative;
-    left: 50%;
+    left: 25%;
     transform: translateX(-30%);
   }
 }
@@ -619,7 +663,13 @@ ul {
   content: "";
   position: absolute;
   background: linear-gradient(white, white) padding-box,
-              linear-gradient(to right, var(--transparent-color) , white ,  var(--logo-color)) border-box;
+    linear-gradient(
+        to right,
+        var(--transparent-color),
+        white,
+        var(--logo-color)
+      )
+      border-box;
   border-radius: 50em;
   border: 4px solid transparent;
   width: 100%;
@@ -627,19 +677,19 @@ ul {
   z-index: -1;
 }
 #file {
-  background-color: white ;
+  background-color: white;
   box-shadow: 0 0 6px #dedede;
   padding: 5em;
-  margin: 7rem auto ;
+  margin: 7rem auto;
   border-radius: 2em;
   width: 70vw;
 }
-#file .head  {
+#file .head {
   text-align: center;
   margin-bottom: 4em;
 }
 #file .head .name_pt {
-  color: #0C7675;
+  color: #0c7675;
   text-transform: capitalize;
 }
 #file .row .col-6 {
@@ -647,11 +697,11 @@ ul {
   flex-direction: row;
   align-items: baseline;
 }
-#file .row p{
-  margin-left:  1em;
+#file .row p {
+  margin-left: 1em;
 }
-#file .row h3 ,
-#file .info_appoint .box h3{
+#file .row h3,
+#file .info_appoint .box h3 {
   color: var(--transparent-color);
   text-transform: capitalize;
 }
@@ -664,7 +714,7 @@ ul {
   padding: 10px 15px;
   cursor: pointer;
   position: relative;
-  user-select: none ;
+  user-select: none;
 }
 #file .date:hover {
   /* background-color: #eee;
@@ -693,7 +743,7 @@ ul {
 #file .info_appoint {
   margin-bottom: 4rem;
   position: relative;
-  border: 1px solid  #ddd;
+  border: 1px solid #ddd;
   padding: 2em;
   border-radius: 6px;
 }
@@ -701,11 +751,11 @@ ul {
   display: flex;
   align-items: baseline;
 }
-#file  .rflex h3{
-  color: #0C7675;
+#file .rflex h3 {
+  color: #0c7675;
   text-transform: capitalize;
 }
-#file .row  {
+#file .row {
   border: 1px #ddd solid;
   padding: 3px 10px;
   border-radius: 6px;
@@ -748,14 +798,13 @@ input[type="file"] {
   flex-direction: column;
 }
 #file .info_appoint .ajout_image {
-  border: 2px dashed #ddd  ;
-  border-radius: 6px ;
+  border: 2px dashed #ddd;
+  border-radius: 6px;
   padding: 1em 0;
-
 }
-#file .info_appoint .content p{
+#file .info_appoint .content p {
   font-weight: bold;
-  color: #0C7675;
+  color: #0c7675;
   cursor: pointer;
 }
 
@@ -799,7 +848,7 @@ input[type="file"] {
   display: none;
 }
 #file .form-control {
-  width: 50% ;
+  width: 50%;
   font-size: 1rem;
 }
 #file .imageOrdo {
@@ -828,7 +877,7 @@ input[type="file"] {
   font-size: 30px;
   cursor: pointer;
 }
-#file .imageOrdo img{
+#file .imageOrdo img {
   width: 36%;
 }
 #file .imageOrdo.cover {
@@ -838,37 +887,37 @@ input[type="file"] {
   transform: translateX(-50%);
   width: 65%;
   height: 100%;
-  z-index: 9999;;
+  z-index: 9999;
 }
 .bg {
   background-color: #81808000 !important;
   box-shadow: none !important ;
 }
 
-@media (max-width:1110px) {
+@media (max-width: 1110px) {
   #file .rflex h3 {
     flex-basis: 100%;
   }
-  #file .row p{
-    margin-left:  0em;
+  #file .row p {
+    margin-left: 0em;
   }
 }
-@media (max-width:800px) {
+@media (max-width: 800px) {
   #file {
-    padding: 5em 1.7em ;
+    padding: 5em 1.7em;
   }
 }
-@media (max-width:671px) {
+@media (max-width: 671px) {
   #file {
-    padding: 3em 0.7em ;
+    padding: 3em 0.7em;
   }
 }
-@media (max-width:690px) {
+@media (max-width: 690px) {
   #file {
-    width: 87vw; ;
+    width: 87vw;
   }
 }
-@media (max-width:690px) {
+@media (max-width: 690px) {
   .appointment .patient {
     width: 94vw;
   }
@@ -877,3 +926,151 @@ input[type="file"] {
   }
 }
 /* End Patient details */
+
+/* Start Center dash Page */
+#centre-page {
+  padding-bottom: 100px;
+}
+#centre-page h6 {
+  color: var(--transparent-color);
+}
+#centre-page .text {
+  color: #818080;
+}
+#centre-page .add,
+#centre-page .editCentre {
+  display: flex;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  background-color: #646464;
+  padding: 0.5em 0.4em;
+  color: white;
+  width: fit-content;
+  position: relative;
+  float: right;
+}
+
+#centre-page .add .Add_centre,
+#centre-page .editCentre a {
+  color: white;
+}
+.image_centre {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 40px;
+}
+.image_centre .img {
+  position: relative;
+  cursor: pointer;
+}
+.image_centre .img:last-child {
+  height: 190px ;
+}
+
+.image_centre .img img{
+  height: 190px;
+}
+
+.image_centre .img::after {
+  content: "";
+  background-color: #81808075;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  transform-origin: left;
+  transition: all 0.3s ease-in;
+}
+
+.image_centre .img:hover::after ,
+.image_centre .img:hover .del_centre {
+  opacity: 1;
+}
+.image_centre .img:hover .del_centre {
+  top: 36%;
+}
+.del_centre {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  position: absolute;
+  top: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 33%;
+  transition: 0.3s ease-in-out;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+
+
+.del_centre:hover {
+  transition: none;
+  color: #ff6347;
+}
+
+.bi-plus {
+  font-size: 4rem;
+}
+.add_photo {
+  z-index: 10;
+}
+.add_photo:hover {
+  transform: scale(1.2);
+}
+.ajout_photo {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 50%;
+  opacity: 0;
+  transform: translate(-50%,-50%);
+  transition-delay: 0.1s;
+  animation: top-to-bottom 0.4s 0.3s ease-in-out forwards;
+}
+.blur{
+  filter: blur(10px) !important;
+  transition: 0.3s ease-in-out !important;
+  pointer-events: none !important;
+}
+@keyframes top-to-bottom {
+  to {
+      top: 56%;
+      opacity: 1 ;
+    }
+}
+
+.contact_centre div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 46px;
+}
+.contact_centre div span {
+  color: #818080;
+}
+.contact_centre div p {
+  color: #818080;
+}
+.contact_centre div p.text {
+  color: #818080;
+  border: 1px solid #ddd;
+  padding: 0.3em;
+  border-radius: 6px;
+  flex: 1;
+}
+/* Start Center dash Page */

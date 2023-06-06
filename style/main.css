@@ -521,7 +521,7 @@ span {
 /* End date picker */
 
 /* Start Succes Page */
-.succes {
+.succes,.echec {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -540,25 +540,35 @@ span {
   justify-content: center;
   border-radius: 16px;
 }
-.succes_icons i {
-  color: var(--cadetblue-color);
+.succes_icons i ,
+.echec_icons i {
   background-color: white;
   box-shadow: 0px 0px 10px #ddd;
   border-radius: 50%;
-  padding: 10px;
-  font-size: 2.5em;
   display: flex;
   align-items: center;
   justify-content: center;
   width: fit-content;
   margin: 0 auto 1em;
 }
+.succes_icons i  {
+  color: var(--cadetblue-color);
+  padding: 10px;
+  font-size: 2.5em;
+}
+.echec_icons i  {
+  color: red;
+  font-size: 3.5em;
+}
 
 .succes p,
-.succes h2 {
+.echec p ,
+.succes h2 ,
+.echec h2 {
   color: black;
 }
-.succes a {
+.succes a,
+.echec a {
   display: block;
   color: white;
   background-color: var(--cadetblue-color);
@@ -569,7 +579,8 @@ span {
   font-size: 22px;
   text-transform: uppercase;
 }
-.succes a:hover {
+.succes a:hover,
+.echec a:hover {
   color: white;
 }
 .app_fixe {

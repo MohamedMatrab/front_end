@@ -1,7 +1,29 @@
 <?php
+  $title = "Dentiste:Appointment Page" ;
+  include_once "Models/connect.php" ;
 
-   $title = "Dentiste:Appointment Page" ;
-   ob_start();
+  function compte_is_exist($id){
+    $obj = new connect(); 
+    $obj->rendezVousTable() ;
+    $sql = " select id from users ;";
+    $stmt = $obj->getConnect()->prepare($sql);
+    $stmt->execute();
+    $user_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($user_id as $iduser ){
+      if ($iduser['id'] == $id){
+        return 1 ;
+      }
+    }
+    return 0 ;
+  }
+  
+
+  if (compte_is_exist($_SESSION['USER']['id']) == 0 ) {
+    $_SESSION['message'] = "Vous devez créer un compte tout d'abord pour prendre un rendez-vous et connecter";
+    header("Location: index.php?action=signup");
+    exit(0);
+  }
+  ob_start();
 ?>
 
 
@@ -22,7 +44,7 @@
     </div>
     <h3 class="fs-5 mb-5 br">Informations personnelles : </h3>
 
-    <form class="g-3" method="post"  id="formulaire">
+    <div class="g-3" method="post"  id="formulaire">
       <div class="row br-top py-4 br-bott">
         <div class="col-4" ><label for="inputLastName" class="form-label">Prénom <span>*</span></label></div>
         <div class="col-8"><input type="text" class="form-control" id="inputLastName" required placeholder="Prénom" data="Prénom" name="Prenom"></div>
@@ -35,13 +57,12 @@
 
       <div class="row  py-4 br-bott">
         <div class="col-4"><label for="inputCin" class="form-label">CIN (Carte d'identité nationale) <span>*</span></label></div>
-        <div class="col-8"><input type="text" class="form-control" id="inputCin" required placeholder="CIN (Carte d'identité nationale)" data="CIN (Carte d'identité nationale)" name="CIN"></div>
+        <div class="col-8"><input type="text" class="form-control" id="inputCin" required placeholder="CIN (Carte d'identité nationale)" data="CIN (Carte d'identité nationale)" data_id="<?=$_SESSION['USER']['id']?>" name="CIN"></div>
       </div>
-
       <div class="row  py-4 br-bott">
         <div class="col-4"><label for="inputSexe" class="form-label">Sexe <span>*</span></label></div>
         <div class="col-8">
-          <select class="form-select" aria-label="Default select example" name="Sexe">
+          <select class="form-select" aria-label="Default select example" name="Sexe" required>
             <option value="1"></option>
             <option value="2">Homme</option>
             <option value="3">Femme</option>
@@ -69,12 +90,12 @@
         <div class="col-8"><input type="tel" class="form-control" id="inputNumber" required placeholder="tél" data="tél" name="tel"></div>
       </div>
 
-      <div class="row py-4 br-bott">
+      <!-- <div class="row py-4 br-bott">
         <div class="col-4"><label for="floatingTextarea" class="form-label">Message</label></div>
         <div class="form-floating col-8">
           <textarea class="form-control" placeholder="Leave a message here" id="floatingTextarea"></textarea>
         </div>
-      </div>
+      </div> -->
 
       <div class="row  py-4 br-bott all-Services">
         <div class="col-4"><label for="inputService" class="form-label">Services <span>*</span></label></div>

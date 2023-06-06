@@ -3,6 +3,8 @@ require_once 'Models/connect.php';
 
 function Show_Data($table) {
         $obj = new connect(); 
+        $obj->rendezVousTable();
+        $obj->historiqueTable();
         $All = $obj->select($table) ;
         if ($table === 'historique') {
             ob_start();
@@ -40,7 +42,16 @@ function Show_Data($table) {
                     <div class="patient">
                         <div class="name">
                             <p>N °<?php echo $compteur?></p>
-                            <a class= "ajouter" href="dashboard.php?action=all_reservations&&id=<?php echo $patient->id_rendez;?>&&state=consulter"><i class="bi bi-person-plus"></i></a>
+                            <div class="action">
+                                <a class= "ajouter" href="dashboard.php?action=all_reservations&&id=<?php echo $patient->CIN;?>&&state=consulter"><i class="bi bi-person-plus"></i></a>
+                                <?php if($patient->state) :?>
+                                    <a href="" class="valider ms-1"><i class="bi bi-check-lg fs-5"></i></a>
+                                <?php endif; ?>
+                                <?php if (!$patient->state) :?>
+                                    <a class= "valider" data-id="<?=$patient->CIN?>">Valider</a>
+                                <?php endif; ?>
+                                <a class= "annuler ms-1" href="dashboard.php?action=all_reservations&&id=<?php echo $patient->CIN;?>&&state=annuler">Annuler</a>
+                            </div>
                         </div>
                         <div class="description  ">
                             <div class="box">
@@ -52,10 +63,6 @@ function Show_Data($table) {
                                 <p>heure de rendez-vous :  <?php echo $patient->Heure_rendez;?>  </p>
                                 <p>Nom et Prénom du docteur:  <?php echo $doctor->Nom .' '. $doctor->Prenom;?>  </p>
                             </div>
-                            <div class="action">
-                                <a class= "valider" href="#">Valider</a></th>
-                                <a class= "annuler" href="dashboard.php?action=all_reservations&&id=<?php echo $patient->id_rendez;?>&&state=annuler">Annuler</a>
-                            </div>
                         </div>
                     </div>
     
@@ -63,7 +70,11 @@ function Show_Data($table) {
                 <?php 
                 } 
                 
-            }
+            }else {
+                ?>
+                <p style="color:#ddd, font-size:30px;">No appointment today</p>
+                <?php }
+
             $allReservation = ob_get_clean() ;
             require_once 'views/reservation.php';
         }

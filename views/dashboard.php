@@ -74,11 +74,11 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="app-header-right">
           <ul class="right nav">
             <li class="drop-down nav-item me-3">
-              <span class="icon-header me-1">
+              <span class="icon-header me-1 notifications">
                 <i class="bi bi-bell-fill"></i>
               </span>
             </li>
-            <div class="drop-down-content">Notifications</div>
+            <div class="drop-down-content notif"><h6 class="ps-2 pt-2">Notifications</h6></div>
             <li class="nav-item me-3" id="logout">
               <span class="icon-header me-1">
                 <i class="bi bi-box-arrow-right"></i>

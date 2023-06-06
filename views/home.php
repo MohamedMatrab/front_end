@@ -1,7 +1,7 @@
 <?php
 
-   $title = "Dentiste:Home Page" ;
-   ob_start();
+  $title = "Dentiste:Home Page" ;
+  ob_start();
 ?>
 
 <div class="landing">

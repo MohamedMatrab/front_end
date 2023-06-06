@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $targetPath = '../dashboard.php' ;
         if ( isset($_FILES['ordonnance']) && !empty($_FILES['ordonnance']['name']) && isset($_GET['ID']) && isset($_GET['date']) ) {
@@ -10,8 +11,13 @@
             $extension = pathinfo($name, PATHINFO_EXTENSION);
             $allowed_exs = array('jpeg', 'jpg', 'png');
             if (!in_array($extension, $allowed_exs)) {
-                
+                $em = "This Format is not allowed ,provide an image.";
+                $_SESSION['message'] = $em;
+                header("Location: ../dashboard.php?action=ulpoad_details");
             } elseif ($size >  4 * 1024 * 1024) {
+                $em = "File is Too Large, Maximum Size 4MB .";
+                $_SESSION['message'] = $em;
+                header("Location: ../dashboard.php?action=ulpoad_details");
                 
             } else {
                 include_once "connect.php";
@@ -24,6 +30,8 @@
                 $stmt->bindValue(':date_rendez',$_GET['date']);
                 $stmt->execute();
                 $obj->close_connection();
+                $em = "prescription added succesfuly ";
+                $_SESSION['message'] = $em;
                 header("Location:../dashboard.php?action=ulpoad_details&&ID=". $_GET['ID']) ;
             }
 

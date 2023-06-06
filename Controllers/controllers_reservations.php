@@ -1,5 +1,6 @@
 <?php
 require_once 'Models/connect.php';
+session_start();
 
 // Function to disable specific dates with full day appointments
     function disabled_day() {
@@ -12,23 +13,47 @@ require_once 'Models/connect.php';
 // Function to handle appointment booking
     function PrendreRdv() { 
         require_once 'views/Appointment.php';
-        ?>
-        <script>
-            let body_container = document.querySelector("body") ;
-                
-                const Html_succes = `<div class="succes">
-                    <div>
-                        <div class="succes_icons"><i class="bi bi-person-check-fill"></i></div>
-                        <p>Notre equipe prendra contact avec vous prochainement</p>
-                        <a href="index.php?action=appoint">Ok</a>
-                    </div>
-                </div>` ;
+    
+    ?>
+    <script>
+        let body_container = document.querySelector("html");
+        if (localStorage.hasOwnProperty("succes")) {
+            const Html_succes = `
+            <div class="succes">
+            <div>
+                <div class="succes_icons">
+                    <i class="bi bi-info-circle-fill"></i>
+                </div>
+                <p>`+localStorage.getItem('succes')+`</p>
+                <br>
+                <a href="index.php?action=appoint">Ok</a>
+            </div>
+            </div>`;
+            let container = document.querySelector("body");
+            container.classList.add("app_fixe");
+            body_container.insertAdjacentHTML("beforeend", Html_succes);
+        }else if ( localStorage.hasOwnProperty("echec") ) { 
+            const Html_echec = `
+            <div class="echec">
+            <div>
+                <div class="echec_icons">
+                    <i class="bi bi-exclamation-lg"></i>
+                </div>
+                <p>`+localStorage.getItem('echec')+`</p>
+                <br>
+                <a href="index.php?action=appoint">Ok</a>
+            </div>
+            </div>`;
+            let container = document.querySelector("body");
+            container.classList.add("app_fixe");
+            body_container.insertAdjacentHTML("beforeend", Html_echec);
+        }else {
+        }
+        
+    </script>
 
-                let container = document.querySelector(".app_container_") ;
-                container.classList.add("app_fixe") ;
-                body_container.insertAdjacentHTML("beforeend",Html_succes);
-        </script>
-        <?php
+    <?php 
+        
     }
     
 

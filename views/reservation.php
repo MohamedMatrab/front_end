@@ -3,6 +3,7 @@ session_start();
 $title = "All reservations";
 ob_start();
 ?>
+    <?php include_once 'views/p_message.php' ?>
     <section class="appointment" id="appointment">
         <div class="container">
             <div class="mb-5">

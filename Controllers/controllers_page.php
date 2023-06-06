@@ -7,7 +7,6 @@ function indexAction() {
     require_once 'views/home.php';
 }
 
-
 // Require and include the 'aboutCentre.php' view file
 function aboutCentreAction() {
     require_once 'views/aboutCentre.php';
@@ -18,6 +17,9 @@ function aboutCentreAction() {
     }
     function dash_portfolio(){
         require_once 'views/dash_portfolio.php' ;
+    }
+    function dash_centre(){
+        require_once 'views/dash_centre.php' ;
     }
     function editImageAction(){
         require_once 'views/edit_image.php' ;
@@ -65,6 +67,9 @@ function portfolioAction() {
 // Require and include the 'service_details.php' view file
 function detailsAction() {
     require_once 'views/service_details.php';
+}
+function addCentreInfo() {
+    require_once 'views/addCentre_dash_.php';
 }
 
 // Require and include the 'contact.php' view file

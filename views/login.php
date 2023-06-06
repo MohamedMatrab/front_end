@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 0) {
-  header("Location: index.php");
-  exit(0);
-}
+// session_start();
+// if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 0) {
+//   header("Location: index.php");
+//   exit(0);
+// }
 include_once "Models/connect.php";
 $obj = new connect();
 $obj->usersTable();

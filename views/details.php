@@ -4,6 +4,7 @@ $title = "patient | details";
 ob_start();
 ?>
     <!-- <div class="logo dg-lg"><div>dent<span>All</span></div></div> -->
+    <?php include_once 'views/p_message.php' ?>
     <div class="container" id="file">
         <div class="head">
             <h3 class="name_pt"></h3>

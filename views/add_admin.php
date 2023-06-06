@@ -6,7 +6,7 @@ $obj = new connect();
 ob_start();
 ?>
 
-<?php $_SESSION['message'] = 'This page is for ading admin' ?>
+<?php $_SESSION['message'] = 'This page is for ading admin' ; ?>
 <?php include_once 'views/p_message.php' ?>
 
 <?php $content = ob_get_clean(); ?>

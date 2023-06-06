@@ -11,6 +11,9 @@ if (isset($_GET['action'])) {
         case 'portfolio':
             dash_portfolio();
             break;
+        case 'centre':
+            dash_centre();
+            break;
         case 'edit_image':
             editImageAction();
             break;
@@ -53,6 +56,9 @@ if (isset($_GET['action'])) {
         case 'edit_user_info':
             EditUserInfoAction();
             break;
+        case 'addCentreInfo' :
+            addCentreInfo();
+            break ;
 
     }
 } else {

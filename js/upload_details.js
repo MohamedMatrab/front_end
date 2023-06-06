@@ -28,7 +28,7 @@ $(document).ready(function () {
   
           let formData = document.querySelector("#file .info_pt form .row ");
           let form = document.querySelector("#more_details");
-          if (patient["poids"] == null  && patient["taille"] == null) {
+          if (patient["poids"] == 0  && patient["taille"] == 0) {
             let content = `<div class="rflex"> 
                                 <h3 class="fs-5">taille :</h3> 
                                 <p class="fs-5"><input class="form-control" type="text" name="taille"></p>
@@ -50,8 +50,6 @@ $(document).ready(function () {
                             formData.insertAdjacentHTML("beforeend", content);
             } 
           document.addEventListener("keydown", (e)=>{
-              console.log(e);
-              console.log(form);
               if (e.key === 'Enter') {
                   form.submit();
               }

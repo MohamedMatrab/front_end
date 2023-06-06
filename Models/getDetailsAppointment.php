@@ -1,6 +1,8 @@
 <?php
+
 header("Content-Type: application/json");
 require_once 'connect.php';
+
     // appoint info 
     if (isset($_POST['id'])) {
         $obj = new connect();

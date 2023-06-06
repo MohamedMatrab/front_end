@@ -4,7 +4,7 @@ class connect
     private $connect;
     function __construct() {
         try {
-            $this->connect = new pdo("mysql:host=localhost; dbname=bd_dentiste","root","meriem2002");
+            $this->connect = new pdo("mysql:host=localhost; dbname=dentiste","root","meriem2002");
         }catch (PDOException $e){
             echo "Not Connected :" . $e->getMessage();
         }
@@ -24,12 +24,12 @@ class connect
         // ');
         // $stmt->execute(array('bd_dentiste', $tableName));
         // return $stmt->fetchColumn() == 1;
-        $requete = $this->connect->prepare("SHOW TABLES FROM bd_dentiste ") ;
+        $requete = $this->connect->prepare("SHOW TABLES FROM dentiste ") ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute() ;
         $tables = array(); 
         while ($row = $requete->fetch()) {
-            array_push($tables,$row->Tables_in_bd_dentiste);
+            array_push($tables,$row->Tables_in_dentiste);
         }
         if(in_array($tableName, $tables)){
             return TRUE;
@@ -45,8 +45,9 @@ class connect
                 title VARCHAR(50),
                 image MEDIUMBLOB,
                 description VARCHAR(250),
-                service_id VARCHAR(20)) 
-            ";
+                service_id int,
+                FOREIGN KEY (service_id) REFERENCES services(ID )
+                )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
@@ -63,24 +64,46 @@ class connect
                 Gmail VARCHAR(30) ,
                 tel VARCHAR(25) ,
                 id_service int ,
-                (id_service ) REFERENCES service(service_id )
+                FOREIGN KEY (id_service ) REFERENCES services(ID )
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
     }
     function serviceTable(){
-        $tableName = 'service';
+        $tableName = 'services';
         if ($this->isTableExist($tableName)) {
             return;
         } else {
             $sql = "CREATE TABLE service(
-                service_id INT PRIMARY KEY AUTO_INCREMENT,
-                title VARCHAR(50)
+                ID INT PRIMARY KEY AUTO_INCREMENT,
+                Nom_du_service VARCHAR(255)
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
+    }
+    function serviveDetailsTabele(){
+        $tableName = 'service';
+        if ($this->isTableExist($tableName)) {
+            return;
+        } else {
+            $sql = "CREATE TABLE service_details (
+                id_service INT,
+                proverb VARCHAR(250),
+                image1 VARCHAR(150),
+                descr1 LONGTEXT,
+                title1 VARCHAR(150),
+                image2 VARCHAR(150),
+                descr2 LONGTEXT,
+                title2 VARCHAR(150),
+                image3 VARCHAR(150),
+                FOREIGN KEY (id_service) REFERENCES services (ID)
+                );";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->execute();
+        }
+        
     }
 
     function historiqueTable(){
@@ -99,8 +122,12 @@ class connect
                 poids VARCHAR(10) ,
                 date_rendez VARCHAR(10) ,
                 heure_rendez VARCHAR(10) ,
-                service VARCHAR(20) ,
-                ordonnance MEDIUMBLOB
+                service_id INT,
+                service VARCHAR(255) ,
+                ordonnance MEDIUMBLOB , 
+                id_user INT,
+                FOREIGN KEY (id_user) REFERENCES users(id) ,
+                FOREIGN KEY (service_id) REFERENCES services(ID)
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
@@ -122,7 +149,46 @@ class connect
                 address VARCHAR(50) ,
                 date_rendez VARCHAR(10) ,
                 Heure_rendez VARCHAR(10) ,
-                service VARCHAR(20) 
+                service_id INT,
+                service VARCHAR(255) ,
+                state   ENUM('0', '1') DEFAULT '0',
+                id_user INT,
+                FOREIGN KEY (id_user) REFERENCES users(id),
+                FOREIGN KEY (service_id) REFERENCES services(ID)
+            )";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->execute();
+        }
+    }
+    function centreTable(){
+        $tableName = 'centre';
+        if ($this->isTableExist($tableName)) {
+            return;
+        } else {
+            $sql = "CREATE TABLE centre(
+                description text ,
+                motivation text ,
+                localisation varchar(200) ,
+                address varchar(100),
+                numero_1 varchar(100) ,
+                numero_2 varchar(100),
+                email varchar(100) ,
+                facebook varchar(100) ,
+                instagram varchar(100) ,
+                twitter varchar(100) 
+            )";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->execute();
+        }
+    }
+    function photos_centreTable(){
+        $tableName = 'photos_centre';
+        if ($this->isTableExist($tableName)) {
+            return;
+        } else {
+            $sql = "CREATE TABLE photos_centre(
+                id_photo int NOT NULL PRIMARY KEY AUTO_INCREMENT ,
+                photo_centre MEDIUMBLOB 
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
@@ -151,7 +217,12 @@ class connect
         return json_decode(json_encode($requete->fetchAll()), true);
     }
     function select($table) {
-        $requete = $this->connect->prepare('select DISTINCT * from ' .$table) ;
+        if ($table == "historique"){
+            $requete = $this->connect->prepare('select DISTINCT * from historique ') ;
+        }else{
+            $requete = $this->connect->prepare('select * from rendez_vous ORDER BY date_rendez ASC, Heure_rendez ASC ') ;
+        }
+       
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute() ;
         return $requete->fetchAll() ;
@@ -165,14 +236,14 @@ class connect
     }
 
     function selectId($nom_service) {
-        $requete = $this->connect->prepare('select service_id  from service where title = ? ') ;
+        $requete = $this->connect->prepare('select ID  from services where Nom_du_service  = ? ') ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute(array($nom_service)) ;
         return $requete->fetch() ;
     }
 
     function Delete_rendez($id) {
-        $requete = $this->connect->prepare("delete from  rendez_vous where id_rendez = ?") ;
+        $requete = $this->connect->prepare("delete from  rendez_vous where CIN = ?") ;
         $requete->execute(array($id)) ;
     }
     
@@ -190,7 +261,7 @@ class connect
     }
     
     function appoint_info($code) {
-        $requete = $this->connect->prepare('select date_rendez , service  from historique where CIN = ? ORDER BY date_rendez') ;
+        $requete = $this->connect->prepare('select date_rendez , service  from historique where CIN = ? ORDER BY date_rendez ASC, Heure_rendez ASC') ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute(array($code)) ;
         return $requete->fetchAll() ;
@@ -202,24 +273,33 @@ class connect
         $requete->execute(array($code,$date)) ;
         return $requete->fetch() ;
     }
-    function insertRendezVous($CIN,$Last_Name, $First_Name , $Date_Of_birth , $tel, $address, $date_rendez,$Heure_rendez,$services) {
-        $requete = $this->connect->prepare("insert into rendez_vous(CIN,First_Name,Last_Name ,Date_Of_birth , tel,address, date_rendez,Heure_rendez,service) values(?,?,?,?,?,?,?,?,?)") ;
-        $requete->execute(array($CIN,$Last_Name, $First_Name , $Date_Of_birth , $tel , $address , $date_rendez , $Heure_rendez, $services )) ;
-        
+    function insertRendezVous($CIN,$Last_Name, $First_Name , $Date_Of_birth , $tel, $address, $date_rendez,$Heure_rendez,$id_service,$services,$id_user) {
+            $requete1 = $this->connect->prepare("select CIN from rendez_vous where id_user = ? ") ;
+            $requete1->execute(array($id_user)) ;
+            $stmt = $requete1->fetchAll(PDO::FETCH_ASSOC);
+            foreach($stmt as $cin){
+                if ($cin['CIN'] == $CIN ){
+                    return false ;
+                    break ;
+                }
+            }
+            $requete = $this->connect->prepare("insert into rendez_vous(CIN,First_Name,Last_Name ,Date_Of_birth , tel,address, date_rendez,Heure_rendez,service_id,service,id_user) values(?,?,?,?,?,?,?,?,?,?,?)") ;
+            $requete->execute(array($CIN,$Last_Name, $First_Name , $Date_Of_birth , $tel , $address , $date_rendez , $Heure_rendez,$id_service, $services ,$id_user)) ;
+            return true ;
     }
 
     function insert_into_history($id) {
         // select from rendez-vous table
-        $requete = $this->connect->prepare("select * from  rendez_vous where id_rendez = ?") ;
+        $requete = $this->connect->prepare("select * from  rendez_vous where CIN = ?") ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute(array($id)) ;
         $patient = $requete->fetch() ;
         // insert into history table
-        $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service) values(?,?,?,?,?,?,?,?,?,?,?)") ;
-        $requete->execute(array($patient->CIN ,$patient->Last_Name, $patient->First_Name , $patient->Date_Of_birth , $patient->tel , $patient->address ,'0' ,'0' , $patient->date_rendez , $patient->Heure_rendez, $patient->service )) ;
+        $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service_id,service,id_user) values(?,?,?,?,?,?,?,?,?,?,?,?,?)") ;
+        $requete->execute(array($patient->CIN ,$patient->Last_Name, $patient->First_Name , $patient->Date_Of_birth , $patient->tel , $patient->address ,'0' ,'0' , $patient->date_rendez , $patient->Heure_rendez,$patient->service_id, $patient->service ,$patient->id_user )) ;
     }
     function getServices(){
-        $requete = $this->connect->prepare("select title from  service") ;
+        $requete = $this->connect->prepare("select  Nom_du_service  from  services") ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute() ;
         return $requete->fetchAll() ;

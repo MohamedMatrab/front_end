@@ -7,7 +7,7 @@ require_once 'connect.php';
             $service = $obj->getServices();
             $services = [] ;
             foreach ($service as $s) {
-                array_push($services , ['title' => $s->title] );
+                array_push($services , ['title' => $s->Nom_du_service] );
             };
             echo json_encode(['service' => $services]);
         }

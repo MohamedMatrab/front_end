@@ -22,5 +22,5 @@ if (isset($_GET['action'])) {
       case 'alert' : AlertWarning() ; break ;
    }
 }else {
-   indexAction();
+      indexAction();
 }

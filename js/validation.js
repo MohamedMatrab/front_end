@@ -37,16 +37,17 @@ document.addEventListener("keydown", function (event) {
 });
 
 Inputs.forEach((el) => {
-  el.addEventListener("focus", () => {
-    el.placeholder = " ";
-    console.log(el.parentElement.childElementCount);
-    if (el.parentElement.childElementCount >= 2) {
-      let alert = document.querySelector("span");
-      if (alert) {
+  el.addEventListener("focus", (e) => {
+    e.target.placeholder = " ";
+    if (e.target.parentElement.childElementCount === 2) {
+      let alert = document.querySelector("#appointment .row .col-8 span");
+      if (alert){
         alert.remove();
-      }
+      }      
     }
   });
+
+
   el.addEventListener("blur", () => {
     if (
       !(
@@ -65,6 +66,7 @@ Inputs.forEach((el) => {
         error.style.fontSize = "12px";
         el.parentElement.appendChild(error);
       }
+      
       el.placeholder = el.getAttribute("data");
     }
   });
