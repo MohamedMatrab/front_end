@@ -5,7 +5,7 @@ ob_start();
 ?>
 <?php
 if (!isset($_SESSION['USER'])) {
-  $_SESSION['message'] = "il faut etre connecté pour accéder à cette Page !";
+  $_SESSION['message'] = "Vous devez être connecté pour accéder à cette page !";
   header('Location: index.php');
   exit(0);
 } elseif ($_SESSION['USER']['role'] != 0) {
@@ -20,7 +20,7 @@ if (!isset($_SESSION['USER'])) {
 </div>
 <div class="container pt-5 pb-5" id="account">
   <div class="desp" style="border:none;display:flex;flex-direction:row;align-items:center;justify-content:start;">
-    <img src="<?= is_null($user['img']) ? "images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" style="width: 5rem;height:5rem;border-radius:50%" />
+    <img src="<?= is_null($user['img']) ? "images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" style="width:6rem; height:6rem;border-radius:50%" />
     <p style="font-size:1.3rem;margin:0;margin-left:1rem;"><?= $user['fname'] . " " . $user['lname'] ?></p>
   </div>
   <h3 class="fs-5 mb-5 br">Informations personnelles : </h3>
@@ -97,12 +97,9 @@ if (!isset($_SESSION['USER'])) {
   </form>
   <div class="urgence">
     <h3 class="fs-5" style="color : red ;">Demande d'accés au Tableau de Bord :</h3>
-    <p>Si vous faites partie de notre groupe Dentall et vous souhaitez accéder à notre tableau de bord en ligne , veuillez remplir le <a href="" style="text-decoration:underline;color:cadetblue;">Formulaire de Demande </a>.<br>Et Nous Allons traiter votre demande et vous donner l'accés.</p>
+    <p>Si vous faites partie de notre groupe Dentall et vous souhaitez accéder à notre tableau de bord en ligne , veuillez remplir le <a href="index.php?action=request" style="text-decoration:underline;color:cadetblue;">Formulaire de Demande </a>.<br>Et Nous Allons traiter votre demande et vous donner l'accés.</p>
   </div>
 </div>
 <script src="js/account_patient_script.js"></script>
-<?php
-include_once 'Models/get_user_info.php'
-?>
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/layout.php'; ?>

@@ -10,11 +10,13 @@ class connect
             echo "Not Connected :" . $e->getMessage();
         }
     }
+
     function getConnect()
     {
         $pdo = $this->connect;
         return $pdo;
     }
+
     function isTableExist($tableName)
     {
         $requete = $this->connect->prepare("SHOW TABLES FROM bd_dentiste ");
@@ -28,23 +30,27 @@ class connect
             return TRUE;
         }
     }
+
     function portfolioTable()
     {
         $tableName = 'portfolio';
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE portfolio(
+            $sql = "CREATE TABLE portfolio (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 title VARCHAR(50),
                 image MEDIUMBLOB,
-                description VARCHAR(250),
-                service_id VARCHAR(20)) 
+                description VARCHAR(350),
+                service_id INT,
+                FOREIGN KEY (service_id) REFERENCES services(ID)
+              ); 
             ";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
     }
+
     function doctorTable()
     {
         $tableName = 'doctor';
@@ -58,21 +64,22 @@ class connect
                 Gmail VARCHAR(30) ,
                 tel VARCHAR(25) ,
                 id_service int ,
-                (id_service ) REFERENCES service(service_id )
+                (id_service ) REFERENCES services(ID)
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
     }
+
     function serviceTable()
     {
-        $tableName = 'service';
+        $tableName = 'services';
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE service(
-                service_id INT PRIMARY KEY AUTO_INCREMENT,
-                title VARCHAR(50)
+            $sql = "CREATE TABLE $tableName(
+                ID INT PRIMARY KEY AUTO_INCREMENT,
+                Nom_du_service VARCHAR(100)
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
@@ -85,20 +92,24 @@ class connect
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE historique(
-                CIN varchar(15) NOT NULL,
-                First_Name VARCHAR(15) ,
-                Last_Name VARCHAR(15) ,
-                Date_Of_birth VARCHAR(20) ,
-                tel VARCHAR(30) ,
-                address VARCHAR(50) ,
-                taille VARCHAR(10) ,
-                poids VARCHAR(10) ,
-                date_rendez VARCHAR(10) ,
-                heure_rendez VARCHAR(10) ,
-                service VARCHAR(20) ,
-                ordonnance MEDIUMBLOB
-            )";
+            $sql = "CREATE TABLE historique (
+                CIN VARCHAR(15) NOT NULL,
+                First_Name VARCHAR(15),
+                Last_Name VARCHAR(15),
+                Date_Of_Birth VARCHAR(20),
+                tel VARCHAR(30),
+                address VARCHAR(50),
+                taille VARCHAR(10),
+                poids VARCHAR(10),
+                date_rendez VARCHAR(10),
+                heure_rendez VARCHAR(10),
+                service_id INT,
+                service VARCHAR(20),
+                ordonnance MEDIUMBLOB,
+                id_user INT,
+                FOREIGN KEY (id_user) REFERENCES users(id),
+                FOREIGN KEY (service_id) REFERENCES services(ID)
+              )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
@@ -110,22 +121,28 @@ class connect
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE rendez_vous(
-                id_rendez int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-                CIN VARCHAR(15) NOT NULL UNIQUE ,
-                First_Name VARCHAR(15) ,
-                Last_Name VARCHAR(15) ,
-                Date_Of_birth VARCHAR(20) ,
-                tel VARCHAR(30) ,
-                address VARCHAR(50) ,
-                date_rendez VARCHAR(10) ,
-                Heure_rendez VARCHAR(10) ,
-                service VARCHAR(20) 
-            )";
+            $sql = "CREATE TABLE rendez_vous (
+                id_rendez INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                CIN VARCHAR(15) NOT NULL UNIQUE,
+                First_Name VARCHAR(15),
+                Last_Name VARCHAR(15),
+                Date_Of_birth VARCHAR(20),
+                tel VARCHAR(30),
+                address VARCHAR(50),
+                date_rendez VARCHAR(10),
+                Heure_rendez VARCHAR(10),
+                state ENUM('0', '1'),
+                service VARCHAR(20),
+                service_id INT,
+                id_user INT,
+                FOREIGN KEY (id_user) REFERENCES users(id),
+                FOREIGN KEY (service_id) REFERENCES services(ID)
+            );";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
     }
+
     function import_Heures_occupees_dans_un_jour_donne($date_Reserve, $Heure_reserve)
     {
         $requete = $this->connect->prepare("SELECT Heure_rendez 
@@ -149,6 +166,7 @@ class connect
         $requete->execute();
         return json_decode(json_encode($requete->fetchAll()), true);
     }
+
     function select($table)
     {
         $requete = $this->connect->prepare('select DISTINCT * from ' . $table);
@@ -209,6 +227,7 @@ class connect
         $requete->execute(array($code, $date));
         return $requete->fetch();
     }
+
     function insertRendezVous($CIN, $Last_Name, $First_Name, $Date_Of_birth, $tel, $address, $date_rendez, $Heure_rendez, $services)
     {
         $requete = $this->connect->prepare("insert into rendez_vous(CIN,First_Name,Last_Name ,Date_Of_birth , tel,address, date_rendez,Heure_rendez,service) values(?,?,?,?,?,?,?,?,?)");
@@ -226,6 +245,7 @@ class connect
         $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service) values(?,?,?,?,?,?,?,?,?,?,?)");
         $requete->execute(array($patient->CIN, $patient->Last_Name, $patient->First_Name, $patient->Date_Of_birth, $patient->tel, $patient->address, '0', '0', $patient->date_rendez, $patient->Heure_rendez, $patient->service));
     }
+
     function getServices()
     {
         $requete = $this->connect->prepare("select title from  service");
@@ -253,12 +273,15 @@ class connect
                     adresse VARCHAR(100),
                     date_naissance DATE,
                     sexe ENUM('1','2'),
-                    role ENUM('0', '1', '2')
+                    role ENUM('0', '1', '2'),
+                    request ENUM('0','1'),
+                    request_type ENUM('1','2')
              )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
         }
     }
+
     function reAutoIncrement($table)
     {
         $check_empty = "SELECT COUNT(*) FROM $table";
@@ -271,6 +294,7 @@ class connect
             $this->connect->exec($alter_query);
         }
     }
+
     function close_connection()
     {
         $this->connect = null;

@@ -4,7 +4,10 @@ $title = "Add Image";
 ob_start();
 ?>
 
-<?php include_once 'view_functions.php' ?>
+<?php
+$link = "dashboard.php?action=add_image";
+include_once 'view_functions.php'
+?>
 
 <head>
     <link rel="stylesheet" href="style/add-img-style.css">
