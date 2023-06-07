@@ -4,7 +4,10 @@ $title = "Portfolio";
 ob_start();
 ?>
 
-<?php include_once 'view_functions.php'?>
+<?php
+$link = "dashboard.php?action=portfolio";
+include_once 'view_functions.php'
+?>
 
 <link rel="stylesheet" href="style/style-portfolio.css">
 <div class="landing-page">

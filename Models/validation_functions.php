@@ -36,6 +36,16 @@ function validateEmail($email)
     header("location: $link");
     exit(0);
 }
+function validateCIN($cin)
+{
+    global $link;
+    if (preg_match('/^[a-zA-Z]{2}\d{4,6}$/', $cin)) {
+        return $cin;
+    }
+    $_SESSION['message'] = "CIN Invalide !";
+    header("location: $link");
+    exit(0);
+}
 function validateId($id)
 {
     global $link;
