@@ -20,6 +20,12 @@ if (isset($_GET['action'])) {
       case 'RDV' : PrendreRdv() ; break ;
 
       case 'alert' : AlertWarning() ; break ;
+
+
+      // mohamed_part added
+
+      case 'account':accountPatientAction();break;
+      case 'reservations':reservationsPatientAction();break;
    }
 }else {
       indexAction();

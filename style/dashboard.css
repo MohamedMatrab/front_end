@@ -10,7 +10,7 @@ html {
 }
 body {
   font-family: "Roboto", sans-serif;
-  max-width: 100%;
+  width: 100% !important;
   height: fit-content !important;
   min-height: 100%;
   overflow-x: hidden;
@@ -166,6 +166,21 @@ button {
   position: relative;
   margin: 0 0.5rem;
 }
+.nav-item:hover{
+  font-weight: bold;
+  color: var(--transparent-color);
+}
+#link_out span{
+  text-decoration: none;
+  color: #969494;
+}
+#link_out span i{
+  color: var(--transparent-color);
+}
+#link_out span:hover{
+  font-weight: bold;
+  color: var(--transparent-color);
+}
 .icon-header {
   font-size: 1.2em;
   color: var(--transparent-color);
@@ -240,12 +255,13 @@ button {
 }
 .notif {
   flex-direction: column;
-  width: calc(100% + -25em);
-  /* padding: 1em; */
+  width: calc(100% + -27em);
   position: absolute;
   left: 50%;
   border-radius: 6px;
-  height: fit-content;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 117px;
 }
 .notif .new_appoint a {
   padding-left: 1em ;
@@ -270,6 +286,12 @@ button {
 }
 .see_all a:hover {
   color: var(--transparent-color);
+}
+@media (max-width:1000px) {
+  .notif {
+    width: calc(100% + 7em);
+    left: -10%;
+  }
 }
 /* End Header */
 

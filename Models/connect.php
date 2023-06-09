@@ -58,11 +58,13 @@ class connect
             return;
         } else {
             $sql = "CREATE TABLE doctor(
-                CIN VARCHAR(10) PRIMARY KEY NOT NULL,
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                CIN VARCHAR(15)  NOT NULL UNIQUE ,
                 Nom VARCHAR(20) ,
                 Prenom VARCHAR(20) ,
                 Gmail VARCHAR(30) ,
                 tel VARCHAR(25) ,
+                image MEDIUMBLOB,
                 id_service int ,
                 FOREIGN KEY (id_service ) REFERENCES services(ID )
             )";
@@ -115,13 +117,13 @@ class connect
                 CIN varchar(15) NOT NULL,
                 First_Name VARCHAR(15) ,
                 Last_Name VARCHAR(15) ,
-                Date_Of_birth VARCHAR(20) ,
+                Date_Of_birth date ,
                 tel VARCHAR(30) ,
                 address VARCHAR(50) ,
                 taille VARCHAR(10) ,
                 poids VARCHAR(10) ,
-                date_rendez VARCHAR(10) ,
-                heure_rendez VARCHAR(10) ,
+                date_rendez date ,
+                heure_rendez time ,
                 service_id INT,
                 service VARCHAR(255) ,
                 ordonnance MEDIUMBLOB , 
@@ -144,14 +146,15 @@ class connect
                 CIN VARCHAR(15) NOT NULL UNIQUE ,
                 First_Name VARCHAR(15) ,
                 Last_Name VARCHAR(15) ,
-                Date_Of_birth VARCHAR(20) ,
+                Date_Of_birth date ,
                 tel VARCHAR(30) ,
                 address VARCHAR(50) ,
-                date_rendez VARCHAR(10) ,
-                Heure_rendez VARCHAR(10) ,
+                date_rendez date ,
+                Heure_rendez time ,
                 service_id INT,
                 service VARCHAR(255) ,
-                state   ENUM('0', '1') DEFAULT '0',
+                state   ENUM('0', '1') ,
+                show ENUM('0','1'),
                 id_user INT,
                 FOREIGN KEY (id_user) REFERENCES users(id),
                 FOREIGN KEY (service_id) REFERENCES services(ID)
@@ -228,17 +231,23 @@ class connect
         return $requete->fetchAll() ;
     }
 
-    function selectDoctor($id_services) {
+    function selectDoctor($id_service) {
         $requete = $this->connect->prepare('select Nom , Prenom  from doctor where id_service = ? ') ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
-        $requete->execute(array($id_services)) ;
+        $requete->execute(array($id_service)) ;
         return $requete->fetch() ;
     }
 
-    function selectId($nom_service) {
+    function selectIdService($nom_service) {
         $requete = $this->connect->prepare('select ID  from services where Nom_du_service  = ? ') ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute(array($nom_service)) ;
+        return $requete->fetch() ;
+    }
+    function selectService($id) {
+        $requete = $this->connect->prepare('select Nom_du_service  from services where ID  = ? ') ;
+        $requete->setFetchMode(PDO::FETCH_ASSOC);
+        $requete->execute(array($id)) ;
         return $requete->fetch() ;
     }
 
@@ -261,7 +270,7 @@ class connect
     }
     
     function appoint_info($code) {
-        $requete = $this->connect->prepare('select date_rendez , service  from historique where CIN = ? ORDER BY date_rendez ASC, Heure_rendez ASC') ;
+        $requete = $this->connect->prepare('select date_rendez , service_id,service  from historique where CIN = ? ORDER BY date_rendez ASC, Heure_rendez ASC') ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute(array($code)) ;
         return $requete->fetchAll() ;
@@ -274,18 +283,22 @@ class connect
         return $requete->fetch() ;
     }
     function insertRendezVous($CIN,$Last_Name, $First_Name , $Date_Of_birth , $tel, $address, $date_rendez,$Heure_rendez,$id_service,$services,$id_user) {
+        try {
             $requete1 = $this->connect->prepare("select CIN from rendez_vous where id_user = ? ") ;
             $requete1->execute(array($id_user)) ;
             $stmt = $requete1->fetchAll(PDO::FETCH_ASSOC);
             foreach($stmt as $cin){
                 if ($cin['CIN'] == $CIN ){
-                    return false ;
+                    return 0 ;
                     break ;
                 }
             }
             $requete = $this->connect->prepare("insert into rendez_vous(CIN,First_Name,Last_Name ,Date_Of_birth , tel,address, date_rendez,Heure_rendez,service_id,service,id_user) values(?,?,?,?,?,?,?,?,?,?,?)") ;
             $requete->execute(array($CIN,$Last_Name, $First_Name , $Date_Of_birth , $tel , $address , $date_rendez , $Heure_rendez,$id_service, $services ,$id_user)) ;
-            return true ;
+            return 1 ;
+        }catch(Exception $e){
+            return $e->getMessage();
+        }     
     }
 
     function insert_into_history($id) {
@@ -323,10 +336,23 @@ class connect
                     img MEDIUMBLOB,
                     adresse VARCHAR(100),
                     date_naissance DATE,
+                    sexe ENUM('1','2'),
                     role ENUM('0', '1', '2')
              )";
              $stmt=$this->connect->prepare($sql);
              $stmt->execute();
+        }
+    }
+    function reAutoIncrement($table)
+    {
+        $check_empty = "SELECT COUNT(*) FROM $table";
+        $stmt = $this->connect->query($check_empty);
+        $count = $stmt->fetchColumn();
+
+        // return the id to 0 if table is empty
+        if ($count == 0) {
+            $alter_query = "ALTER TABLE ".$table." AUTO_INCREMENT = 1";
+            $this->connect->exec($alter_query);
         }
     }
     function close_connection()
@@ -334,3 +360,6 @@ class connect
         $this->connect = null;
     }
 }
+
+    
+

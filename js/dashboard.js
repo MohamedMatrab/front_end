@@ -142,6 +142,12 @@ document.addEventListener("click", function (e) {
   }
 });
 
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("more_details").submit();
+  }
+});
 
 
 let btn_valider = document.querySelectorAll(".valider") ;
@@ -210,9 +216,6 @@ function fetchReservations() {
     dataType: "json",
     success: function (response) {
       let nbr = response.nbr ;
-      if ( window.location.href == "http://localhost/front_end/dashboard.php?action=all_reservations") {
-        clearInterval(intervalID);
-      }
       if ( window.location.href !== "http://localhost/front_end/dashboard.php?action=all_reservations") {
         if (nbr['appoint'] > 0){
           let count = document.querySelector(".count");
@@ -223,62 +226,79 @@ function fetchReservations() {
           nbr_appoint.innerHTML = nbr['appoint'] ;
           nbr_appoint.className = "count";
           notification.parentElement.insertAdjacentElement("afterbegin",nbr_appoint);
-        }else{
-          clearInterval(intervalID);
         }
         notification.parentElement.addEventListener('click', (e) => {
-        clearInterval(intervalID);
-        let nbr_appoint = document.querySelector(".count");
-        if(nbr_appoint) {
-          nbr_appoint.remove() ;
-        }
-        let notifications = notification.parentElement.nextElementSibling;
-        
-        if (notification.parentElement.nextElementSibling.style.display === "flex") {
-            let content = document.querySelector(".notification_content");
-            if (content) {
-              document.querySelector(".notification_content").remove();
-            }
-            let notification_content = document.createElement("div");
-            notification_content.className = "notification_content" ;
-            notifications.appendChild(notification_content);
-            nbr['patients'].forEach( (e,index) => {
-            if (index < 3 ){
-              let new_appoint = document.createElement("div");
-              new_appoint.className = "new_appoint" ;
-              let a= document.createElement("a");
-              a.href = "dashboard.php?action=all_reservations" ;
-              a.innerHTML = "un nouveau rendez vous le "+ e['date_rendez'] +" \ " + e['Heure_rendez'] +"......";
-              new_appoint.appendChild(a);
-              notification_content.appendChild(new_appoint);
-            }
-            
-          });
-          if (nbr['patients'].length > 0){
-            let see_all = document.createElement("div");
-            see_all.className = "see_all pb-2 pt-2";
-            let a_all = document.createElement("a");
-            a_all.href = "dashboard.php?action=all_reservations" ;
-            a_all.innerHTML = "See all ..." ;
-            see_all.appendChild(a_all);
-            notification_content.appendChild(see_all);
-          }else {
-            let nodata = document.createElement("div");
-            nodata.className = "see_all pb-2 pt-2";
-            nodata.innerHTML = "No appointment till now ";
-            notification_content.appendChild(nodata);
+          let nbr_appoint = document.querySelector(".count");
+          if(nbr_appoint) {
+            nbr_appoint.remove() ;
           }
-          
-        }
-        
-        
-        // notification.parentElement.insertAdjacentElement("beforeend",new_appoint);
-      })
-      }
-      console.log(1);
+          $.ajax({
+            type: "POST",
+            url: "Models/show_0.php",
+            dataType: "json",
+            success: function (response) {
+              console.log(response.resp['mission']);
+              let notifications = notification.parentElement.nextElementSibling;
+              if (notification.parentElement.nextElementSibling.style.display === "flex") {
+                let notification_content ;
+                if (document.querySelector(".notification_content")){
+                  document.querySelector(".notification_content").remove();
+                }
+                notification_content = document.createElement("div");
+                notification_content.className = "notification_content" ;
+                notifications.appendChild(notification_content);
+                nbr['patients'].forEach( (e,index) => {
+                  if (index < 3 ){
+                    let new_appoint = document.createElement("div");
+                    new_appoint.className = "new_appoint" ;
+                    let a= document.createElement("a");
+                    a.href = "dashboard.php?action=all_reservations" ;
+                    a.innerHTML = "un nouveau rendez vous le "+ e['date_rendez'] +" \ " + e['Heure_rendez'] +"......";
+                    new_appoint.appendChild(a);
+                    notification_content.appendChild(new_appoint);
+                  }
+                });
+                if (nbr['patients'].length > 0){
+                  if (!document.querySelector(".see_all")){
+                    let see_all = document.createElement("div");
+                    see_all.className = "see_all pb-2 pt-2";
+                    let a_all = document.createElement("a");
+                    a_all.href = "dashboard.php?action=all_reservations" ;
+                    a_all.innerHTML = "See all ..." ;
+                    see_all.appendChild(a_all);
+                    notification_content.appendChild(see_all);
+                  }
+                  document.querySelector(".see_all").addEventListener('click',()=>{
+                    $.ajax({
+                      type: "POST",
+                      url: "Models/show_1.php",
+                      dataType: "json",
+                      success: function (response) {
+                        let notif_content = document.querySelector(".notification_content");
+                        notif_content.remove();                   
+                      }
+                    })
+                  })
+                }else{
+                  let nodata = document.createElement("div");
+                  nodata.innerHTML = "pas de nouveaux rendez-vous";
+                  nodata.style.textAlign = "center";
+                  notification_content.appendChild(nodata);
+                }
+                
+              }
+            }
+          })
+        })
+      } 
     },
     error : function(xhrs,error,state) {
       console.log(state);
     }
-  });
+  })
 }
+
+
+{/* <div class="see_all pb-2 pt-2"><a href="dashboard.php?action=all_reservations">See all ...</a></div> */}
+
+

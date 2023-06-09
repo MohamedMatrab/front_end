@@ -10,8 +10,8 @@ function Show_Data($table) {
             ob_start();
             foreach ( $All as $index => $patient ) {
                 //start
-                $id_service = $obj->selectId($patient->service);
-                $doctor = $obj->selectDoctor($id_service->service_id) ;
+                // $id_service = $obj->selectId($patient->service);
+                // $doctor = $obj->selectDoctor($patient->service_id ) ;
                 if ( $index == 0 || ($index !=0 && array_search($patient->CIN, array_column($All, 'CIN')) ) ) { 
                     ?>
                         <tr>
@@ -35,8 +35,8 @@ function Show_Data($table) {
             $compteur = 0 ;
             if ( count($All) > 0 ) {
                 foreach ( $All as $patient ) {
-                    $id_service = $obj->selectId($patient->service);
-                    $doctor = $obj->selectDoctor($id_service->service_id ) ;
+                    // $id_service = $obj->selectIdService($patient->service);
+                    $doctor = $obj->selectDoctor($patient->service_id ) ;
                     $compteur +=1 ;
                 ?>
                     <div class="patient">

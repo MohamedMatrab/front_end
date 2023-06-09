@@ -10,7 +10,7 @@ $(document).ready(function () {
         success: function (response) {
             let state = response['pass'] ;
             console.log(state['state']);
-            if (state['state']) {
+            if (state['state'] == 1) {
                 localStorage.setItem('succes', "Notre equipe prendra contact avec vous prochainement");
                 window.location.href = "index.php?action=RDV" ;
             }
@@ -25,6 +25,45 @@ $(document).ready(function () {
     });
     }
     
+    let identifiant = 0 ;
+    function handleError(error){
+        identifiant = 1 ;
+        let appointment = document.querySelector("#appointment");
+        let alertWarning = document.querySelector(".alert-danger") ;
+        if (alertWarning) {
+            alertWarning.remove();
+        }
+        let div = `<div class="alert alert-danger" role="alert">
+        `+error+`
+        </div>` ;
+        appointment.insertAdjacentHTML("beforebegin",div);
+        window.scroll(appointment.offsetTop , 0) ;
+        
+    }
+    function verifyCin(cin) {
+        if (cin.length != 0) {
+            let regex = /^[A-Z]{1,2}\d{6}$/;
+            if (regex.test(cin)) {
+            
+            }  
+            else {
+                handleError("CIN est invalide");
+            }
+        }
+    
+    }
+    function verifyPhone(phone_number) {
+        if (phone_number.length != 0) {
+            let regex = /^(\(\+\d{3}\)|0)\d{9}$/;
+            if (regex.test(phone_number)) {
+            
+            }  
+            else {
+                handleError("le numéro de téléphone est invalide");
+            }
+        }
+    } 
+    
     $('button[name="valider"]').click(function() {
         var data = {
             firstName: $('#inputFirstName').val(),
@@ -38,7 +77,7 @@ $(document).ready(function () {
             date: $('#datepicker').val(),
             heure: $('#form-select-hour').val()
         };
-        var identifiant = 0 ;
+        
         for (var d in data) {
             if (data[d].length === 0 ) {
                 let appointment = document.querySelector("#appointment");
@@ -54,7 +93,11 @@ $(document).ready(function () {
                 identifiant = 1 ;
                 break ;
             }
-        } 
+        }
+
+
+        verifyCin(data['cin']);
+        verifyPhone(data['tel']) ;
         if (identifiant === 0 ) {
             $(this).trigger('reset');
             submitData(data) ;

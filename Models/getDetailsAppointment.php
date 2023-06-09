@@ -11,7 +11,8 @@ require_once 'connect.php';
         foreach ($appoint as $p) {
             array_push($appointment , [ 
                         'date_rendez' => $p->date_rendez,
-                        'service' => $p->service 
+                        'service_id' => $p->service_id ,
+                        'service' =>  $p->service
                     ]) ;
         };
         echo json_encode(['appointment' => $appointment]);

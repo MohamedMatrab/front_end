@@ -28,6 +28,18 @@ body {
   --padding-top: 100px;
   --padding-bottom: 100px;
 }
+
+/* mohamed_part */
+/* Big Container start */
+
+.app_container_{
+  height: fit-content;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* Big Container End */
 .main-heading {
   width: fit-content;
   margin: 0px auto 80px;
@@ -126,6 +138,21 @@ a {
   text-align: center;
   z-index: 2;
 }
+/* mohamed_part */
+.profile-img {
+  width: 3rem !important;
+  height: 3rem !important;
+  border-radius: 50% !important;
+  object-fit: cover;
+  justify-self: center;
+  align-self: center;
+  padding: 0.2rem;
+  margin: 0;
+}
+.header_profile {
+  margin: 0 0.3rem;
+  cursor: pointer;
+}
 /* End Main Hedaer Of Each Page */
 /* Start Header */
 header {
@@ -177,6 +204,7 @@ header {
   padding: 2px 5px !important;
   margin-right: 2px !important;
   font-size: 16px !important;
+  border-radius: 7px !important;
 }
 .logo a,
 .logo-toggler a {
@@ -196,7 +224,6 @@ header {
 }
 .nav-link:not([data-lg="logo"]):hover {
   background-color: var(--transparent-color) !important;
-  border-radius: 7px !important;
   color: white !important;
 }
 .nav-link[data-lg="logo"]:hover {
@@ -289,15 +316,14 @@ nav .container {
 }
 @media (max-width: 992px) {
   .nav-item {
-    width: 100% !important;
+    width: 98% !important;
   }
   .nav-link:hover {
     display: block;
     width: inherit;
     position: relative;
-    left: -10;
+    left: -10px;
     left: 8px;
-    border-radius: 0 !important;
   }
 }
 
@@ -452,6 +478,8 @@ nav .container {
   height: 1px;
   background-color: #ddd;
   bottom: -40px;
+  /* mohamed_part */
+  left: 0;
 }
 .br-top {
   border-top: 1px solid #ddd;
@@ -534,6 +562,7 @@ span {
   opacity: 1;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   width: 30em;
+  max-width: 90%;
   height: 20em;
   display: flex;
   align-items: center;

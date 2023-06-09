@@ -1,0 +1,64 @@
+.form-container {
+    width: 50vw;
+    margin-left: 13vw;
+    padding-bottom: 100px;
+}
+.services{
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    background-color: white;
+    padding: 1em;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    width: 20vw;
+}
+.services h6{
+    color: rgb(15 116 143 / 70%);
+}
+.container-services {
+    display: flex;
+    flex-direction: column;
+}
+.container-services .service {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+#doctor {
+    margin-top: 2rem;
+    padding-bottom: 100px;
+}
+.doctors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 40px;
+    margin-bottom: 2rem;
+}
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.image {
+    margin-bottom: 0.8em;
+}
+.image img {
+    width: 200px;
+    height: 212px;
+}
+.email a,
+.phone a{
+    color: rgb(15 116 143 / 70%);
+}
+.phone {
+    margin-bottom: 0.8em;
+}
+.btn {
+    float: right;
+}
+#doctor .editer:hover {
+    transform: scale(1.05);
+}

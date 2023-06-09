@@ -1,7 +1,9 @@
 <?php
 include_once "Models/verify_permissions.php";
 if (!isset($_SESSION['USER']) || $_SESSION['USER']['role'] == 0) {
-  $_SESSION['message'] = "Access denied !";
+  if (!isset($_SESSION['message'])) {
+    $_SESSION['message'] = "Accès refusé !";
+  }
   header("Location: dashboard.php?action=login");
   exit(0);
 }
@@ -80,10 +82,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
             </li>
             <div class="drop-down-content notif"><h6 class="ps-2 pt-2">Notifications</h6></div>
             <li class="nav-item me-3" id="logout">
-              <span class="icon-header me-1">
-                <i class="bi bi-box-arrow-right"></i>
-              </span>
-              <span class="bar_name">Log Out</span>
+              <a href="Models/logout.php?logout=1" id="link_out">
+                <span class="icon-header me-1">
+                  <i class="bi bi-box-arrow-right"></i>
+                </span>
+                <span class="bar_name">Log Out</span>
+              </a>
             </li>
           </ul>
         </div>

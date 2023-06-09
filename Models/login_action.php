@@ -1,19 +1,20 @@
 <?php
 session_start();
 require_once 'connect.php';
+include_once 'validation_functions.php';
 $obj = new connect();
-$link = "../index.php";
-if (isset($_POST['login'])) {
+$link = "../index.php?action=login";
+if (isset($_POST['login']) && isset($_POST['email']) && isset($_POST['password'])) {
 
-    $email = $_POST['email'];
+    $email = validateEmail($_POST['email']);
     $password = $_POST['password'];
 
     $login_query = $obj->getConnect()->prepare("SELECT * FROM users WHERE email=:email LIMIT 1");
     $login_query->bindValue(':email', $email);
     $success = $login_query->execute();
     if (!$success) {
-        $_SESSION['message'] = "Problem when getting User's Data !";
-        header("Location: $link?action=login");
+        $_SESSION['message'] = "Problème lors de l'obtention des données de l'utilisateur !";
+        header("Location: $link");
         exit(0);
     }
     $row = $login_query->fetch(PDO::FETCH_ASSOC);
@@ -24,16 +25,16 @@ if (isset($_POST['login'])) {
 
         $_SESSION['USER']['id'] = $row['id'];
         $_SESSION['USER']['role'] = $row['role'];
-        $_SESSION['message'] = "Connected Successfully !";
-        header("location: $link");
+        $_SESSION['message'] = "Connecté avec succès !";
+        header("location: ../index.php");
         exit(0);
     } else {
-        $_SESSION['message'] = "Invalid Email or Password !";
-        header("location: $link?action=login");
+        $_SESSION['message'] = "Email ou mot de passe invalide !";
+        header("location: $link");
         exit(0);
     }
 } else {
-    $_SESSION['message'] = "Not allowed to acces this page!";
-    header("location: $link");
+    $_SESSION['message'] = "Vous ne pouvez pas accéder à cette page !";
+    header("location: ../index.php");
     exit(0);
 }

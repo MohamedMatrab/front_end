@@ -3,11 +3,10 @@ header("Content-Type: application/json");
 require_once 'connect.php';
 
 
-    if (isset($_POST['service'])) {
+    if (isset($_POST['service_id'])) {
         // SELECT SERVICE 
         $obj = new connect();
-        $id_service = $obj->selectId($_POST['service']);
-        $doctor = $obj->selectDoctor($id_service->service_id);
+        $doctor = $obj->selectDoctor($_POST['service_id']) ;
         $doctor = [
             'Nom' => $doctor->Nom  ,
             'Prenom' => $doctor->Prenom
@@ -16,7 +15,7 @@ require_once 'connect.php';
         echo json_encode(['doctor' => $doctor]);
         
     }else{
-        echo json_encode(['data' => ['<h1 style="margin:auto;margin-top:3rem;">There are No Pictures To show ! </h1>']]);
+        echo json_encode(['doctor' => ['<h1 style="margin:auto;margin-top:3rem;">pas de membre </h1>']]);
     }
 
 

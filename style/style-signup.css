@@ -11,27 +11,18 @@ html {
   max-width: 100%;
 }
 body {
-  height: 100%;
+  height: fit-content;
   overflow-x: hidden;
-  max-width: 100%;
-  background: #f3f3f3;
-  /* background: url("../images/bsckground.jpg");
-  background-repeat: no-repeat;
+  min-height: 100%;
+  background-image: url('../images/centre.jpg');
   background-size: cover;
-  position: relative; */
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: brightness(0.9) blur(9px);
 }
-/* body::before {
-  content: "";
-  display: block;
-  position: absolute;
-  top: -2rem;
-  left: 0;
-  width: 100%;
-  height: 120%;
-  opacity: 70%;
-  background-color: #f3f3f3;
-  z-index: -1;
-} */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -69,11 +60,11 @@ p {
   margin-bottom: 2rem;
   margin-top: 1rem;
 }
-
 .container {
   width: 25rem;
   height: fit-content;
   padding: 2rem 0;
+  margin: 1rem 0;
   background: white;
   display: flex;
   flex-direction: column;
@@ -83,13 +74,19 @@ p {
   box-shadow: 0 0 6px #dedede;
   margin: 1.5rem auto;
 }
-.form-login {
-  width: 90%;
+.form-signup {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.form-login .form-group {
+.form-signup div {
+  margin-bottom: 0 !important;
+}
+.form-signup div:first-child {
+  margin-bottom: 1.3rem !important;
+}
+.form-signup .form-group {
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -103,16 +100,17 @@ p {
   flex-direction: row;
   justify-content: space-between;
 }
-.form-check-input{
-  margin-right:0.5rem;
+.form-check-input {
+  margin-right: 0.5rem;
 }
 .mb-3 {
   width: 85%;
 }
-.form-login button {
-  width: 20rem;
+.form-signup button {
+  width: 85%;
   height: 2.6rem;
-  margin: 0.3rem auto;
+  margin: 0.5rem auto;
+  margin-top: 1rem;
   font-weight: normal;
   display: flex;
   justify-content: center;
@@ -121,14 +119,19 @@ p {
 }
 
 #password_strength,
-#password_similar {
-  margin-left: 0.3rem;
-  display: none;
-  font-size: 0.8rem;
+#password_similar,
+#phone_validate,
+#email_validate {
+  margin-right: 0.4rem;
+  display: block !important;
+  font-size: 0.7rem;
+  height: 1.3rem;
+  margin: 0 !important;
 }
 .agreement {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1rem !important;
 }
 .signin {
   margin-top: 2rem;
@@ -143,14 +146,22 @@ p {
   top: -1rem;
   left: 0;
 }
-
+#dentall {
+  cursor: pointer;
+}
+a {
+  text-decoration: underline !important;
+}
 @media (max-width: 450px) {
   body {
+    justify-content: start;
     background: white;
+    background-image: none;
   }
   .container {
     box-shadow: none;
     width: 100%;
+    margin: 0;
     height: fit-content;
   }
   .titling {

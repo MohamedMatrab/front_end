@@ -11,6 +11,15 @@ if (isset($_GET['action'])) {
         case 'portfolio':
             dash_portfolio();
             break;
+        case 'doctor':
+            dash_doctor();
+            break;
+        case 'add_doctor':
+            add_doctor();
+            break ;
+        case 'edit_doctor':
+            edit_doctor($_GET['id']) ;
+            break ;
         case 'centre':
             dash_centre();
             break;
@@ -39,7 +48,6 @@ if (isset($_GET['action'])) {
         case 'ulpoad_details' : 
             upload_details($_GET['ID']) ;
             break ;
-        break ;
         case 'more_details' :
             insert_more_details($_POST['poids'],$_POST['taille'],$_GET['ID']) ;
             break ;

@@ -1,4 +1,4 @@
-// Récupérer toutes les entrées du formulaire
+// RÃ©cupÃ©rer toutes les entrÃ©es du formulaire
 const Inputs = document.querySelectorAll("#formulaire input");
 const InputsHours = document.getElementById("form-select-hour");
 document.addEventListener("keydown", function (event) {
@@ -36,38 +36,62 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-Inputs.forEach((el) => {
-  el.addEventListener("focus", (e) => {
-    e.target.placeholder = " ";
-    if (e.target.parentElement.childElementCount === 2) {
-      let alert = document.querySelector("#appointment .row .col-8 span");
-      if (alert){
-        alert.remove();
-      }      
-    }
-  });
 
-
-  el.addEventListener("blur", () => {
-    if (
-      !(
-        el.classList.contains("datepicker") ||
-        el.classList.contains("timepicker") ||
-        el.classList.contains("form-select")
-      )
-    ) {
-      if (el.value.length === 0 || el.value.length === null) {
-        let error = document.createElement("span");
-        let i = document.createElement("i");
-        i.className = "bi bi-exclamation-circle";
-        let text = document.createTextNode(" veuillez remplir ce champ");
-        error.appendChild(i);
-        error.appendChild(text);
-        error.style.fontSize = "12px";
-        el.parentElement.appendChild(error);
-      }
+function removeErrorPhone(){
+  if(phone_number.nextElementSibling){
+    phone_number.nextElementSibling.remove();
+  }
+}
+function removeErrorCin(){
+  if(cin.nextElementSibling){
+    cin.nextElementSibling.remove();
+  }
+}
+function verifyPhone() {
+  removeErrorPhone();
+  if (phone_number.value.length != 0) {
+    var messageErreur = document.createElement('div');
+    messageErreur.textContent = "" ;
+    let regex = /^(\(\+\d{3}\)|0)\d{9}$/;
+    if (regex.test(phone_number.value)) {
       
-      el.placeholder = el.getAttribute("data");
+    }  
+    else {
+      messageErreur.textContent = "numéro de téléphone est invalde " ;
+      messageErreur.style.color = "red" ;
+      phone_number.parentElement.appendChild(messageErreur);
+      phone_number.addEventListener("input",()=>{
+        removeErrorPhone();
+      })
     }
-  });
-});
+  }
+
+}
+function verifyCin() {
+  removeErrorCin();
+  if (cin.value.length != 0) {
+    var messageErreur = document.createElement('div');
+    messageErreur.textContent = "" ;
+    let regex = /^[A-Z]{1,2}\d{6}$/;
+    if (regex.test(cin.value)) {
+      
+    }  
+    else {
+      messageErreur.textContent = "CIN est invalde " ;
+      messageErreur.style.color = "red" ;
+      cin.parentElement.appendChild(messageErreur);
+      cin.addEventListener("input",()=>{
+        removeErrorCin();
+      })
+    }
+  }
+
+}
+let phone_number = document.querySelector("#inputNumber") ;
+let cin = document.querySelector("#inputCin");
+if (cin){
+  cin.addEventListener("blur",verifyCin);
+}
+if (phone_number){
+  phone_number.addEventListener("blur",verifyPhone) ;
+}

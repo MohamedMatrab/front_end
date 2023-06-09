@@ -9,13 +9,13 @@ if (isset($_POST['image_id'])) {
         $stmt = $obj->getConnect()->prepare('DELETE FROM portfolio WHERE id=' . $id);
         $success = $stmt->execute();
     } catch (PDOException $e) {
-        echo "ther is an error " . $e->getMessage();
+        echo "Erreur Survenue :" . $e->getMessage();
     }
     if ($success) {
         echo json_encode(['success' => true]);
-        $_SESSION['message']="Deleted Successfully !";
+        $_SESSION['message'] = "Supprimé avec succès !";
     } else {
         echo json_encode(['success' => false]);
-        $_SESSION['message']="Error When deleting image !";
+        $_SESSION['message'] = "Erreur lors de la suppression de l'image !";
     }
 }
