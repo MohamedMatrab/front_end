@@ -11,6 +11,7 @@ if (!isset($_GET['id'])) {
 }
 ?>
 <?php
+$link = "dashboard.php?action=edit_image";
 include_once "view_functions.php";
 $id = $_GET['id'];
 $element = getElement($id, $obj);
@@ -47,7 +48,7 @@ $element = getElement($id, $obj);
                     <label for="service_id">Changer le service<span>*</span> :</label>
                 </div>
                 <div class="col-8">
-                    <select name="service_id" class="form-select form-control" id="service_id" required>
+                    <select name="service_id" class="form-select form-control" id="select-services" required>
                         <?php
                         print_available_options($obj);
                         ?>

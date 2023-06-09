@@ -1,3 +1,6 @@
+<?php
+include_once "Models/verify_permissions.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
 </head>
-<?php include_once 'Models/verify_permissions.php'?>
+
 <body>
     <div class="app_container_">
         <nav class="navbar navbar-expand-lg fixed-top navbar-light">
@@ -94,7 +97,7 @@
                                     if ($_SESSION['USER']['role'] == 0) {
                                     ?>
                                         <li><a class="dropdown-item" href="index.php?action=account">Mon Compte</a></li>
-                                        <li><a class="dropdown-item" href="index.php?action=">Gérer mes réservations</a></li>
+                                        <li><a class="dropdown-item" href="index.php?action=reservations">Gérer mes réservations</a></li>
                                     <?php
                                     } else {
                                     ?>
@@ -120,6 +123,7 @@
         <script src="js/validation.js"></script>
     </div>
 </body>
+
 <?php include_once 'views/floating_message.php' ?>
 
 </html>

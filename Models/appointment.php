@@ -7,7 +7,7 @@ include_once 'validation_functions.php';
             $data = json_decode($_POST['data']);
             $obj = new connect(); 
             $id_service = $obj->selectIdService($data->service);
-            $response = $obj->insertRendezVous(validateCin($data->cin),
+            $response = $obj->insertRendezVous(validateCinAppoint($data->cin),
                                                 validate($data->firstName),
                                                 validate($data->lastName),
                                                 $data->dateBirth, 

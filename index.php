@@ -26,6 +26,8 @@ if (isset($_GET['action'])) {
 
       case 'account':accountPatientAction();break;
       case 'reservations':reservationsPatientAction();break;
+      case 'request':requestPageAction();break;
+
    }
 }else {
       indexAction();

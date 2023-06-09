@@ -121,9 +121,16 @@ include_once "Models/connect.php";
                                 <p class="text"><a href="<?=$centre['instagram']?>"><?=$centre['instagram']?></a></p>
                             </div>
                             <?php endif; ?>
-                            <div class="editCentre">
-                                <a class="" href="dashboard.php?action=addCentreInfo">Edit Information</a>
-                            </div>
+                            <?php if(count($photo_centre) >  0 || isset($centre['description'])) : ?>
+                                <div class="editCentre">
+                                    <a class="" href="dashboard.php?action=addCentreInfo">Edit Information</a>
+                                </div>
+                            <?php else : ?> 
+                                <div class="editCentre">
+                                    <a class="" href="dashboard.php?action=addCentreInfo">Ajout Information</a>
+                                </div>
+                            <?php endif ;?>
+                            
                         </div>
                     <?php } 
         ?>

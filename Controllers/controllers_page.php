@@ -98,3 +98,9 @@ function reservationsPatientAction()
 {
     require_once 'views/patient_reservations.php';
 }
+
+// Require and include the 'contact.php' view file
+function requestPageAction()
+{
+    require_once 'views/request_page.php';
+}

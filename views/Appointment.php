@@ -9,22 +9,7 @@
     header("Location: index.php?action=login");
     exit(0);
   }
-  // $id_service = $conn->selectIdService('hollywood smile');
-  // echo 'id service '.$id_service->ID ;
-  $response = $conn->insertRendezVous('HH103456',
-                                                'LACHHAB',
-                                                'MERIEM',
-                                                '2002-02-26', 
-                                                '0648256644',
-                                                'BLED EL JED', 
-                                                '2023-06-10', 
-                                                '10:00',
-                                                '1', 
-                                                'hollywood smile' , 
-                                                '1'
-                                            );
-  
-  
+
   $title = "Dentiste:Appointment Page";
   ob_start();
 
@@ -38,7 +23,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 <div class="landing-page">
-  <h2 class="main-header">Rendez-vous <?php echo 'response'. $response ;?></h2>
+  <h2 class="main-header">Rendez-vous</h2>
 </div>
 <?php include_once 'views/p_message.php' ?>
 <div class="container pt-5 pb-5" id="appointment">

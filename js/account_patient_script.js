@@ -24,10 +24,6 @@ function validate() {
   } else {
     valider.disabled = true;
   }
-  console.log(
-    "codt",
-    passwordValid && phoneValid && emailValid && !isInputsEmpty()
-  );
 }
 
 function deleteError(element) {
@@ -153,8 +149,6 @@ function passwordValidation() {
 my_inputs.forEach((el) => {
   el.addEventListener("input", () => {
     verifyInput(el);
-    console.log(el.dataset.state);
-    console.log(isInputsEmpty());
   });
 });
 
