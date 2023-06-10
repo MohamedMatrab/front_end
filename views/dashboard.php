@@ -40,7 +40,7 @@ include_once "Models/get_user_info.php";
         </div>
       </div>
       <div class="header_content">
-        <div class="app-header-left">
+        <!--<div class="app-header-left">
           <ul class="mega-menu nav">
             <li class="nav-item me-3">
               <div class="box">
@@ -65,9 +65,9 @@ include_once "Models/get_user_info.php";
               <span class="bar_name">Projects</span>
               <i class="bi bi-chevron-down ms-1"></i>
             </li>
-            <div class="drop-down-content">Projects</div>
+            <div class="drop-down-content">Projects</div> 
           </ul>
-        </div>
+        </div> -->
         <div class="app-header-right">
           <ul class="right nav">
             <li class="drop-down nav-item me-3">
@@ -86,13 +86,13 @@ include_once "Models/get_user_info.php";
             </li>
           </ul>
         </div>
-      </div>
+      </div> 
     </div>
     <!-- End Header -->
     <!-- Start Sidebar -->
     <div class="navigation">
       <div class="profile">
-        <img src="<?= is_null($user['img']) ? "images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" class="profile-img" />
+        <img src="<?= is_null($user['img']) ? "images_profil/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" class="profile-img" />
         <div class="admin-data">
           <span style="font-weight: 600"><?= $user['fname'] . " " . $user['lname'] ?></span>
           <span><?= $user['role'] == 1 ? 'Docteur' : 'Secrétaire '; ?></span>

@@ -19,17 +19,13 @@ include_once "Models/connect.php";
 <div id="centre-page">
     <div class="container mt-5">
         <div class="images mb-3">
-            <h6>Centre/pictures</h6>
             <?php 
                 $sql2 = "SELECT * FROM photos_centre" ;
                 $stmt2 = $conn->getConnect()->prepare($sql2);
                 $stmt2->execute();
                 $photo_centre = $stmt2->fetchAll(PDO::FETCH_ASSOC);
-                if (!$photo_centre) {  ?>
-                    <div class="text">No photo Found</div>
-                <?php }
-                else {
-                    ?>
+                if ($photo_centre) {  ?>
+                    <h6>Centre/pictures</h6>
                     <div class="image_centre">
                     <?php
                     foreach( $photo_centre as $photo) { 
@@ -43,7 +39,7 @@ include_once "Models/connect.php";
                         </div>
                 <?php
                     }
-                    ?>
+                ?>
                         <div class="img" style="background-color: #81808075 ; display: flex;
     align-items: center;
     justify-content: center;">
@@ -61,36 +57,27 @@ include_once "Models/connect.php";
             $stmt = $conn->getConnect()->prepare($sql);
             $stmt->execute();
             $centre = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (!$centre) {
-?>
-                <div class="description mb-3">
-                    <h6>Centre/description</h6>
-                    <p class="text">No Data available</p>
-                </div>
-                <div class="motivation mb-3">
-                    <h6>Centre/motivation</h6>
-                    <p class="text">No Data available</p>
-                </div>
-                <div class="add">
-                    <a class="Add_centre" href="dashboard.php?action=addCentreInfo">Add information</a>
-                </div>
-        <?php
-        }else { 
-            ?>
+            if ($centre) {?>
+                        <?php if($centre['description']!= " "):?>
                         <div class="description">
                             <h6>Centre/description</h6>
                             <p class="text"><?=$centre['description']?></p>
                         </div>
+                        <?php endif ; ?>
+                        <?php if($centre['motivation'] != " "):?>
                         <div class="motivation">
                             <h6>Centre/motivation</h6>
                             <p class="text"><?=$centre['motivation']?></p>
                         </div>
+                        <?php endif ; ?>
                         <div class="contact_centre">
                             <h6>Centre/contact</h6>
+                            <?php if($centre['localisation']!= " " &&  $centre['address']!= " "):?>
                             <div class="local">
                                 <p>adresse du cabinet :</p>
                                 <p class="text"><a href="<?=$centre['localisation']?>"><?=$centre['address']?></a></p>
                             </div>
+                            <?php endif ; ?>
                             <div class="num1">
                                 <p>numéro de téléphone :</p>
                                 <p class="text"><a href="tel:+<?=$centre['numero_1']?>"><?=$centre['numero_1']?></a></p>
@@ -103,38 +90,42 @@ include_once "Models/connect.php";
                                 <p>adresse e-mail  :</p>
                                 <p class="text"><a href="<?=$centre['email']?>"><?=$centre['email']?></a></p>
                             </div>
-                            <?php if(isset($centre['facebook'])) :?>
+                            <?php if($centre['facebook']!= " ") :?>
                             <div class="facebook">
                                 <p>lien Facebook  :</p>
                                 <p class="text"><a href="<?=$centre['facebook']?>"><?=$centre['facebook']?></a></p>
                             </div>
                             <?php endif; ?>
-                            <?php if(isset($centre['instagram'])) :?>
+                            <?php if($centre['instagram']!= " ") :?>
                             <div class="instagram">
                                 <p>lien instagram  :</p>
                                 <p class="text"><a href="<?=$centre['instagram']?>"><?=$centre['instagram']?></a></p>
                             </div>
                             <?php endif; ?>
-                            <?php if(isset($centre['twitter'])) :?>
+                            <?php if($centre['twitter']!= " ") :?>
                             <div class="twitter">
                                 <p>lien instagram  :</p>
                                 <p class="text"><a href="<?=$centre['instagram']?>"><?=$centre['instagram']?></a></p>
                             </div>
                             <?php endif; ?>
-                            <?php if(count($photo_centre) >  0 || isset($centre['description'])) : ?>
-                                <div class="editCentre">
-                                    <a class="" href="dashboard.php?action=addCentreInfo">Edit Information</a>
-                                </div>
-                            <?php else : ?> 
-                                <div class="editCentre">
-                                    <a class="" href="dashboard.php?action=addCentreInfo">Ajout Information</a>
-                                </div>
-                            <?php endif ;?>
-                            
+                            <div class="heure">
+                                <p>horaire :</p>
+                                <p class="text"><?=$centre['start']?> <b>à</b> <?=$centre['end']?></a></p>
+                            </div>
+                            <div class="editCentre">
+                                <a class="" href="dashboard.php?action=addCentreInfo">Editer Informations</a>
+                            </div>
                         </div>
                     <?php } 
         ?>
-        
+
+
+        <?php if (!$centre) : ?> 
+        <div class="alert alert-info" style="margin:1rem;text-align:center;" role="alert" >Pas d'information sur le centre !<b>Pour ajouter des informations sur le button ci dessous</b></div>
+        <div class="editCentre">
+            <a class="" href="dashboard.php?action=addCentreInfo">Ajouter informations</a>
+        </div>
+        <?php endif ; ?> 
     </div>
 </div>
 

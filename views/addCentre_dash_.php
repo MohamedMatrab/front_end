@@ -22,31 +22,31 @@ $centre = $stmt->fetch(PDO::FETCH_ASSOC);
     <form action="Models/add_centre.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3 mt-3">
             <label for="description">Description : <span>*</span> :</label>
-            <textarea class="form-control" name="description" id="description" cols="30" rows="6"  ><?php echo (isset($centre['description']) ? $centre['description'] : " " ); ?></textarea>
+            <textarea class="form-control" name="description" id="description" cols="30" rows="6"  required><?php echo (isset($centre['description']) ? $centre['description'] : " " );?></textarea>
         </div>
         <div class="mb-3 ">
             <label for="description">Motivation : <span>*</span></label>
-            <textarea class="form-control" name="motivation" id="description" cols="30" rows="6" ><?php echo (isset($centre['motivation']) ? $centre['motivation'] : " " ); ?></textarea>
+            <textarea class="form-control" name="motivation" id="description" cols="30" rows="6" required ><?php echo (isset($centre['motivation']) ? $centre['motivation'] : " " ); ?></textarea>
         </div>
         <div class="mb-3">
             <label for="localisation">localisation : <span>*</span></label>
-            <input type="text" class="form-control" name="localisation" id="localisation" value="<?php echo (isset($centre['localisation']) ? $centre['localisation'] : " " ); ?>" required >
+            <input type="text" class="form-control" name="localisation" id="localisation" required value="<?php echo (isset($centre['localisation']) ? $centre['localisation'] : " " ); ?>" required >
         </div>
         <div class="mb-3">
             <label for="address">address : <span>*</span></label>
-            <input type="text" class="form-control" name="address" id="address" value="<?php echo (isset($centre['address']) ? $centre['address'] : " " ); ?>" required >
+            <input type="text" class="form-control" name="address" id="address" required value="<?php echo (isset($centre['address']) ? $centre['address'] : " " ); ?>" required >
         </div>
         <div class="mb-3">
             <label for="numéro_1">numéro de téléphone : <span>*</span></label>
-            <input type="text" class="form-control" name="numero_1" id="numero_1"  value="<?php echo (isset($centre['numero_1']) ? $centre['numero_1'] : " " ); ?>" required >
+            <input type="tel" class="form-control" name="numero_1" id="numero_1" required value="<?php echo (isset($centre['numero_1']) ? $centre['numero_1'] : " " ); ?>" required >
         </div>
         <div class="mb-3">
             <label for="numéro_2">numéro de téléphone en cas d'urgence : <span>*</span></label>
-            <input type="text" class="form-control" name="numero_2" id="numero_2" value="<?php echo (isset($centre['numero_2']) ? $centre['numero_2'] : " " ); ?>" required >
+            <input type="tel" class="form-control" name="numero_2" id="numero_2" required value="<?php echo (isset($centre['numero_2']) ? $centre['numero_2'] : " " ); ?>" required >
         </div>
         <div class="mb-3">
             <label for="mail">adresse e-mail : <span>*</span></label>
-            <input type="text" class="form-control" name="mail" id="mail" value="<?php echo (isset($centre['email']) ? $centre['email'] : " " );; ?>" required >
+            <input type="email" class="form-control" name="mail" id="mail" required value="<?php echo (isset($centre['email']) ? $centre['email'] : " " );; ?>" required >
         </div>
         <div class="mb-3">
             <label for="facebook">lien Facebook  : </label>
@@ -59,6 +59,14 @@ $centre = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="mb-3">
             <label for="twitter">lien Twitter  : </label>
             <input type="text" class="form-control" name="twitter" id="twitter" value="<?php echo (isset($centre['twitter']) ? $centre['twitter'] : " " );; ?>" >
+        </div>
+        <div class="mb-3">
+            <label for="start">heure d'ouverture  : <span>*</span></label>
+            <input type="time" class="form-control" name="start" required id="start" value="<?php echo (isset($centre['start']) ? $centre['start'] : " " );; ?>" >
+        </div>
+        <div class="mb-3">
+            <label for="start">heure de fermuture  : <span>*</span></label>
+            <input type="time" class="form-control" name="end" required id="end" value="<?php echo (isset($centre['end']) ? $centre['end'] : " " );; ?>" >
         </div>
         <?php if(!(isset($centre['description']))){  ?> 
             <div class="mb-3">

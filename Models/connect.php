@@ -178,7 +178,9 @@ class connect
                 email varchar(100) ,
                 facebook varchar(100) ,
                 instagram varchar(100) ,
-                twitter varchar(100) 
+                twitter varchar(100) ,
+                start time,
+                end time
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();

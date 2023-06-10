@@ -139,7 +139,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: end;
   flex-wrap: nowrap;
   border-radius: 1rem;
   background: white;
