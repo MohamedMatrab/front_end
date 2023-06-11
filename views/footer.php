@@ -1,3 +1,11 @@
+<?php
+include_once "Models/connect.php";
+$conn = new connect();
+$sql = "SELECT address,localisation,numero_1,email,facebook,instagram,twitter from centre";
+$stmt = $conn->getConnect()->prepare($sql);
+$stmt->execute();
+$coord= $stmt->fetch(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,19 +31,19 @@
           Far far away, behind the word mountains, far from the countries.
         </p>
         <section class="footer-icons">
-          <a href="#">
+          <a href="<?php echo isset($coord['facebook'])? $coord['facebook'] : '#' ;?>">
             <div class="icon-container">
               <i class="fa-brands fa-facebook fafooter"></i>
               <span class="tooltip">Facebook</span>
             </div>
           </a>
-          <a href="#">
+          <a href="<?php echo isset($coord['instagram'])? $coord['instagrem'] : '#' ;?>">
             <div class="icon-container">
               <i class="fa-brands fa-instagram fafooter"></i>
               <span class="tooltip">Instagram</span>
             </div>
           </a>
-          <a href="#">
+          <a href="<?php echo isset($coord['twitter'])? $coord['twitter'] : '#' ;?>">
             <div class="icon-container">
               <i class="fa-brands fa-twitter fafooter "></i>
               <span class="tooltip">Twitter</span>
@@ -111,19 +119,19 @@
         <a href="#">
           <div>
             <i class="fa-solid fa-location-dot"></i>
-            <h3>203 Fake St. Mountain View, San Francisco, California, USA</h3>
+            <h3><?php echo isset($coord['address'])? $coord['address'] : '?' ;?></h3>
           </div>
         </a>
         <a href="#">
           <div>
             <i class="fa-solid fa-phone"></i>
-            <h3>+212500000000</h3>
+            <h3><?php echo isset($coord['numero_1'])? $coord['numero_1'] : '?' ;?></h3>
           </div>
         </a>
         <a href="#">
           <div>
             <i class="fa-solid fa-envelope"></i>
-            <h3>exemple@dentist.com</h3>
+            <h3><?php echo isset($coord['email'])? $coord['email'] : '?' ;?></h3>
           </div>
         </a>
       </div>

@@ -2,6 +2,13 @@
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
+
+include_once "Models/connect.php";
+$conn = new connect();
+$sql = "SELECT address,localisation,numero_1,email from centre";
+$stmt = $conn->getConnect()->prepare($sql);
+$stmt->execute();
+$coord= $stmt->fetch(PDO::FETCH_ASSOC);
 $title = "Dentiste:Appointment Page";
 ob_start();
 ?>
@@ -25,7 +32,7 @@ ob_start();
 
             <div class="text-contact">
               <h4>Location:</h4>
-              <p>Eddahbi,Gueliz marrakech</p>
+              <p><?php echo isset($coord['address'])? $coord['address'] : '?' ;?></p>
             </div>
 
           </div>
@@ -35,7 +42,7 @@ ob_start();
 
             <div class="text-contact">
               <h4>Email:</h4>
-              <p><a href="mailto:esthétique@gmail.com">esthétique@gmail.com</a>
+              <p><a href="mailto:<?php echo isset($coord['email'])? $coord['email'] : '?' ;?>"><?php echo isset($coord['email'])? $coord['email'] : '?' ;?></a>
               <p>
             </div>
 
@@ -45,13 +52,13 @@ ob_start();
             <div><i class="bi bi-phone"></i></div>
             <div class="text-contact">
               <h4>Call:</h4>
-              <p><a href="tel:+212 693452015">+212 693452015</a>
+              <p><a href="tel:<?php echo isset($coord['numero_1'])? $coord['numero_1'] : '?' ;?>"><?php echo isset($coord['numero_1'])? $coord['numero_1'] : '?' ;?></a>
               <p>
             </div>
 
           </div>
 
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3396.979999113054!2d-8.016004!3d31.634398!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafee8c16aaf64b%3A0x908a00581b0d2694!2sCentre%20dentaire%20Moqadem%20Haf%C3%A7a%20(Hollywood%20smile%2C%20Implant%2C%20proth%C3%A8se%2C%20Facettes%2C%20P%C3%A9dodontie%2C%20Blanchiment)%20Maroc%2C%20Marrakech!5e0!3m2!1sfr!2sma!4v1677161821153!5m2!1sfr!2sma" width="330" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="<?php echo isset($coord['localisation'])? $coord['localisation'] : 'http://localhost/front_end/index.php?action=contact' ;?>" width="330" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
         </div>
       </div>
