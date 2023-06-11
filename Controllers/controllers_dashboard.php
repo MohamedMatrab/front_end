@@ -59,6 +59,9 @@ function dashAccountAction(){
 function dashServiceAction(){
     require_once 'views/dash_service.php';
 }
+function dashUpdateServiceAction(){
+    require_once 'views/update_service.php';
+}
 function dashb_history()
 {
     Show_Data('historique');

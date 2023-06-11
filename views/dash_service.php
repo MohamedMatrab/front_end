@@ -57,7 +57,6 @@ if (!empty($search)) {
                     <div class="form-group">
                         <label>Service name</label>
                         <textarea name="name" class="form-control" rows="2" placeholder="Enter your service"></textarea>
-
                     </div>
                     <div class="form-group">
                         <label>proverb</label>
@@ -73,8 +72,7 @@ if (!empty($search)) {
                     </div>
                     <div class="form-group">
                         <label for="">title 1</label>
-                        <textarea cols="30" rows="4" name="title1" class="form-control" placeholder="Enter your title">
-                </textarea>
+                        <textarea cols="30" rows="4" name="title1" class="form-control" placeholder="Enter your title"></textarea>
                     </div>
                     <div class="form-group">
                         <label>Image 2</label>
@@ -82,8 +80,7 @@ if (!empty($search)) {
                     </div>
                     <div class="form-group">
                         <label for="">title 2</label>
-                        <textarea cols="30" rows="4" name="title2" class="form-control" placeholder="Enter your title">
-                </textarea>
+                        <textarea cols="30" rows="4" name="title2" class="form-control" placeholder="Enter your title"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">description 2</label>
@@ -93,16 +90,6 @@ if (!empty($search)) {
                         <label>Image 3</label>
                         <input type="file" name="img3" class="form-control" name="image2">
                     </div>
-                    <div class="form-group">
-                        <label for="">title 3</label>
-                        <textarea cols="30" rows="4" name="title3" class="form-control" placeholder="Enter your title">
-                </textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="">description 3</label>
-                        <textarea name="desc3" class="form-control" rows="12" placeholder="Enter your description"></textarea>
-                    </div>
-
 
 
                 </form>
@@ -227,11 +214,11 @@ if (!empty($search)) {
 
 
                                                     <td><img src="upload/<?php echo  $detail['image1']; ?>" width="100px" height="100px"></td>
-                                                    <td><img src="upload/<?php echo $$detail['image2']; ?>" width="100px" height="100px"></td>
+                                                    <td><img src="upload/<?php echo  $detail['image2']; ?>" width="100px" height="100px"></td>
                                                     <td><img src="upload/<?php echo  $detail['image3']; ?>" width="100px" height="100px"></td>
 
                                                     <td>
-                                                        <form action="update_service.php" method="POST">
+                                                        <form action="dashboard.php?action=update_service" method="POST">
                                                             <input type="hidden" name="edit_id" value="<?= $row['ID']; ?>">
                                                             <button type="submit" name="edit" class="btn btn-success">Edit</button>
                                                         </form>

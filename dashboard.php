@@ -76,6 +76,9 @@ if (isset($_GET['action'])) {
         case 'service':
             dashServiceAction();
             break;
+        case 'update_service':
+            dashUpdateServiceAction();
+            break;
     }
 } else {
     dashWelcomeAction();

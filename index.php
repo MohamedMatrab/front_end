@@ -17,14 +17,14 @@ if (isset($_GET['action'])) {
 
       case 'RDV' : PrendreRdv() ; break ;
 
-      case 'alert' : AlertWarning() ; break ;
+      case 'alert' :  break ;
 
 
       // mohamed_part added
 
       case 'account':accountPatientAction();break;
       case 'reservations':reservationsPatientAction();break;
-      case 'request':requestPageAction();break;
+      // case 'request':requestPageAction();break;
       case 'del_reservation':
          if (isset($_GET['id'])) {
             delete_patient_reservation($_GET['id']);

@@ -97,10 +97,10 @@ if (!isset($_SESSION['USER'])) {
       <button type="submit" class="btn btn-primary px-3 py-2 fs-5" data="valider" id="valider" name="valider">Valider Mes Données</button>
     </div>
   </form>
-  <div class="urgence">
+  <!-- <div class="urgence">
     <h3 class="fs-5" style="color : red ;">Demande d'accés au Tableau de Bord :</h3>
     <p>Si vous faites partie de notre groupe Dentall et vous souhaitez accéder à notre tableau de bord en ligne , veuillez remplir le <a href="index.php?action=request" style="text-decoration:underline;color:cadetblue;">Formulaire de Demande </a>.<br>Et Nous Allons traiter votre demande et vous donner l'accés.</p>
-  </div>
+  </div> -->
 </div>
 <script src="js/account_patient_script.js"></script>
 <?php $content = ob_get_clean(); ?>
