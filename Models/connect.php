@@ -298,7 +298,6 @@ class connect
             foreach($stmt as $cin){
                 if ($cin['CIN'] == $CIN ){
                     return 0 ;
-                    break ;
                 }
             }
             $requete = $this->connect->prepare("insert into rendez_vous(CIN,First_Name,Last_Name ,Date_Of_birth , tel,address, date_rendez,Heure_rendez,service_id,service,id_user) values(?,?,?,?,?,?,?,?,?,?,?)") ;
