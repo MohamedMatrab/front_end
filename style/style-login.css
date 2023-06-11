@@ -14,7 +14,7 @@ body {
   height: fit-content;
   overflow-x: hidden;
   min-height: 100%;
-  background-image: url('../images/centre.jpg');
+  background-image: url('../assets/images/centre.jpg');
   background-size: cover;
   background-attachment: fixed;
   display: flex;

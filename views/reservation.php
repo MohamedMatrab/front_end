@@ -1,22 +1,24 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $title = "All reservations";
 ob_start();
 ?>
-    <?php include_once 'views/p_message.php' ?>
-    <section class="appointment" id="appointment">
-        <div class="container">
-            <div class="mb-5">
-                <p>Metrics for</p>
-                <h2><?php 
-                    $date = date('l, j F Y', strtotime(date('Y-m-d')));
-                    echo $date ;
+<?php include_once 'views/p_message.php' ?>
+<section class="appointment" id="appointment">
+    <div class="container">
+        <div class="mb-5">
+            <p>Metrics for</p>
+            <h2><?php
+                $date = date('l, j F Y', strtotime(date('Y-m-d')));
+                echo $date;
                 ?></h2>
-            </div>
-            <?=$allReservation?>    
         </div>
-        
-    </section>
+        <?= $allReservation ?>
+    </div>
 
-<?php $content = ob_get_clean() ; ?>
-<?php include_once 'views/dashboard.php' ; ?> 
+</section>
+
+<?php $content = ob_get_clean(); ?>
+<?php include_once 'views/dashboard.php'; ?>

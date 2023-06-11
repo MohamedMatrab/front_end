@@ -9,7 +9,7 @@ function validate($data)
 function valiatePhoneNum($phone_num)
 {
     global $link;
-    if (preg_match('/^(?:\+?\d{1,3})?\d{9}$/', $phone_num)) {
+    if (preg_match('/^(\(\+\d{3}\)|0)\d{9}$/', $phone_num)) {
         return $phone_num;
     }
     $_SESSION['message'] = 'Numero de telephone invalide !';
@@ -57,7 +57,7 @@ function validateId($id)
     exit(0);
 }
 function validateCinAppoint($CIN){
-    if (preg_match('/^[A-Z]{1,2}\d{6}$/', $CIN)) {
+    if (preg_match('/^[A-Za-z]{2}\d{4,6}$/', $CIN)) {
         return $CIN;
     }else {
         $_SESSION['message'] = "Id Invalid !";

@@ -12,7 +12,7 @@ $(document).ready(function () {
       dataType: "json",
       success: function (response) {
         let images = response["images"];
-        if (images.length  > 0) {
+        if (images.length > 0) {
           for (let image of images) {
             //div image section
             let img_sec = document.createElement("div");
@@ -22,7 +22,7 @@ $(document).ready(function () {
             img.src = image["src"];
             //a element
             let a = document.createElement("a");
-            a.href = "#";
+            a.href = "index.php?action=service&id="+image['service_id'];
             let desc_img = document.createElement("div");
             desc_img.classList.add("description-image");
             //span in desc-image
@@ -49,6 +49,7 @@ $(document).ready(function () {
   }
   //for first load
   getPics();
+  $("#select-services").value = service_id;
   $("#select-services").change(function (e) {
     e.preventDefault();
     //On Change

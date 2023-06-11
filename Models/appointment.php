@@ -5,8 +5,12 @@ include_once 'validation_functions.php';
     try {
         if (isset($_POST['data'])) {
             $data = json_decode($_POST['data']);
-            $obj = new connect(); 
+            $obj = new connect();
             $id_service = $obj->selectIdService($data->service);
+            $link = "index.php?action=appoint";
+
+            //mohamed_part
+            //try validateCIN and validatePhoneNum
             $response = $obj->insertRendezVous(validateCinAppoint($data->cin),
                                                 validate($data->firstName),
                                                 validate($data->lastName),
@@ -19,8 +23,6 @@ include_once 'validation_functions.php';
                                                 $data->service , 
                                                 $data->id
                                             );
-
-
 
             echo json_encode(['pass' => ['state' => $response ]]) ;
         }else {

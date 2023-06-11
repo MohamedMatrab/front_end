@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
 $title = "Edit user's info";
 include_once "Models/connect.php";
 $obj = new connect();

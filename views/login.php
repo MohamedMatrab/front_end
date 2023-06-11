@@ -1,10 +1,7 @@
 <?php
-// session_start();
-// if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 0) {
-//   header("Location: index.php");
-//   exit(0);
-// }
-// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 if (isset($_SESSION['USER'])) {
   $_SESSION['message'] = 'Vous êtes déjà connecté !';
   if ($_SESSION['USER']['role'] != 0) {

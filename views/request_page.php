@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $title = "Dentiste:Appointment Page";
 ob_start();
 ?>
@@ -75,7 +77,7 @@ if (!isset($_SESSION['USER'])) {
             <div class="col-4"><label for="profile_img" class="form-label">Changer l'image De Profile <span>*</span></label></div>
             <div class="col-8"><input type="file" class="form-control" id="profile_img" data="profile_img" name="profile_img"></div>
         </div>
-        
+
         <div class="row  py-4 br-bott">
             <div class="col-4"><label for="inputTypeRequest" class="form-label">Type d'accès <span>*</span></label></div>
             <div class="col-8">

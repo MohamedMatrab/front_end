@@ -6,9 +6,6 @@ const h_dropDowns = document.querySelectorAll(".drop-down");
 const header_pane = document.querySelector(".header_pane");
 const navigation = document.querySelector(".navigation");
 const dashboardContent = document.querySelector(".dashboard-content");
-const box = document.querySelector(".box");
-const box_i = box.querySelector("i");
-const box_input = box.querySelector(".input");
 const linkeds = document.querySelectorAll(".linked");
 const logo = document.querySelector(".logo");
 const logout = document.getElementById("logout");
@@ -101,10 +98,6 @@ header_pane.addEventListener("click", () => {
   navigation.classList.toggle("nav_show");
 });
 
-box.querySelector("i").addEventListener("click", () => {
-  box_i.classList.add("i_box");
-  box_input.classList.add("input_box");
-});
 
 linkeds.forEach((linked) => {
   linked.addEventListener("click", () => {
@@ -135,10 +128,6 @@ document.addEventListener("click", function (e) {
 
   if (is_out_sec(navBtn, e.target) && is_out_sec(headerContent, e.target)) {
     headerContent.classList.remove("h_btn_clicked");
-  }
-  if (is_out_sec(box, e.target)) {
-    box_i.classList.remove("i_box");
-    box_input.classList.remove("input_box");
   }
 });
 

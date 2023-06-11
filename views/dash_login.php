@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include_once "Models/verify_permissions.php";
 if (isset($_SESSION['USER']) && $_SESSION['USER']['role'] != 0) {
     header("Location: dashboard.php");

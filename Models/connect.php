@@ -40,13 +40,13 @@ class connect
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE portfolio(
+            $sql = "CREATE TABLE $tableName(
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 title VARCHAR(50),
                 image MEDIUMBLOB,
                 description VARCHAR(250),
                 service_id int,
-                FOREIGN KEY (service_id) REFERENCES services(ID )
+                FOREIGN KEY (service_id) REFERENCES services(ID)
                 )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
@@ -57,7 +57,7 @@ class connect
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE doctor(
+            $sql = "CREATE TABLE $tableName(
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 CIN VARCHAR(15)  NOT NULL UNIQUE ,
                 Nom VARCHAR(20) ,
@@ -77,7 +77,7 @@ class connect
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE service(
+            $sql = "CREATE TABLE $tableName(
                 ID INT PRIMARY KEY AUTO_INCREMENT,
                 Nom_du_service VARCHAR(255)
             )";
@@ -86,12 +86,12 @@ class connect
         }
     }
     function serviveDetailsTabele(){
-        $tableName = 'service';
+        $tableName = 'service_details';
         if ($this->isTableExist($tableName)) {
             return;
         } else {
-            $sql = "CREATE TABLE service_details (
-                id_service INT,
+            $sql = "CREATE TABLE $tableName (
+                id_service INT PRIMARY KEY NOT NULL,
                 proverb VARCHAR(250),
                 image1 VARCHAR(150),
                 descr1 LONGTEXT,
@@ -114,6 +114,7 @@ class connect
             return;
         } else {
             $sql = "CREATE TABLE historique(
+                id INT PRIMARY KEY AUTO_INCREMENT,
                 CIN varchar(15) NOT NULL,
                 First_Name VARCHAR(15) ,
                 Last_Name VARCHAR(15) ,
@@ -128,6 +129,7 @@ class connect
                 service VARCHAR(255) ,
                 ordonnance MEDIUMBLOB , 
                 id_user INT,
+                state ENUM('0','1'),
                 FOREIGN KEY (id_user) REFERENCES users(id) ,
                 FOREIGN KEY (service_id) REFERENCES services(ID)
             )";
@@ -154,7 +156,7 @@ class connect
                 service_id INT,
                 service VARCHAR(255) ,
                 state   ENUM('0', '1') ,
-                show ENUM('0','1'),
+                `show` ENUM('0','1'),
                 id_user INT,
                 FOREIGN KEY (id_user) REFERENCES users(id),
                 FOREIGN KEY (service_id) REFERENCES services(ID)
@@ -178,9 +180,9 @@ class connect
                 email varchar(100) ,
                 facebook varchar(100) ,
                 instagram varchar(100) ,
-                twitter varchar(100) ,
+                twitter varchar(100),
                 start time,
-                end time
+                end time 
             )";
             $stmt = $this->connect->prepare($sql);
             $stmt->execute();
@@ -257,6 +259,10 @@ class connect
         $requete = $this->connect->prepare("delete from  rendez_vous where CIN = ?") ;
         $requete->execute(array($id)) ;
     }
+    function Delete_rendez_By_Id($id) {
+        $requete = $this->connect->prepare("delete from  rendez_vous where id_rendez = ?") ;
+        $requete->execute(array($id)) ;
+    }
     
     function select_code($code) {
         $requete = $this->connect->prepare('select * from historique where CIN = ? LIMIT 1') ;
@@ -310,9 +316,10 @@ class connect
         $requete->execute(array($id)) ;
         $patient = $requete->fetch() ;
         // insert into history table
-        $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service_id,service,id_user) values(?,?,?,?,?,?,?,?,?,?,?,?,?)") ;
-        $requete->execute(array($patient->CIN ,$patient->Last_Name, $patient->First_Name , $patient->Date_Of_birth , $patient->tel , $patient->address ,'0' ,'0' , $patient->date_rendez , $patient->Heure_rendez,$patient->service_id, $patient->service ,$patient->id_user )) ;
+        $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service_id,service,id_user,state) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)") ;
+        $requete->execute(array($patient->CIN ,$patient->Last_Name, $patient->First_Name , $patient->Date_Of_birth , $patient->tel , $patient->address ,'0' ,'0' , $patient->date_rendez , $patient->Heure_rendez,$patient->service_id, $patient->service ,$patient->id_user,$patient->state )) ;
     }
+
     function getServices(){
         $requete = $this->connect->prepare("select  Nom_du_service  from  services") ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
@@ -345,6 +352,7 @@ class connect
              $stmt->execute();
         }
     }
+
     function reAutoIncrement($table)
     {
         $check_empty = "SELECT COUNT(*) FROM $table";
@@ -357,10 +365,12 @@ class connect
             $this->connect->exec($alter_query);
         }
     }
+
     function close_connection()
     {
         $this->connect = null;
     }
+
 }
 
 

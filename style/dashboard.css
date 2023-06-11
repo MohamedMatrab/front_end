@@ -14,7 +14,7 @@ body {
   height: fit-content !important;
   min-height: 100%;
   overflow-x: hidden;
-  background: #f3f3f3;
+  background: #f3f3f3 !important;
   overflow-y: scroll;
 }
 ::-webkit-scrollbar {
@@ -61,11 +61,12 @@ a {
   flex-wrap: nowrap;
   padding: 1em 1.5em;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  justify-content: space-between;
   /* margin-bottom: 1rem; */
   background: white;
   box-shadow: 0px 0px 10px #dedede;
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
@@ -75,7 +76,7 @@ a {
   justify-content: space-between;
   flex-direction: row;
   flex-wrap: nowrap;
-  width: 17%;
+  width: 100%;
   z-index: 1;
 }
 .logo {
@@ -83,6 +84,7 @@ a {
   font-size: 1.5em;
   font-weight: bold;
   cursor: pointer;
+  transform: translateX(50%);
 }
 .logo span {
   color: var(--transparent-color);
@@ -135,11 +137,10 @@ button {
 }
 
 .header_content {
-  flex: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: end;
+  justify-content: space-between;
   flex-wrap: nowrap;
   border-radius: 1rem;
   background: white;
@@ -169,6 +170,9 @@ button {
 .nav-item:hover{
   font-weight: bold;
   color: var(--transparent-color);
+}
+#link_out{
+  text-decoration: none;
 }
 #link_out span{
   text-decoration: none;
@@ -480,9 +484,14 @@ ul {
 .dashboard-content {
   width: 100%;
   height: fit-content;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   transition: 0.5s ease-in-out;
-  margin: 0;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
   z-index: 0;
 }
 .blured {
@@ -503,6 +512,8 @@ ul {
     display: flex;
     position: absolute;
     top: 0.5rem;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
     padding: 0.5rem 0;
     margin: 0 1rem;
     opacity: 0;
@@ -948,6 +959,41 @@ input[type="file"] {
   }
 }
 /* End Patient details */
+
+/* Landing Page Start */
+
+.landing-page {
+  background-image: url(../assets/images/centre.jpg);
+  position: relative;
+  background-size: 100%;
+  height: 36vh;
+  background-attachment: fixed;
+  background-position: top left;
+}
+.landing-page::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: var(--transparent-color);
+}
+.main-header {
+  color: white;
+  border-bottom: 1px solid #ddd;
+  text-transform: uppercase;
+  font-size: 60px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+/* Landing Page End */
+
 
 /* Start Center dash Page */
 #centre-page {

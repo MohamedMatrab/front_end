@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $last_name = validate($_POST['last-name']);
         $email_patient = validateEmail($_POST['email_patient']);
         $tel_patient = valiatePhoneNum($_POST['tel_patient']);
-        $CIN = validate($_POST['CIN']);
+        $CIN = validateCIN($_POST['CIN']);
         $Sexe = (validate($_POST['Sexe']));
         $DateNaissance = validate($_POST['DateNaissance']);
         $Ville = validate($_POST['Ville']);

@@ -50,6 +50,15 @@ function EditUserInfoAction()
 {
     require_once 'views/edit_user_info.php';
 }
+function editAccountInfoAction(){
+    require_once 'views/dash_account_edit.php';
+}
+function dashAccountAction(){
+    require_once 'views/dash_account.php';
+}
+function dashServiceAction(){
+    require_once 'views/dash_service.php';
+}
 function dashb_history()
 {
     Show_Data('historique');

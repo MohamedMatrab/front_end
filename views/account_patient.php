@@ -1,5 +1,7 @@
 <?php
-
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 $title = "Dentiste:Appointment Page";
 ob_start();
 ?>
@@ -46,8 +48,8 @@ if (!isset($_SESSION['USER'])) {
     </div>
 
     <div class="row  py-4 br-bott">
-      <div class="col-4"><label for="inputCin" class="form-label">CIN (Carte d'identité nationale)</label></div>
-      <div class="col-8"><input type="text" class="form-control" id="inputCin" placeholder="CIN (Carte d'identité nationale)" data="CIN (Carte d'identité nationale)" name="CIN" value="<?= is_null($user['cin']) ? '' : $user['cin']; ?>"></div>
+      <div class="col-4"><label for="user_cin" class="form-label">CIN (Carte d'identité nationale)</label></div>
+      <div class="col-8"><input type="text" class="form-control" id="user_cin" placeholder="CIN (Carte d'identité nationale)" data="CIN (Carte d'identité nationale)" name="CIN" value="<?= is_null($user['cin']) ? '' : $user['cin']; ?>"></div>
     </div>
 
     <div class="row  py-4 br-bott">

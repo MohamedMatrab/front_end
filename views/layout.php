@@ -1,5 +1,10 @@
 <?php
 include_once "Models/verify_permissions.php";
+include_once 'Models/connect.php';
+$obj = new connect();
+$specialite_stmt = $obj->getConnect()->prepare('SELECT * FROM services');
+$specialite_stmt->execute();
+$services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,9 +63,14 @@ include_once "Models/verify_permissions.php";
                                 Spécialités
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?action=ésthétique dentaire">Esthétique dentaire</a></li>
-                                <li><a class="dropdown-item" href="#">Blanchement</a></li>
-                                <li><a class="dropdown-item" href="#">Hollywood smile</a></li>
+
+                                <?php
+                                foreach($services as $service) {
+
+                                   echo '<li><a class="dropdown-item" href="index.php?action=service&id='.$service['ID'].'">'.$service['Nom_du_service'].'</a></li>';
+                                
+                                } ?>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -90,7 +100,7 @@ include_once "Models/verify_permissions.php";
                         ?>
                             <div class="header_profile nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img  style = "width:38%;" src="<?= is_null($user['img']) ? "images_profil/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" class="profile-img" />
+                                    <img style="width:38%;" src="<?= is_null($user['img']) ? "images_profil/user_image.png" : 'data:image/jpg;base64,' . base64_encode($user['img']); ?>" alt="profile" class="profile-img" />
                                 </a>
                                 <ul class="dropdown-menu">
                                     <?php

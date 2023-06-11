@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 $title = "Add Image";
 ob_start();
 ?>
@@ -61,7 +63,7 @@ $element = getElement($id, $obj);
                     <label for="my_image">changer l'image : </label>
                 </div>
                 <div class="col-8">
-                    <input type="file" class="form-control" name="my_image" value="my_image" id="my_image">
+                    <input type="file" class="form-control" name="my_image" accept="image/jpeg, image/jpg, image/png" value="my_image" id="my_image">
                 </div>
             </div>
             <div class="row py-4 br-bott">

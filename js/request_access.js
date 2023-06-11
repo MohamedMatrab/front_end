@@ -118,10 +118,7 @@ for(const input of my_inputs){
 my_inputs.forEach((el) => {
   el.addEventListener("input", () => {
     verifyInput(el);
-  });
-  el.addEventListener("focus", () => {
-    verifyInput(el);
-  });
+  }); 
 });
 
 email.addEventListener("input", verifyEmail);

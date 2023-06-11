@@ -104,3 +104,6 @@ function requestPageAction()
 {
     require_once 'views/request_page.php';
 }
+function show_image(){
+    require_once 'views/display_image.php';
+}

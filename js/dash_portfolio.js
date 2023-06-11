@@ -2,7 +2,7 @@ const selectServices = document.getElementById("select-services");
 const add_image = document.getElementById("add_image");
 
 let service_id = "";
-if (sessionStorage.selectVal != null) {
+if (sessionStorage.selectVal != null && sessionStorage.selectVal != "") {
   selectServices.value = sessionStorage.selectVal;
 } else {
   sessionStorage.selectVal = selectServices.value;

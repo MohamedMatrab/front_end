@@ -11,7 +11,7 @@ function Show_Data($table) {
             foreach ( $All as $index => $patient ) {
                 //start
                 // $id_service = $obj->selectId($patient->service);
-                // $doctor = $obj->selectDoctor($patient->service_id ) ;
+                // $doctor = $obj->selectDoctor($patient->service_id ) z;
                 if ( $index == 0 || ($index !=0 && array_search($patient->CIN, array_column($All, 'CIN')) ) ) { 
                     ?>
                         <tr>
@@ -72,7 +72,7 @@ function Show_Data($table) {
                 
             }else {
                 ?>
-                <p style="color:#ddd, font-size:30px;">No appointment today</p>
+                <p style="color:#ddd; font-size:30px;">No appointment today</p>
                 <?php }
 
             $allReservation = ob_get_clean() ;

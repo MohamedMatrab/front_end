@@ -110,7 +110,7 @@ a {
 /* End Global Rules */
 /* Start Main Hedaer Of Each Page */
 .landing-page {
-  background-image: url(../images/centre.jpg);
+  background-image: url(../assets/images/centre.jpg);
   position: relative;
   background-size: 100%;
   height: 45vh;

@@ -56,5 +56,9 @@ session_start();
         
     }
     
-
+    function delete_patient_reservation($id)
+    {
+        $obj = new connect();
+        $obj->Delete_rendez_By_Id($id);
+    }
 ?>

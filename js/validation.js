@@ -72,7 +72,7 @@ function verifyCin() {
   if (cin.value.length != 0) {
     var messageErreur = document.createElement('div');
     messageErreur.textContent = "" ;
-    let regex = /^[A-Z]{1,2}\d{6}$/;
+    let regex = /^[A-Za-z]{2}\d{4,6}$/;
     if (regex.test(cin.value)) {
       
     }  
@@ -90,8 +90,8 @@ function verifyCin() {
 let phone_number = document.querySelector("#inputNumber") ;
 let cin = document.querySelector("#inputCin");
 if (cin){
-  cin.addEventListener("blur",verifyCin);
+  cin.addEventListener("input",verifyCin);
 }
 if (phone_number){
-  phone_number.addEventListener("blur",verifyPhone) ;
+  phone_number.addEventListener("input",verifyPhone) ;
 }

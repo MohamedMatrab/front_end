@@ -1,0 +1,88 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+/* Start Content Appointment */
+.appointment {
+  position: relative;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 6px #dedede;
+  padding: 0;
+}
+.appointment .container {
+  width: 100%;
+  padding: 0;
+}
+.appointment p {
+  color: #969494;
+  margin-bottom: 0;
+}
+
+.appointment h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+
+.appointment .patient {
+  width: 100%;
+}
+.appointment .patient .name {
+  background-color: var(--transparent-color);
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.appointment .patient .name p {
+  color: whitesmoke;
+  font-size: 1.5rem;
+}
+.appointment .patient .description {
+  background-color: white;
+  padding: 1.5rem;
+}
+.appointment .patient .description .action {
+  margin-top: 0rem;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.appointment .patient .en_cours,
+.appointment .patient .annulee,
+.appointment .patient .validee,
+.appointment .patient .annuler {
+  padding: 0.5em 0.8em;
+  border-radius: 0.7em;
+  font-weight: bold;
+}
+.appointment .patient .action .annuler {
+  background-color: rgb(211, 50, 50);
+  color: white;
+}
+
+.appointment .patient .en_cours,
+.appointment .patient .annulee,
+.appointment .patient .validee {
+  background-color: white;
+  color: var(--cadetblue-color);
+}
+
+.appointment .patient .action .annuler:hover {
+  opacity: 0.5;
+}
+
+.ordonnance {
+  background-color: var(--transparent-color) !important;
+  color: white !important;
+}
+.appointment .table {
+  background-color: white;
+}
+
+.box p span {
+  color: rgb(15 116 143 / 70%) !important;
+}
+
+/* End Content Appointment */

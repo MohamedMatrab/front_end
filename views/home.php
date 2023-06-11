@@ -1,9 +1,13 @@
 <?php
-
-
-  $title = "Dentiste:Home Page" ;
-  ob_start();
-
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
+$title = "Dentiste:Home Page";
+ob_start();
+include_once 'Models/connect.php';
+$obj=new connect();
+$obj->serviceTable();
+$obj->serviceTable();
 ?>
 
 <div class="landing">
@@ -38,147 +42,42 @@
 
 </section>
 
-
-
-
-
 <!--service secttion-->
 
 <link rel="stylesheet" href="style/style.css">
+<!--service secttion-->
 <section id="service" class="services pt-0">
-  <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Check our services</h2>
+            </div>
+            <div class="row gy-4">
+                <?php
+                $table=$obj->getConnect()->prepare("SELECT * FROM services");
+                $table->execute();
+                $table=$table->fetchAll(PDO::FETCH_ASSOC);
 
-    <div class="section-title">
-      <h2>Check our services</h2>
+                $table1=$obj->getConnect()->prepare("SELECT * FROM service_details");
+                $table1->execute();
+                $table1=$table1->fetchAll(PDO::FETCH_ASSOC);
 
-    </div>
-
-    <div class="row gy-4">
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="100">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo5.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="index.php?action=ésthétique dentaire" class="stretched-link">Esthétique dentaire</a></h3>
-          <p>Bien entretenir ses dents, c’est en premier lieu le respect des règles d’hygiène...</p>
+                foreach($table as $key1 => $tabb){
+                    ?>
+                    <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="upload/<?= $table1[$key1]['image1']; ?>" alt="" class="img-fluid">
+                            </div>
+                            <h3><a href="service_details.php?service=<?= $tabb['ID'] ?>" class="stretched-link"><?= $tabb['Nom_du_service']; ?></a></h3>
+                            <p><?= substr($table1[$key1]['descr1'],0,100) ?>...</p>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
         </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="200">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo6.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Facette dentaire</a></h3>
-          <p>C’est une fine pellicule en céramique que le praticien colle sur une dent...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="300">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo7.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Implant dentaire</a></h3>
-          <p>L’implant dentaire est la meilleure solution pour imiter la nature...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="400">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo8.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Prothèse dentaire</a></h3>
-          <p>C’est un dispositif qui vise à reconstituer la dent abîmée ou à remplacer...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="500">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo9.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Blanchiment dentaire</a></h3>
-          <p>Vous rêviez d’un sourire lumineux ? Les produits actuels ne cessent de...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="600">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo10.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">parodontologie</a></h3>
-          <p>Les maladies des gencives, aussi connues sous le nom de maladies parodontales...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="700">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo11.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Orthodontie invisible</a></h3>
-          <p>Avoir une dentition parfaite est une idée qui peut être très alléchante pour touts...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="800">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo12.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Pédodontie</a></h3>
-          <p>Les soins dentaires destinés aux enfants constituent une discipline importante...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="900">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo13.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">médecine esthétique</a></h3>
-          <p>Selon l'organisation mondiale de la santé, une bonne santé de définie par...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="1000">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo14.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Soins dentaires</a></h3>
-          <p>Bien entretenir ses dents, c’est en premier lieu le respect des règles d’hygiène...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="1100">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo15.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">Radiologie dentaire</a></h3>
-          <p>La radiographie dentaire est un élément important dans le suivi de votre santé...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-      <div class="col-lg-3 col-md-3" data-aos="fade-up" data-aos-delay="1200">
-        <div class="card">
-          <div class="card-img">
-            <img src="assets/spécialité/photo16.jpg" alt="" class="img-fluid">
-          </div>
-          <h3><a href="service_details.php" class="stretched-link">tourisme dentaire</a></h3>
-          <p>Le Maroc est connu depuis longtemps par la qualité des soins que cela soit...</p>
-        </div>
-      </div><!-- End Card Item -->
-
-    </div>
-
-  </div>
-</section><!-- End Services Section -->
+    </section>
 
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">

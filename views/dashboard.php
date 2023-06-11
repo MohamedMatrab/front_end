@@ -38,55 +38,30 @@ include_once "Models/get_user_info.php";
         <div class="nav-btn">
           <i class="bi bi-three-dots-vertical"></i>
         </div>
-      </div>
-      <div class="header_content">
-        <!--<div class="app-header-left">
-          <ul class="mega-menu nav">
-            <li class="nav-item me-3">
-              <div class="box">
-                <form name="search">
-                  <input type="text" class="input" placeholder="Search" name="search" />
-                </form>
-                <i class="fas fa-search"></i>
-              </div>
-            </li>
-            <li class="drop-down nav-item me-3">
-              <span class="icon-header me-1">
-                <i class="bi bi-gear"></i>
-              </span>
-              <span class="bar_name">Settings</span>
-              <i class="bi bi-chevron-down ms-1"></i>
-            </li>
-            <div class="drop-down-content">Settings</div>
-            <li class="drop-down nav-item me-3">
-              <span class="icon-header me-1">
-                <i class="bi bi-kanban"></i>
-              </span>
-              <span class="bar_name">Projects</span>
-              <i class="bi bi-chevron-down ms-1"></i>
-            </li>
-            <div class="drop-down-content">Projects</div> 
-          </ul>
-        </div> -->
-        <div class="app-header-right">
-          <ul class="right nav">
-            <li class="drop-down nav-item me-3">
-              <span class="icon-header me-1 notifications">
-                <i class="bi bi-bell-fill"></i>
-              </span>
-            </li>
-            <div class="drop-down-content notif"><h6 class="ps-2 pt-2">Notifications</h6></div>
-            <li class="nav-item me-3" id="logout">
-              <a href="Models/logout.php?logout=1" id="link_out">
-                <span class="icon-header me-1">
-                  <i class="bi bi-box-aruser-right"></i>
+        <div class="header_content">
+          <div class="app-header-right">
+            <ul class="right nav">
+              <li class="drop-down nav-item me-3">
+                <span class="icon-header me-1 notifications">
+                  <i class="bi bi-bell-fill"></i>
                 </span>
-                <span class="bar_name">Log Out</span>
-              </a>
-            </li>
-          </ul>
+              </li>
+              <div class="drop-down-content notif">
+                <h6 class="ps-2 pt-2">Notifications</h6>
+              </div>
+              <li class="nav-item me-3" id="logout">
+                <a href="Models/logout.php?logout=1" id="link_out">
+                  <span class="icon-header me-1">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                  </span>
+                  <span class="bar_name">Log Out</span>
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div> 
+
+      </div>
     </div>
     <!-- End Header -->
     <!-- Start Sidebar -->
@@ -174,5 +149,7 @@ include_once "Models/get_user_info.php";
   <script src="js/bootstrap.min.js"></script>
   <script src="js/dashboard.js"></script>
 </body>
+
+<?php include_once 'views/floating_message.php'?>
 
 </html>

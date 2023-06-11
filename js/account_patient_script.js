@@ -3,11 +3,13 @@ const patient_password = document.getElementById("patient_password");
 const patient_pswd_confirm = document.getElementById("patient_pswd_confirm");
 const email = document.getElementById("inputEmail");
 const phone = document.getElementById("inputNumber");
+const user_cin = document.getElementById('user_cin');
 const my_inputs = document.querySelectorAll("input[data-state]");
-
+console.log(user_cin);
 let passwordValid = true,
   phoneValid = true,
-  emailValid = true;
+  emailValid = true,
+  cinValid = true;
 
 function isInputsEmpty() {
   for (const el of my_inputs) {
@@ -19,7 +21,7 @@ function isInputsEmpty() {
 }
 
 function validate() {
-  if (passwordValid && phoneValid && emailValid && !isInputsEmpty()) {
+  if (passwordValid && phoneValid && emailValid && !isInputsEmpty() && cinValid) {
     valider.disabled = false;
   } else {
     valider.disabled = true;
@@ -68,13 +70,31 @@ function verifyPhone() {
     validate();
     return;
   }
-  let regex = /^(?:\+?\d{1,3})?\d{9}$/;
+  let regex = /^(\(\+\d{3}\)|0)\d{9}$/;
   if (!regex.test(phone.value)) {
     appendError(phone, " Numéro de Téléphone Invalide !");
     phoneValid = false;
   } else {
     deleteError(phone);
     phoneValid = true;
+  }
+  validate();
+}
+
+function verifyCIN() {
+  if (user_cin.value.length == 0) {
+    cinValid = true;
+    deleteError(user_cin);
+    validate();
+    return;
+  }
+  let regex = /^[a-zA-Z]{2}\d{4,6}$/;
+  if (!regex.test(user_cin.value)) {
+    appendError(user_cin, " CIN Invalide !");
+    cinValid = false;
+  } else {
+    deleteError(user_cin);
+    cinValid = true;
   }
   validate();
 }
@@ -156,3 +176,4 @@ email.addEventListener("input", verifyEmail);
 phone.addEventListener("input", verifyPhone);
 patient_password.addEventListener('input',passwordValidation);
 patient_pswd_confirm.addEventListener('input',passwordValidation);
+user_cin.addEventListener('input',verifyCIN);
