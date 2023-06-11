@@ -259,9 +259,9 @@ button {
 }
 .notif {
   flex-direction: column;
-  width: calc(100% + -27em);
+  width: calc(100% + 13em);
   position: absolute;
-  left: 50%;
+  left: -109%;
   border-radius: 6px;
   overflow: scroll;
   overflow-x: hidden;
@@ -293,8 +293,8 @@ button {
 }
 @media (max-width:1000px) {
   .notif {
-    width: calc(100% + 7em);
-    left: -10%;
+    width: calc(100% + 19em);
+    left: -138%;
   }
 }
 /* End Header */
