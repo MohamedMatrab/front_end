@@ -33,63 +33,92 @@ ob_start();
                             <a href="dashboard.php?action=add_admin" class="btn btn-primary float-end">Add admin</a>
                         </h4>
                         <div class="card-body">
+                        <div class="mb-4">
+                            <form method="GET" action="">
+                                <div class="input-group">
+                                    <input type="text" name="search_email" class="form-control" placeholder="Search by email">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
                         </div>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Email</th>
-                                    <th>role</th>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $id = $_SESSION['USER']['id'];
-                                $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
-                                $request->execute();
-                                $count = $request->rowCount();
-                                if ($count > 0) {
-                                    foreach ($request as $row) {
-                                ?>
+                    </div>
+                        <div class="card-body">
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>CIN</th>
+                                        <th>Image</th>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $id = $_SESSION['USER']['id'];
+                                    $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
+
+                                    $search_email = isset($_GET['search_email']) ? $_GET['search_email'] : '';
+                                    if (!empty($search_email)) {
+                                        $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != :id AND email LIKE :search_email");
+                                        $request->bindValue(':id', $id);
+                                        $request->bindValue(':search_email', "%$search_email%", PDO::PARAM_STR);
+                                    }
+
+                                    $request->execute();
+
+
+                                    $count = $request->rowCount();
+                                    if ($count > 0) {
+                                        foreach ($request as $row) {
+                                            if (!empty($search_email) && stripos($row['email'], $search_email) === false) {
+                                                continue;
+                            }
+                                    ?>
+                                            <tr>
+                                                <td><?= $row['cin']; ?></td>
+                                                <td class="image-cell img"><img src="<?= empty($row['img']) ? "images/user.png" : 'data:image/jpg;base64,' . base64_encode($row['img']); ?>" alt="profile" class="profile-img" /></td>
+                                                <td><?= $row['fname']; ?></td>
+                                                <td><?= $row['lname']; ?></td>
+                                                <td><?= $row['email']; ?></td>
+                                                <td>
+                                                    <?php
+                                                    if($row['role'] == 1){
+                                                        echo 'Admin';
+                                                    }
+                                                    elseif($row['role'] == 0){
+                                                        echo 'User';
+                                                    }
+                                                    else{
+                                                        echo 'Secrétaire';
+                                                    }
+                                                    ?>
+                                                </td>
+                                                <td><a href="dashboard.php?action=edit_user_info&id=<?= $row['id']; ?>" class="btn btn-success">Edit</a></td>
+                                                <td>
+                                                    <form action="Models/handle_users.php" method="POST">
+                                                        <button type="submit" name="delete_user" value="<?= $row['id']; ?>" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                    }  if ($request->rowCount() === 0) {
+                                        ?>
                                         <tr>
-                                            <td><?= $row['id']; ?></td>
-                                            <td><?= $row['fname']; ?></td>
-                                            <td><?= $row['lname']; ?></td>
-                                            <td><?= $row['email']; ?></td>
-                                            <td>
-                                                <?php
-                                                if ($row['role'] == 1) {
-                                                    echo 'Admin';
-                                                } elseif ($row['role'] == 0) {
-                                                    echo 'user';
-                                                } else {
-                                                    echo 'secrétaire';
-                                                }
-                                                ?>
-                                            </td>
-                                            <td><a href="dashboard.php?action=edit_user_info&id=<?= $row['id']; ?>" class="btn btn-success">Edit</a></td>
-                                            <td>
-                                                <form action="Models/handle_users.php" method="POST">
-                                                    <button type="submit" name="delete_user" value="<?= $row['id']; ?>" class="btn btn-danger">Delete</button>
-                                                </form>
-                                            </td>
+                                            <td colspan="6">No records found</td>
                                         </tr>
                                     <?php
                                     }
-                                } else {
                                     ?>
-                                    <tr>
-                                        <td colspan="6">No records found</td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
