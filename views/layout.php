@@ -67,7 +67,7 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php
                                 foreach($services as $service) {
 
-                                   echo '<li><a class="dropdown-item" href="index.php?action=service&id='.$service['ID'].'">'.$service['Nom_du_service'].'</a></li>';
+                                   echo '<li><a class="dropdown-item" href="index.php?action=service&service='.$service['ID'].'">'.$service['Nom_du_service'].'</a></li>';
                                 
                                 } ?>
 
