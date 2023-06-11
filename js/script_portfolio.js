@@ -22,7 +22,7 @@ $(document).ready(function () {
             img.src = image["src"];
             //a element
             let a = document.createElement("a");
-            a.href = "index.php?action=service&id="+image['service_id'];
+            a.href = "index.php?action=service&service="+image['service_id'];
             let desc_img = document.createElement("div");
             desc_img.classList.add("description-image");
             //span in desc-image
