@@ -62,11 +62,12 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div><a class="btn btn-primary" href="dashboard.php?action=add_doctor">Ajouter un membre</a></div>
     </div>
 <?php else : ?>
-    <div class="container">
-        Pas de membre
+    <div class="container alert-doctor">
+    <div class="alert alert-info" style="margin:1rem;text-align:center;" role="alert" >Pas de dentiste !<b>Pour ajouter des informations sur le button ci dessous</b></div>
+    <div><a class="btn btn-primary" href="dashboard.php?action=add_doctor">Ajouter un membre</a></div>
     </div>
 <?php endif; ?>
-<?php include_once 'views/p_message.php' ?>
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
