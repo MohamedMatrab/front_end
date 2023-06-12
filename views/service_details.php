@@ -48,7 +48,7 @@ $services = $table->fetchAll(PDO::FETCH_ASSOC);
                 $isActive = true;
               }
               ?>
-              <a href="service_details.php?service=<?= $service['ID'] ?>" <?= $isActive ? 'class="active"' : '' ?>>
+              <a href="index.php?action=service&service=<?= $service['ID'] ?>" <?= $isActive ? 'class="active"' : '' ?>>
                 <?= $service['Nom_du_service'] ?>
               </a>
             <?php endforeach; ?>
