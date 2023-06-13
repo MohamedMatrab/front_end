@@ -36,6 +36,7 @@ ob_start();
                         <div class="mb-4">
                             <form method="GET" action="">
                                 <div class="input-group">
+                                    <input type="hidden" name="action" class="form-control" value="users">
                                     <input type="text" name="search_email" class="form-control" placeholder="Search by email">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>

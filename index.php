@@ -31,6 +31,7 @@ if (isset($_GET['action'])) {
          }
          header('Location: index.php?action=reservations');
          exit(0);
+
       case 'show_image':
          show_image();
          break;

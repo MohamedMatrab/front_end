@@ -127,6 +127,7 @@ if (!empty($search)) {
                         <div class="mb-4">
                             <form method="GET" action="">
                                 <div class="input-group">
+                                    <input type="hidden" value="service" name="action" class="form-control">
                                     <input type="text" name="search_name" class="form-control" placeholder="Search by name">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
