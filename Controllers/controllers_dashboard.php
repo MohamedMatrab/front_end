@@ -77,6 +77,7 @@ function Delete_from_rendez($id)
 {
     $obj = new connect();
     $obj->Delete_rendez($id);
+    header("Location:dashboard.php?action=all_reservations");
 }
 
 function Ajout_History($id)
