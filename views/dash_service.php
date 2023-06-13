@@ -225,7 +225,7 @@ if (!empty($search)) {
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="delete.php" method="POST">
+                                                        <form action="Models/delete.php" method="POST">
                                                             <input type="hidden" name="delete_id" value="<?= $row['ID']; ?>">
                                                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                                                         </form>
