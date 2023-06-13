@@ -82,7 +82,7 @@ ob_start();
                                     ?>
                                             <tr>
                                                 <td><?= $row['cin']; ?></td>
-                                                <td class="image-cell img"><img src="<?= empty($row['img']) ? "images/user.png" : 'data:image/jpg;base64,' . base64_encode($row['img']); ?>" alt="profile" class="profile-img" /></td>
+                                                <td class="image-cell img"><img src="<?= empty($row['img']) ? "assets/images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($row['img']); ?>" alt="profile" class="profile-img" /></td>
                                                 <td><?= $row['fname']; ?></td>
                                                 <td><?= $row['lname']; ?></td>
                                                 <td><?= $row['email']; ?></td>
