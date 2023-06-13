@@ -127,11 +127,11 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </nav>
         <?= $content; ?>
-        <?php include_once "views/footer.php"; ?>
         <script src="js/all.min.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/validation.js"></script>
     </div>
+    <?php include_once "views/footer.php"; ?>
 </body>
 
 <?php include_once 'views/floating_message.php' ?>
