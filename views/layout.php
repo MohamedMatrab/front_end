@@ -135,5 +135,6 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 
 <?php include_once 'views/floating_message.php' ?>
+<script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-search-pseudo-elements></script>
 
 </html>

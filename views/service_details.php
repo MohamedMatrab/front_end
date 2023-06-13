@@ -14,17 +14,7 @@ $table->execute();
 $services = $table->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
 <link rel="stylesheet" href="style/style.css">
-
-<link rel="stylesheet" href="style/main.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
-
-<script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-search-pseudo-elements></script>
 
 <div class="landing-page">
   <h2 class="main-header">Service Details
@@ -109,9 +99,6 @@ $services = $table->fetchAll(PDO::FETCH_ASSOC);
 
 </main><!-- End #main -->
 
-<script src="js/all.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/layout.php'; ?>
