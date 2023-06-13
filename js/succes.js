@@ -42,7 +42,7 @@ $(document).ready(function () {
     }
     function verifyCin(cin) {
         if (cin.length != 0) {
-            let regex = /^[A-Z]{1,2}\d{6}$/;
+            let regex = /^[a-zA-Z]{2}\d{4,6}$/;
             if (regex.test(cin)) {
             
             }  
