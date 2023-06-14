@@ -24,7 +24,7 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="doctors">
                 <?php foreach ($doctors as $doctor) :
                     $image = 'data:image/jpg;base64,' . base64_encode($doctor['image']);
-                    $service = $conn->selectService($doctor['id_service'])['Nom_du_service'];
+                    $service = empty($conn->selectService($doctor['id_service'])) ? '' : $conn->selectService($doctor['id_service'])['Nom_du_service'];
                 ?>
                     <div class="box">
                         <div class="image">
@@ -53,11 +53,10 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     <?php else : ?>
         <div class="container">
-        <div class="alert alert-info" style="margin:1rem;text-align:center;" role="alert" >Pas de membre</div>
+            <div class="alert alert-info" style="margin:1rem;text-align:center;" role="alert">Pas de membre</div>
         </div>
     <?php endif; ?>
 </div>
 
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/layout.php'; ?>
-

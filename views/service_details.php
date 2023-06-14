@@ -19,7 +19,7 @@ $services = $table->fetchAll(PDO::FETCH_ASSOC);
 <div class="landing-page">
   <h2 class="main-header">Details Service</h2>
 </div>
-<main id="main">
+<main id="main" style="margin-top:2rem">
 
   <!-- ======= Service Details Section ======= -->
   <section id="service-details" class="service-details">
