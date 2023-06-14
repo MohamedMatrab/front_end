@@ -4,8 +4,12 @@ const add_image = document.getElementById("add_image");
 let service_id = "";
 if (sessionStorage.selectVal != null && sessionStorage.selectVal != "") {
   selectServices.value = sessionStorage.selectVal;
-} else {
+}
+if(selectServices.value != "") {
   sessionStorage.selectVal = selectServices.value;
+}else{
+  sessionStorage.selectVal = 'all';
+  selectServices.value=sessionStorage.selectVal;
 }
 service_id = selectServices.value;
 

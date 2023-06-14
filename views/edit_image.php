@@ -55,6 +55,7 @@ $element = getElement($id, $obj);
                         print_available_options($obj);
                         ?>
                     </select>
+                    <?= $num==0?"<span style='color:red;'><i class='bi bi-exclamation-circle'></i>Pas de Services Disponibles !</span>":'';?>
                 </div>
 
             </div>

@@ -106,7 +106,7 @@ if (!empty($search)) {
 <div class="landing-page">
   <h2 class="main-header">Nos Services</h2>
 </div>
-<div class="container-fluid px-4">
+<div class="container-fluid px-4" style="margin-top:2rem">
     
     <div class="msg d-flex justify-content-center">
         <?php include 'views/p_message.php'; ?>

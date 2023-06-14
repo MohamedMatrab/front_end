@@ -6,7 +6,7 @@ ob_start();
 
 <?php
 $link = "dashboard.php?action=add_image";
-include_once 'view_functions.php'
+include_once 'view_functions.php';
 ?>
 
 <head>
@@ -43,6 +43,7 @@ include_once 'view_functions.php'
                     <select name="service_id" class="form-select form-control" id="select-services" required>
                         <?php print_available_options($obj) ?>
                     </select>
+                    <?= $num==0?"<span style='color:red;'><i class='bi bi-exclamation-circle'></i>Pas de Services Disponibles !</span>":'';?>
                 </div>
             </div>
             <div class="row py-4 br-bott">
