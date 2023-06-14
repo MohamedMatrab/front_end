@@ -8,11 +8,7 @@ $title = "Users";
 ob_start();
 ?>
 
-    <div class="container-fluid px-4">
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item ">Dashboard</li>
-            <li class="breadcrumb-item ">Users</li>
-        </ol>
+    <div class="container-fluid px-4" style="margin-top: 2rem;">
         <div class="row">
             <div class="col-md-12">
                 <?php include 'views/p_message.php'; ?>
