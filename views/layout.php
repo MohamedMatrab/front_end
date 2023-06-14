@@ -30,7 +30,7 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="head-top mb-1 row">
                     <div class="contact col-8 ">
                         <i class="fa-solid fa-phone fs-6 "></i>
-                        <a class="fs-6" href="tel:+212648256644">Call Us +212 6 48 25 66 44</a>
+                        <a class="fs-6" href="tel:+212648256644">Call Us <?= isset($coord['numero_1']) ? $coord['numero_1'] : '?'; ?></a>
                     </div>
                     <div class="social d-flex justify-content-between align-items-center col-2">
                         <a class="a-icon" href=""><i class="fa-brands fa-instagram"></i></a>
