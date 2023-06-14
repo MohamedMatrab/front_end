@@ -13,7 +13,7 @@ include_once 'Models/connect.php';
 $obj = new connect();
 ?>
 
-<link rel="stylesheet" href="account.css">
+<link rel="stylesheet" href="style/account.css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <div class="container emp-profile">
@@ -40,8 +40,8 @@ $obj = new connect();
                         $image = $row['img'];
                     }
                 ?>
-                    <div class="">
-                        <img src="<?= empty($image) ? "assets/images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($image); ?>" alt="profile" class="profile-img" />
+                    <div class="profile-img2">
+                        <img src="<?= empty($image) ? "assets/images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($image); ?>" alt="profile" class="profile-img2" />
 
                     </div>
             </div>
@@ -92,7 +92,7 @@ $obj = new connect();
                                         <label>CIN</label>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><?= $admin_cin; ?></p>
+                                        <p><?= empty($admin_cin) ? 'champ vide' : $admin_cin; ?></p>
                                     </div>
                                 </div>
                                 <div class="row">

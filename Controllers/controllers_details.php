@@ -14,10 +14,6 @@ require_once 'Models/connect.php';
         upload_details($code);
     }
 
-    // function insert_ordonnance($file_name ,$ID , $date ) {
-    //     $obj = new connect(); 
-    //     $obj->insertOrdonnance($file_name ,$ID , $date);
-    // }
     
 
         

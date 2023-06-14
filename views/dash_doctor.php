@@ -22,7 +22,7 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <link rel="stylesheet" href="style/style-portfolio.css">
 <link rel="stylesheet" href="style/add-doctor.css">
 <div class="landing-page">
-    <h2 class="main-header">Doctor</h2>
+    <h2 class="main-header">Dentiste</h2>
 </div>
 <?php include_once 'views/p_message.php' ?>
 <?php if (count($doctors) > 0) : ?>
@@ -66,11 +66,12 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="alert alert-info" style="margin:1rem;text-align:center;" role="alert" >Pas de dentiste !<b>Pour ajouter des informations sur le button ci dessous</b></div>
     <div><a class="btn btn-primary" href="dashboard.php?action=add_doctor">Ajouter un membre</a></div>
     </div>
-        <?php endif ; ?> 
+
+<?php endif; ?>
+
 
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<!-- <script defer src="js/dash_portfolio.js"></script> -->
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/dashboard.php'; ?>

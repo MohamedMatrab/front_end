@@ -2,7 +2,7 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-$title = "Dentiste:Centre Page";
+$title = "Dentiste Page";
 ob_start();
 include_once "Models/connect.php";
 $conn = new connect();
@@ -11,8 +11,6 @@ $stmt = $conn->getConnect()->prepare($sql);
 $stmt->execute();
 $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<!-- <link rel="stylesheet" href="style/style-portfolio.css"> -->
-<!-- <link rel="stylesheet" href="style/add-doctor.css"> -->
 <div class="landing-page">
     <h2 class="main-header">Doctor</h2>
 </div>
@@ -62,3 +60,4 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/layout.php'; ?>
+

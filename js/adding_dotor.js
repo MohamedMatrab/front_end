@@ -55,4 +55,3 @@ if (phone_number){
     phone_number.addEventListener("blur",verifyPhone) ;
 }
 
-console.log(1);

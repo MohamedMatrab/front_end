@@ -13,7 +13,7 @@ include_once "Models/connect.php";
 
 <link rel="stylesheet" href="style/style-portfolio.css">
 <div class="landing-page">
-    <h2 class="main-header">Center</h2>
+    <h2 class="main-header">Centre</h2>
 </div>
 <?php include_once 'views/p_message.php' ?>
 <div id="centre-page">

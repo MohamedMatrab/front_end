@@ -8,6 +8,8 @@ ob_start();
 <?php
 include_once 'Models/connect.php';
 $obj= new connect();
+$obj->serviceTable();
+$obj->serviveDetailsTabele();
 ?>
 <?php
 $query = $obj->getConnect()->prepare("SELECT * FROM services");

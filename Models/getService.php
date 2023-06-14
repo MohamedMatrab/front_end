@@ -4,7 +4,7 @@ require_once 'connect.php';
     try {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') { 
             $obj = new connect();
-            $service = $obj->getServices();
+            $service = $obj->getAllServices();
             $services = [] ;
             foreach ($service as $s) {
                 array_push($services , ['title' => $s->Nom_du_service] );

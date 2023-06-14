@@ -67,7 +67,7 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <?php
                                 foreach($services as $service) {
 
-                                   echo '<li><a class="dropdown-item" href="index.php?action=service&id='.$service['ID'].'">'.$service['Nom_du_service'].'</a></li>';
+                                   echo '<li><a class="dropdown-item" href="index.php?action=service&service='.$service['ID'].'">'.$service['Nom_du_service'].'</a></li>';
                                 
                                 } ?>
 
@@ -79,9 +79,9 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="#">Actualités</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Témoingnages</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="index.php?action=contact">Contact</a>
                         </li>
@@ -135,5 +135,4 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 
 <?php include_once 'views/floating_message.php' ?>
-
 </html>

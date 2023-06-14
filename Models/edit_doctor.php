@@ -97,6 +97,26 @@ session_start();
                 $stmt2->bindValue(':image', $DataImage, PDO::PARAM_LOB);
                 $stmt2->bindValue(':cin', validateCin($_POST['cin']));
                 $stmt2->execute();
+
+                $query = 'UPDATE Alldoctor
+                    SET CIN = ? , Nom = ? , Prenom = ? ,Gmail = ?,tel = ? ,id_service = ?
+                    WHERE id = ? ';
+                $stmt = $obj->getConnect()->prepare($query);
+                $stmt->execute(array(validateCin($_POST['cin']) ,
+                                    validate($_POST['nom']) ,
+                                    validate($_POST['prenom']),
+                                    validateEmail($_POST['email']),
+                                    valiatePhoneNumappoint($_POST['num']),
+                                    $_POST['spec'],
+                                    $_GET['id'] 
+                            ));
+                $query2 = 'UPDATE Alldoctor
+                            SET image = :image
+                            WHERE CIN = :cin' ;
+                            $stmt2 = $obj->getConnect()->prepare($query2);
+                            $stmt2->bindValue(':image', $DataImage, PDO::PARAM_LOB);
+                            $stmt2->bindValue(':cin', validateCin($_POST['cin']));
+                            $stmt2->execute();
                 $obj->close_connection();
                 $em = "édité avec succés";
                 $_SESSION['message'] = $em;

@@ -9,9 +9,6 @@ function Show_Data($table) {
         if ($table === 'historique') {
             ob_start();
             foreach ( $All as $index => $patient ) {
-                //start
-                // $id_service = $obj->selectId($patient->service);
-                // $doctor = $obj->selectDoctor($patient->service_id ) z;
                 if ( $index == 0 || ($index !=0 && array_search($patient->CIN, array_column($All, 'CIN')) ) ) { 
                     ?>
                         <tr>

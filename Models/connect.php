@@ -72,8 +72,41 @@ class connect
             $stmt->execute();
         }
     }
+    function AlldoctorTable(){
+        $tableName = 'Alldoctor';
+        if ($this->isTableExist($tableName)) {
+            return;
+        } else {
+            $sql = "CREATE TABLE $tableName(
+                id INT PRIMARY KEY AUTO_INCREMENT,
+                CIN VARCHAR(15)  NOT NULL UNIQUE ,
+                Nom VARCHAR(20) ,
+                Prenom VARCHAR(20) ,
+                Gmail VARCHAR(30) ,
+                tel VARCHAR(25) ,
+                image MEDIUMBLOB,
+                id_service int ,
+                FOREIGN KEY (id_service ) REFERENCES services(ID )
+            )";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->execute();
+        }
+    }
     function serviceTable(){
         $tableName = 'services';
+        if ($this->isTableExist($tableName)) {
+            return;
+        } else {
+            $sql = "CREATE TABLE $tableName(
+                ID INT PRIMARY KEY AUTO_INCREMENT,
+                Nom_du_service VARCHAR(255)
+            )";
+            $stmt = $this->connect->prepare($sql);
+            $stmt->execute();
+        }
+    }
+    function AllserviceTable(){
+        $tableName = 'Allservices';
         if ($this->isTableExist($tableName)) {
             return;
         } else {
@@ -137,7 +170,7 @@ class connect
             $stmt->execute();
         }
     }
-
+    
     function rendezVousTable(){
         $tableName = 'rendez_vous';
         if ($this->isTableExist($tableName)) {
@@ -241,6 +274,12 @@ class connect
         $requete->execute(array($id_service)) ;
         return $requete->fetch() ;
     }
+    function selectAllDoctor($id_service) {
+        $requete = $this->connect->prepare('select Nom , Prenom  from Alldoctor where id_service = ? ') ;
+        $requete->setFetchMode(PDO::FETCH_OBJ);
+        $requete->execute(array($id_service)) ;
+        return $requete->fetch() ;
+    }
 
     function selectIdService($nom_service) {
         $requete = $this->connect->prepare('select ID  from services where Nom_du_service  = ? ') ;
@@ -321,6 +360,12 @@ class connect
 
     function getServices(){
         $requete = $this->connect->prepare("select  Nom_du_service  from  services") ;
+        $requete->setFetchMode(PDO::FETCH_OBJ);
+        $requete->execute() ;
+        return $requete->fetchAll() ;
+    }
+    function getAllServices(){
+        $requete = $this->connect->prepare("select  Nom_du_service  from  Allservices") ;
         $requete->setFetchMode(PDO::FETCH_OBJ);
         $requete->execute() ;
         return $requete->fetchAll() ;

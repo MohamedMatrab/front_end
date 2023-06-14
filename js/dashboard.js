@@ -290,6 +290,3 @@ function fetchReservations() {
 }
 
 
-
-
-

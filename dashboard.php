@@ -44,8 +44,6 @@ if (isset($_GET['action'])) {
                 dashb_appointment();
                 break ;
             }
-            
-            
         case 'historique':
             dashb_history();
             break;

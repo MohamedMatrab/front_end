@@ -7,6 +7,10 @@ $link="../dashboard.php";
 if(isset($_POST['delete_user']))
 {
     $user_id = $_POST['delete_user'];
+    $query = $obj->getConnect()->prepare("UPDATE historique SET id_user=NULL WHERE id_user='$user_id'");
+    $success=$query->execute();
+    $query = $obj->getConnect()->prepare("UPDATE rendez_vous SET id_user=NULL WHERE id_user='$user_id'");
+    $success=$query->execute();
     $query = $obj->getConnect()->prepare("DELETE FROM users WHERE id=:id");
     $query->bindParam(':id', $user_id);
     $success=$query->execute();

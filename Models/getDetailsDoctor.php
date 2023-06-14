@@ -6,7 +6,7 @@ require_once 'connect.php';
     if (isset($_POST['service_id'])) {
         // SELECT SERVICE 
         $obj = new connect();
-        $doctor = $obj->selectDoctor($_POST['service_id']) ;
+        $doctor = $obj->selectAllDoctor($_POST['service_id']) ;
         $doctor = [
             'Nom' => $doctor->Nom  ,
             'Prenom' => $doctor->Prenom

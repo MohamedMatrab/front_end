@@ -46,7 +46,7 @@ $obj = new connect();
                         if ($count > 0) {
                             foreach ($requet_user as $user) {
                     ?>
-                                <form action="modifier_infos.php" enctype="multipart/form-data" method="POST">
+                                <form action="Models/modifier_infos.php" enctype="multipart/form-data" method="POST">
                                     <input type="hidden" name="id" value="<?= $user['id']; ?>">
                                     <div class="row">
                                         <div class="col-md-6 mb-3">

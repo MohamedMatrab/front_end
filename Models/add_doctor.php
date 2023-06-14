@@ -2,13 +2,15 @@
 include_once "connect.php";
 include_once 'validation_functions.php';
 session_start();
-
-// if ($_SERVER['REQUEST_METHOD'] =='POST'){
-    // if(isset($_POST['image']) && isset($_POST['cin']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['num']) && isset($_POST['spec'])){
         include_once "connect.php";
+        Adddoctor();
+
+function Adddoctor(){
             $obj = new connect();
+            $obj->reAutoIncrement('doctor');
+            $obj->reAutoIncrement('Alldoctor');
             $query = 'INSERT INTO doctor(CIN, Nom, Prenom, Gmail, tel,id_service) VALUES (?,?,?,?,?,?)';
-            $qu_ery = 'SELECT CIN,Gmail,tel FROM doctor';
+            $qu_ery = 'SELECT CIN,Gmail,tel FROM doctor' ;
             $st_mt = $obj->getConnect()->prepare($qu_ery);
             $st_mt->execute();
             $response = $st_mt->fetchAll(PDO::FETCH_ASSOC);
@@ -64,7 +66,7 @@ session_start();
             }
             else{
                 $stmt = $obj->getConnect()->prepare($query);
-            $stmt->execute(array(validateCin($_POST['cin']) ,
+                $stmt->execute(array(validateCin($_POST['cin']) ,
                                     validate($_POST['nom']) ,
                                     validate($_POST['prenom']),
                                     validateEmail($_POST['email']),
@@ -95,12 +97,27 @@ session_start();
                 $stmt2->bindValue(':image', $DataImage, PDO::PARAM_LOB);
                 $stmt2->bindValue(':cin', validateCin($_POST['cin']));
                 $stmt2->execute();
+
+                $query = 'INSERT INTO Alldoctor(CIN, Nom, Prenom, Gmail, tel,id_service) VALUES (?,?,?,?,?,?)';
+                $stmt = $obj->getConnect()->prepare($query);
+                $stmt->execute(array(validateCin($_POST['cin']) ,
+                                    validate($_POST['nom']) ,
+                                    validate($_POST['prenom']),
+                                    validateEmail($_POST['email']),
+                                    valiatePhoneNumappoint($_POST['num']),
+                                    $_POST['spec'] 
+                ));
+                $query2 = 'UPDATE Alldoctor 
+                SET image = :image
+                WHERE CIN = :cin' ;
+                $stmt2 = $obj->getConnect()->prepare($query2);
+                $stmt2->bindValue(':image', $DataImage, PDO::PARAM_LOB);
+                $stmt2->bindValue(':cin', validateCin($_POST['cin']));
+                $stmt2->execute();
                 $obj->close_connection();
                 $em = "ajouté avec succés";
                 $_SESSION['message'] = $em;
                 header("Location: ../dashboard.php?action=doctor");
             }
             }
-            
-    // }
-// }
+}

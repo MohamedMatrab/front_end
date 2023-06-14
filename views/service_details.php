@@ -14,14 +14,10 @@ $table->execute();
 $services = $table->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
 <link rel="stylesheet" href="style/style.css">
 
-
 <div class="landing-page">
-  <h2 class="main-header">Service Details</h2>
+  <h2 class="main-header">Details Service</h2>
 </div>
 <main id="main">
 
@@ -38,7 +34,7 @@ $services = $table->fetchAll(PDO::FETCH_ASSOC);
                 $isActive = true;
               }
               ?>
-              <a href="service_details.php?service=<?= $service['ID'] ?>" <?= $isActive ? 'class="active"' : '' ?>>
+              <a href="index.php?action=service&service=<?= $service['ID'] ?>" <?= $isActive ? 'class="active"' : '' ?>>
                 <?= $service['Nom_du_service'] ?>
               </a>
             <?php endforeach; ?>

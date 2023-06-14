@@ -13,7 +13,7 @@ if (sessionStorage.selectVal != null && sessionStorage.selectVal != "all") {
 
 function validate() {
   if (
-    title.value.length >= 5 &&
+    title.value.length >= 0 &&
     selectServices.value != ""
   ) {
     submit.disabled = false;

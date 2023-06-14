@@ -5,7 +5,6 @@ $(document).ready(function () {
       url: "Models/disabled_day.php",
       dataType: "json",
       success: function (response) {
-        console.log(response['day']);
         let datesForDisable = response["day"];
         $(".datepicker").datepicker({
           format: "yyyy-mm-dd",
