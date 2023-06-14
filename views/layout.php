@@ -5,6 +5,11 @@ $obj = new connect();
 $specialite_stmt = $obj->getConnect()->prepare('SELECT * FROM services');
 $specialite_stmt->execute();
 $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$sql_2 = "select numero_1,numero_2,instagram,facebook from centre;";
+$stmt_2 = $obj->getConnect()->prepare($sql_2);
+$stmt_2->execute();
+$coord = $stmt_2->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,11 +35,12 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="head-top mb-1 row">
                     <div class="contact col-8 ">
                         <i class="fa-solid fa-phone fs-6 "></i>
-                        <a class="fs-6" href="tel:+212648256644">Call Us <?= isset($coord['numero_1']) ? $coord['numero_1'] : '?'; ?></a>
+                        <a class="fs-6" href="tel:<?php echo isset($coord['numero_1']) ? $coord['numero_1'] : '?'; ?>">Call Us <?php echo isset($coord['numero_1']) ? $coord['numero_1']."  " : ' ? '; ?></a>
+                        <a class="fs-6" href="tel:<?php echo isset($coord['numero_2']) ? $coord['numero_2'] : '?'; ?>"> -<?php echo isset($coord['numero_2']) ? $coord['numero_2'] : '?'; ?></a>
                     </div>
                     <div class="social d-flex justify-content-between align-items-center col-2">
-                        <a class="a-icon" href=""><i class="fa-brands fa-instagram"></i></a>
-                        <a class="d-block ms-2 a-icon" href=""><i class="fa-brands fa-facebook"></i></a>
+                        <a class="a-icon" href="<?php echo isset($coord['instagram']) ? $coord['instagram'] : '#'; ?>"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="d-block ms-2 a-icon" href="<?php echo isset($coord['facebook']) ? $coord['facebook'] : '#'; ?>"><i class="fa-brands fa-facebook"></i></a>
                     </div>
                 </div>
                 <div class="logo-toggler">
