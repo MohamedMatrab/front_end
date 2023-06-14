@@ -106,7 +106,7 @@ if (!empty($search)) {
 <div class="landing-page">
   <h2 class="main-header">Nos Services</h2>
 </div>
-<div class="container-fluid px-4">
+<div class="container-fluid px-4" style="margin-top:2rem">
     
     <div class="msg d-flex justify-content-center">
         <?php include 'views/p_message.php'; ?>
@@ -127,7 +127,7 @@ if (!empty($search)) {
                         <div class="mb-4">
                             <form method="GET" action="">
                                 <div class="input-group">
-                                    <input type="text" style="display:none;" name="action" value="service">
+                                    <input type="hidden" value="service" name="action" class="form-control">
                                     <input type="text" name="search_name" class="form-control" placeholder="Search by name">
                                     <button type="submit" class="btn btn-primary">Search</button>
                                 </div>
@@ -225,7 +225,7 @@ if (!empty($search)) {
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <form action="delete.php" method="POST">
+                                                        <form action="Models/delete.php" method="POST">
                                                             <input type="hidden" name="delete_id" value="<?= $row['ID']; ?>">
                                                             <button type="submit" name="delete" class="btn btn-danger">Delete</button>
                                                         </form>

@@ -325,7 +325,12 @@ class connect
         $requete->execute() ;
         return $requete->fetchAll() ;
     }
-
+    function selectHours(){
+        $requete = $this->connect->prepare("select start,end  from  centre") ;
+        $requete->setFetchMode(PDO::FETCH_ASSOC);
+        $requete->execute() ;
+        return $requete->fetch() ;
+    }
     function usersTable()
     {
         $tableName = 'users';

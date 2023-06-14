@@ -5,30 +5,10 @@ if (session_status() == PHP_SESSION_NONE) {
 include_once 'Models/connect.php';
 $obj = new connect();
 $title = "Users";
-// Get the base URL and existing query string
-
-
-
 ob_start();
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-</head>
-
-<body>
-    
-<div class="container-fluid px-4">
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item">Dashboard</li>
-        <li class="breadcrumb-item">Users</li>
-    </ol>
+<div class="container-fluid px-4" style="margin-top: 2rem;">
     <div class="row">
         <div class="col-md-12">
             <?php include 'views/p_message.php'; ?>
@@ -37,16 +17,16 @@ ob_start();
                     <h4>Registered User
                         <a href="dashboard.php?action=add_admin" class="btn btn-primary float-end">Add admin</a>
                     </h4>
-                </div>
-                <div class="card-body">
-                    <div class="mb-4">
-                        <form method="get" action="">
-                            <div class="input-group">
-                                <input type="text" style="display:none;" name="action" value="users">
-                                <input type="text" name="search_email" class="form-control" placeholder="Search by email">
-                                <button type="submit" class="btn search btn-primary">Search</button>
-                            </div>
-                        </form>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <form method="GET" action="">
+                                <div class="input-group">
+                                    <input type="hidden" name="action" class="form-control" value="users">
+                                    <input type="text" name="search_email" class="form-control" placeholder="Search by email">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered">
@@ -65,8 +45,11 @@ ob_start();
                             <tbody>
                                 <?php
                                 $id = $_SESSION['USER']['id'];
-                                $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
-
+                                if ($_SESSION['USER']['role'] == 2) {
+                                    $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE role IN ('0', '2') AND id != $id ");
+                                } else {
+                                    $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
+                                }
                                 $search_email = isset($_GET['search_email']) ? $_GET['search_email'] : '';
                                 if (!empty($search_email)) {
                                     $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != :id AND email LIKE :search_email");
@@ -75,6 +58,7 @@ ob_start();
                                 }
 
                                 $request->execute();
+
 
                                 $count = $request->rowCount();
                                 if ($count > 0) {
@@ -85,7 +69,7 @@ ob_start();
                                 ?>
                                         <tr>
                                             <td><?= $row['cin']; ?></td>
-                                            <td class="image-cell img"><img src="<?= empty($row['img']) ? "images_profil/user_image.png" : 'data:image/jpg;base64,' . base64_encode($row['img']); ?>" alt="profile" class="profile-img" /></td>
+                                            <td class="image-cell img"><img src="<?= empty($row['img']) ? "assets/images/user_image.png" : 'data:image/jpg;base64,' . base64_encode($row['img']); ?>" alt="profile" class="profile-img" /></td>
                                             <td><?= $row['fname']; ?></td>
                                             <td><?= $row['lname']; ?></td>
                                             <td><?= $row['email']; ?></td>
@@ -107,11 +91,11 @@ ob_start();
                                                 </form>
                                             </td>
                                         </tr>
-                                <?php
+                                    <?php
                                     }
                                 }
                                 if ($request->rowCount() === 0) {
-                                ?>
+                                    ?>
                                     <tr>
                                         <td colspan="6">No records found</td>
                                     </tr>
@@ -125,13 +109,6 @@ ob_start();
             </div>
         </div>
     </div>
-</div>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-</body>
-
-</html>
-
-<?php $content = ob_get_clean(); ?>
-<?php include_once 'views/dashboard.php'; ?>
+    <?php $content = ob_get_clean(); ?>
+    <?php include_once 'views/dashboard.php'; ?>
 

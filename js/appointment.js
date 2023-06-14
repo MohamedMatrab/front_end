@@ -5,32 +5,29 @@ $(document).ready(function () {
       url: "Models/disabled_day.php",
       dataType: "json",
       success: function (response) {
+        console.log(response['day']);
         let datesForDisable = response["day"];
-        // console.log(datesForDisable);
-        // Initialize a datepicker using jQuery Datepicker plugin with options
         $(".datepicker").datepicker({
           format: "yyyy-mm-dd",
           autoclose: true,
           //todayHighlight: true,
-          datesDisabled: datesForDisable,
+          datesDisabled: datesForDisable['full_day'],
           startDate: new Date(),
           daysOfWeekDisabled: [0]
         });
         var currentTime = new Date();
         var currentFormattedTime = currentTime.getHours() + ':' + currentTime.getMinutes();
+        var startTime = datesForDisable['time']['start'];
+        var endTime = datesForDisable['time']['end'];
         $(".timepicker").timepicker({
           altField: "#timeslot",
-          timeFormat: "h:mm",
           interval: 30,
-          // minTime: '9',
-          maxTime: "6:00pm",
           defaultTialtField: "#timeslot",
           timeFormat: "HH:mm",
           interval: 30,
           minTime: currentFormattedTime,
-          maxTime: "6:00pm",
-          // defaultTime: '11',
-          startTime: "9:00",
+          maxTime: endTime+"pm",
+          startTime: startTime+"pm",
           dynamic: false,
           dropdown: true,
           scrollbar: true

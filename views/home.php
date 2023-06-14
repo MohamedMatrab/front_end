@@ -17,7 +17,7 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
   <div class="content row">
     <div class="text col-12">
       <h1>Atteindre le sourire parfait désiré</h1>
-      <p>Bienvenue dans dentall</p>
+      <p>Bien au-delà des montagnes, loin des vastes étendues rurales.</p>
       <div class="row">
         <a class="col-lg-5 col-sm-12 btn btn-lang  me-lg-2 me-md-2 px-3 py-2 mb-sm-1 mb-lg-0" href="#service">Services</a>
         <a href="index.php?action=appoint" class="col-lg-6 col-sm-12 btn btn-lang px-3 py-2 ">Prendre un rendez-vous</a>

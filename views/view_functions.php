@@ -32,3 +32,9 @@ function getElement($id,$obj)
   }
   return  $stmt_el->fetch(PDO::FETCH_ASSOC);
 }
+
+$stmt = $obj->getConnect()->prepare("SELECT COUNT(*) FROM services");
+$success = $stmt->execute();
+if($success){
+    $num = $stmt->fetchColumn();;
+}

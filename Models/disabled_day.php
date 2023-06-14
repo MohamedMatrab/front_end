@@ -1,8 +1,6 @@
 <?php
 header("Content-Type: application/json");
 require_once 'connect.php';
-    // appoint info 
-    // if (isset($_POST['ckeck'])) {
         $obj = new connect();
         $array = $obj->Verifiy_Full_Day();
         $Full_Day = array();
@@ -18,10 +16,22 @@ require_once 'connect.php';
                 $Full_Day = \array_diff($Full_Day, [$day]) ;
             }
         }
-        
-        echo json_encode(['day' => $Full_Day]);
-    // }
+        $hours = $obj->SelectHours();
+        $start ;
+        $end ;
+        if (isset($hours['start']) && isset($hours['end'])){
+            $start = $hours['start'];
+            $end = $hours['end'];
+        }else {
+            $start = "09:00:00";
+            $end = "18:00:00";
+        }
+        $horaire = ["start" => $start ,
+                    "end" => $end
+        ];
 
+        echo json_encode(['day' => ['full_day' => $Full_Day , 'time' => $horaire]]);
+        // echo json_encode(['day' => $Full_Day ]);
 
     
 ?>
