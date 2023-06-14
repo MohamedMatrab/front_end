@@ -11,6 +11,7 @@ $stmt = $conn->getConnect()->prepare($sql);
 $stmt->execute();
 $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+<link rel="stylesheet" href="style/add-doctor.css">
 <div class="landing-page">
     <h2 class="main-header">Doctor</h2>
 </div>
