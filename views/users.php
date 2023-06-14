@@ -62,7 +62,12 @@ ob_start();
                                 <tbody>
                                     <?php
                                     $id = $_SESSION['USER']['id'];
-                                    $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
+                                    
+                                    if($_SESSION['role'] == 2){
+                                        $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE role IN (0, 2) AND id != $id ");
+                                    }
+                                    else
+                                        $request = $obj->getConnect()->prepare("SELECT * FROM users WHERE id != $id");
 
                                     $search_email = isset($_GET['search_email']) ? $_GET['search_email'] : '';
                                     if (!empty($search_email)) {
