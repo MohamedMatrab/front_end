@@ -37,7 +37,7 @@ $coord = $stmt->fetch(PDO::FETCH_ASSOC);
               <span class="tooltip">Facebook</span>
             </div>
           </a>
-          <a href="<?php echo isset($coord['instagram']) ? $coord['instagrem'] : '#'; ?>">
+          <a href="<?php echo isset($coord['instagram']) ? $coord['instagram'] : '#'; ?>">
             <div class="icon-container">
               <i class="fa-brands fa-instagram fafooter"></i>
               <span class="tooltip">Instagram</span>
