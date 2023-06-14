@@ -122,12 +122,7 @@ ob_start();
         ceci nous permettra de faire bénéficier de votre plage horaire
         à un autre patient en attente de soins.</p>
     </div>
-    <div class="urgence">
-      <h3 class="fs-5" style="color : red  ;">En cas d’urgence :</h3>
-      <p>En cas d’urgence, et en dehors des horaires de permanence contactez
-        le Dr. Bellemlih au 0661 145 362, nous ferons l’impossible
-        pour vous recevoir dans les meilleurs délais.</p>
-    </div>
+    
   </div>
 
 
