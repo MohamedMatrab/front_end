@@ -68,6 +68,7 @@ $(document).ready(function () {
           dataType: "json",
           success: function (response) {
             let appoint = response["appointment"];
+            console.log(appoint);
             let Details = [];
             let dates = [];
             appoint.forEach((el, index) => {
@@ -113,6 +114,7 @@ $(document).ready(function () {
                         dataType: "json",
                         success: function (response) {
                           let ordonnace = response["msg"];
+                          console.log(ordonnace);
                           let info_appoint = document.createElement("div");
                           info_appoint.classList.add(...["info_appoint"]);
                           Details[index].appendChild(info_appoint);
@@ -146,7 +148,8 @@ $(document).ready(function () {
                             dataType: "json",
                             success: function (response) {
                               let doctor = response["doctor"];
-                              console.log(doctor);
+                              console.log(doctor );
+                              console.log(1);
                               // box specialites
                               let boxDoctor = document.createElement("div");
                               boxDoctor.classList.add(...["box"]);
@@ -338,8 +341,13 @@ $(document).ready(function () {
                                   icon.remove();
                                 });
                               }
+                            },function(state){
+                              console.log(state);
                             }
                           });
+                        },
+                        error: function (xhrs, state, error) {
+                          console.log(error);
                         }
                       });
                     }

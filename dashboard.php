@@ -39,9 +39,13 @@ if (isset($_GET['action'])) {
                     Ajout_History($_GET['id']);
                     Delete_from_rendez($_GET['id']);
                 }
+                break;
+            }else {
+                dashb_appointment();
+                break ;
             }
-            dashb_appointment();
-            break;
+            
+            
         case 'historique':
             dashb_history();
             break;

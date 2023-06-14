@@ -19,26 +19,16 @@ $services = $table->fetchAll(PDO::FETCH_ASSOC);
 
 <link rel="stylesheet" href="style/style.css">
 
-<link rel="stylesheet" href="style/main.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Roboto+Slab:wght@200&display=swap" rel="stylesheet">
-
-<script src="https://example.com/fontawesome/v5.15.4/js/all.js" data-search-pseudo-elements></script>
 
 <div class="landing-page">
-  <h2 class="main-header">Service Details
-</h2>
+  <h2 class="main-header">Service Details</h2>
 </div>
-
 <main id="main">
 
   <!-- ======= Service Details Section ======= -->
   <section id="service-details" class="service-details">
     <div class="container" data-aos="fade-up">
-
       <div class="row gy-4">
-
         <div class="col-lg-4">
           <div class="services-list">
             <?php foreach ($services as $service) : ?>
@@ -99,19 +89,10 @@ $services = $table->fetchAll(PDO::FETCH_ASSOC);
           }
         ?>
           </section><!-- End Service Details Section -->
-
-
-
         </div>
-
-
-
-
+  </section>
 </main><!-- End #main -->
 
-<script src="js/all.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/layout.php'; ?>

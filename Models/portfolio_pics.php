@@ -33,5 +33,5 @@ if (isset($_POST['service_id']) && $_POST['service_id'] != '') {
     echo json_encode(['images' => $images]);
 }
 else{
-    echo json_encode(['images'=>['<h1 style="margin:auto;margin-top:3rem;">There are No Pictures To show ! </h1>']]);
+    echo json_encode(['images'=>['<h1 style="margin:auto;margin-top:3rem;">Il n\'y a pas d\'images ! </h1>']]);
 }

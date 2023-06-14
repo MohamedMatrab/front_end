@@ -34,7 +34,6 @@ body {
 
 .app_container_{
   height: fit-content;
-  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -12,7 +12,7 @@ $stmt->execute();
 $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!-- <link rel="stylesheet" href="style/style-portfolio.css"> -->
-<link rel="stylesheet" href="style/add-doctor.css">
+<!-- <link rel="stylesheet" href="style/add-doctor.css"> -->
 <div class="landing-page">
     <h2 class="main-header">Doctor</h2>
 </div>
@@ -55,15 +55,10 @@ $doctors = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     <?php else : ?>
         <div class="container">
-            Pas de membre
+        <div class="alert alert-info" style="margin:1rem;text-align:center;" role="alert" >Pas de membre</div>
         </div>
     <?php endif; ?>
 </div>
 
-<?php $content = ob_get_clean(); ?>
-<?php include_once 'views/layout.php'; ?>
-
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script defer src="js/dash_portfolio.js"></script> -->
 <?php $content = ob_get_clean(); ?>
 <?php include_once 'views/layout.php'; ?>

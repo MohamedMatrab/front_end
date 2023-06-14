@@ -7,7 +7,7 @@ ob_start();
 include_once 'Models/connect.php';
 $obj=new connect();
 $obj->serviceTable();
-$sql = "SELECT address,localisation,numero_1,email from centre";
+$sql = "SELECT 	description,address,localisation,numero_1,email from centre";
 $stmt = $obj->getConnect()->prepare($sql);
 $stmt->execute();
 $coord= $stmt->fetch(PDO::FETCH_ASSOC);
@@ -16,29 +16,25 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
 <div class="landing">
   <div class="content row">
     <div class="text col-12">
-      <h1>Achieve Desired Perfect Smile</h1>
-      <p>Far far away,behind the word moutains,far from the countries </p>
+      <h1>Atteindre le sourire parfait désiré</h1>
+      <p>Bienvenue dans dentall</p>
       <div class="row">
-        <a class="col-lg-5 col-sm-12 btn btn-lang  me-lg-2 me-md-2 px-3 py-2 mb-sm-1 mb-lg-0" href="#service">SEE OUR SERVICES</a>
-        <a href="index.php?action=appoint" class="col-lg-6 col-sm-12 btn btn-lang px-3 py-2 ">BOOK AN APPOINTMENT</a>
+        <a class="col-lg-5 col-sm-12 btn btn-lang  me-lg-2 me-md-2 px-3 py-2 mb-sm-1 mb-lg-0" href="#service">Services</a>
+        <a href="index.php?action=appoint" class="col-lg-6 col-sm-12 btn btn-lang px-3 py-2 ">Prendre un rendez-vous</a>
       </div>
     </div>
   </div>
 </div>
 
 <section id="about" class="about">
-  <h2 class="main-heading px-3 py-1 text-align-center">ABOUT US</h2>
+  <h2 class="main-heading px-3 py-1 text-align-center">A propos</h2>
   <div class="container ">
     <div class="row">
       <img src="assets/about/about.jpg" class="col-lg-6 col-sm-12" alt="">
       <div class="information col-lg-6 col-sm-12">
-        <p>Le centre dentaire MOQADEM situé en plein cœur de Marrakech, d’accès simple vous assure un accueil professionnel et chaleureux grâce à une équipe trilingue : arabe français anglais.
-          Disposant d’un équipement des plus modernes à la pointe de la technologie et surtout respectant les normes d hygiène internationales, les soins y sont donnés avec une grande qualité et conscience.
-          Au sein de notre centre dentaire MOQADEM, nous réalisons vos soins dentaires sur rendez-vous du lundi au vendredi de 9h à 19h.
-          Nos praticiens qualifiés sont experts dans de nombreux domaines, et se complètent dans leurs différentes spécialités. Notre centre dispose également d’un service d’urgence dentaire sur rendez-vous.
-          Il s’adresse aux personnes victimes d’un accident dentaire (luxation, casse avec nerf à vif) ou présentant de violentes douleurs liées à un abcès ou une rage de dents par exemple.
+        <p><?php echo isset($coord['description']) ? $coord['description'] : "Pas d'information "?>
         </p>
-        <a href="index.php?action=aboutcentre" class="More">Read More</a>
+        <a href="index.php?action=aboutcentre" class="More">Lire plus</a>
       </div>
     </div>
   </div>
@@ -51,9 +47,7 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
 <!--service secttion-->
 <section id="service" class="services pt-0">
         <div class="container" data-aos="fade-up">
-            <div class="section-title">
-                <h2>Check our services</h2>
-            </div>
+        <h2 class="main-heading px-3 py-1 text-align-center">Notre service</h2>
             <div class="row gy-4">
                 <?php
                 $table=$obj->getConnect()->prepare("SELECT * FROM services");
@@ -85,7 +79,7 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
 <!-- ======= Contact Section ======= -->
 <section id="contact" class="contact">
   <div class="container">
-
+  <h2 class="main-heading px-3 py-1 text-align-center">Contact</h2>
     <div class="section-title mt-5">
       <p> contactez nous pour plus d'informations</p>
     </div>
@@ -118,7 +112,7 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
           <div class="phone">
             <div><i class="bi bi-phone"></i></div>
             <div class="text-contact">
-              <h4>Call:</h4>
+              <h4>appel:</h4>
               <p><a href="tel:<?php echo isset($coord['numero_1'])? $coord['numero_1'] : '?' ;?>"><?php echo isset($coord['numero_1'])? $coord['numero_1'] : '?' ;?></a>
               <p>
             </div>
@@ -134,11 +128,11 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
         <form action="contact.php" method="POST" role="form" class="php-email-form">
           <div class="row">
             <div class="form-group col-md-6">
-              <label for="name">Your Name</label>
+              <label for="name">Votre Nom</label>
               <input type="text" name="name" class="form-control" id="name" required>
             </div>
             <div class="form-group col-md-6 mt-3 mt-md-0">
-              <label for="email">Your Email</label>
+              <label for="email">Votre adresse e-mail</label>
               <input type="email" class="form-control" name="email" id="email" required>
             </div>
           </div>
@@ -149,7 +143,7 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
           </div>
 
 
-          <div class="text-center"><button type="submit">Send Message</button></div>
+          <div class="text-center"><button type="submit">Envoyer Message</button></div>
         </form>
       </div>
 

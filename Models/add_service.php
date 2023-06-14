@@ -48,7 +48,7 @@ if (isset($_POST['save'])) {
         $_SESSION['message'] = "Service added";
         header("location: $link");
     } else {
-        $_SESSION['message'] = "Service not added";
+        $_SESSION['message'] = "Service n'est pas ajouté";
         header("location: $link");
     }
 } else {

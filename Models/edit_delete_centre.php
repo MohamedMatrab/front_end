@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bindValue(':image', $DataImage, PDO::PARAM_LOB);
             $stmt->execute();
             $obj->close_connection();
-            $em = "Picture added succesfuly";
+            $em = "image est ajouté avec succés";
             $_SESSION['message'] = $em;
             header("Location: ../dashboard.php?action=centre");
         }
@@ -43,7 +43,7 @@ if (isset($_GET['id_photo'])) {
     $stmt->bindValue(':id', $_GET['id_photo']);
     $stmt->execute();
     $obj->close_connection();
-    $em = "Picture Deleted succesfuly";
+    $em = "image est supprimé avec succés";
     $_SESSION['message'] = $em;
     header("Location: ../dashboard.php?action=centre");
 }

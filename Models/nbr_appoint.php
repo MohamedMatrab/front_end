@@ -9,7 +9,7 @@ require_once 'connect.php';
         $stmt->execute();
         $nbr = $stmt->fetch(PDO::FETCH_ASSOC) ;
 
-        $sql2 = " SELECT CIN,date_rendez,Heure_rendez,service FROM rendez_vous WHERE rendez_vous.show = '0' ;" ;
+        $sql2 = " SELECT CIN,date_rendez,Heure_rendez,service FROM rendez_vous WHERE rendez_vous.show = '0' or rendez_vous.show is null ;" ;
         $stmt2 = $obj->getConnect()->prepare($sql2);
         $stmt2->execute();
         $patient = $stmt2->fetchAll(PDO::FETCH_ASSOC) ;

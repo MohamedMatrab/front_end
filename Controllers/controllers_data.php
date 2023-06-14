@@ -72,7 +72,7 @@ function Show_Data($table) {
                 
             }else {
                 ?>
-                <p style="color:#ddd; font-size:30px;">No appointment today</p>
+                <p style="color:#ddd; font-size:30px;">Pas de rendez-vous aujourd'hui</p>
                 <?php }
 
             $allReservation = ob_get_clean() ;

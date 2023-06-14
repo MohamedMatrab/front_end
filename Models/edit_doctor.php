@@ -81,11 +81,11 @@ session_start();
             $extension = pathinfo($name, PATHINFO_EXTENSION);
             $allowed_exs = array('jpeg', 'jpg', 'png');
             if (!in_array($extension, $allowed_exs)) {
-                $em = "This Format is not allowed ,provide an image.";
+                $em = "Ce format n'est pas autorisé, fournissez une image.";
                 $_SESSION['message'] = $em;
                 header("Location: ../dashboard.php?action=edit_doctor&&id=" . $_GET['id']);
             } elseif ($size >  4 * 1024 * 1024) {
-                $em = "File is Too Large, Maximum Size 4MB .";
+                $em = "Le fichier est trop volumineux, taille maximale 4 Mo .";
                 $_SESSION['message'] = $em;
                 header("Location: ../dashboard.php?action=edit_doctor&&id=" . $_GET['id']);
             } else {

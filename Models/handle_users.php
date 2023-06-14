@@ -16,7 +16,7 @@ if(isset($_POST['delete_user']))
         header("location: $link?action=users");
         exit(0);
     } else {
-        $_SESSION['message'] = "Something went wrong!";
+        $_SESSION['message'] = "il y a quelque erreur!";
         header("location: $link?action=users");
         exit(0);
     }
@@ -42,7 +42,7 @@ if(isset($_POST['add_admin'])){
         exit(0);
     }
     else{
-        $_SESSION['message']="something went wrong!";
+        $_SESSION['message']="il y a quelque erreur!";
         header("location: $link?action=add_admin");
         exit(0);
 
@@ -68,7 +68,7 @@ if(isset($_POST['update'])){
     $query->execute();
 
     if($query){
-        $_SESSION['message'] = "Updated successfully";
+        $_SESSION['message'] = "Edité avec succés";
         header("location: $link?action=users");
         exit(0);
     }

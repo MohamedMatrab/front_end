@@ -197,7 +197,7 @@ $(document).ready(function () {
 
 let notification = document.querySelector(".notifications");
 // $(document).ready( 
-var intervalID = setInterval(fetchReservations, 300);
+var intervalID = setInterval(fetchReservations , 100);
 function fetchReservations() {
   $.ajax({
     type: "POST",
@@ -205,6 +205,7 @@ function fetchReservations() {
     dataType: "json",
     success: function (response) {
       let nbr = response.nbr ;
+      console.log(nbr['appoint']);
       if ( window.location.href !== "http://localhost/front_end/dashboard.php?action=all_reservations") {
         if (nbr['appoint'] > 0){
           let count = document.querySelector(".count");
@@ -216,23 +217,23 @@ function fetchReservations() {
           nbr_appoint.className = "count";
           notification.parentElement.insertAdjacentElement("afterbegin",nbr_appoint);
         }
-        notification.parentElement.addEventListener('click', (e) => {
-          let nbr_appoint = document.querySelector(".count");
-          if(nbr_appoint) {
-            nbr_appoint.remove() ;
-          }
           $.ajax({
             type: "POST",
             url: "Models/show_0.php",
             dataType: "json",
             success: function (response) {
-              console.log(response.resp['mission']);
+              notification.parentElement.addEventListener('click', (e) => {
+                if (document.querySelector(".notification_content")){
+                  document.querySelector(".notification_content").innerHTML = "";
+                  document.querySelector(".notification_content").remove();
+                }
+                let nbr_appoint = document.querySelector(".count");
+                if(nbr_appoint) {
+                  nbr_appoint.remove() ;
+                }
               let notifications = notification.parentElement.nextElementSibling;
               if (notification.parentElement.nextElementSibling.style.display === "flex") {
                 let notification_content ;
-                if (document.querySelector(".notification_content")){
-                  document.querySelector(".notification_content").remove();
-                }
                 notification_content = document.createElement("div");
                 notification_content.className = "notification_content" ;
                 notifications.appendChild(notification_content);
@@ -276,9 +277,10 @@ function fetchReservations() {
                 }
                 
               }
+            })
             }
           })
-        })
+        
       } 
     },
     error : function(xhrs,error,state) {
@@ -288,6 +290,6 @@ function fetchReservations() {
 }
 
 
-{/* <div class="see_all pb-2 pt-2"><a href="dashboard.php?action=all_reservations">See all ...</a></div> */}
+
 
 

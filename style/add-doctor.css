@@ -62,3 +62,9 @@
 #doctor .editer:hover {
     transform: scale(1.05);
 }
+.alert-doctor{
+    position: relative;
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); */
+}

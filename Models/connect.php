@@ -315,8 +315,8 @@ class connect
         $requete->execute(array($id)) ;
         $patient = $requete->fetch() ;
         // insert into history table
-        $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service_id,service,id_user,state) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)") ;
-        $requete->execute(array($patient->CIN ,$patient->Last_Name, $patient->First_Name , $patient->Date_Of_birth , $patient->tel , $patient->address ,'0' ,'0' , $patient->date_rendez , $patient->Heure_rendez,$patient->service_id, $patient->service ,$patient->id_user,$patient->state )) ;
+        $requete = $this->connect->prepare("insert into historique (CIN,First_Name,Last_Name,Date_Of_birth,tel,address,taille,poids,date_rendez,Heure_rendez,service_id,service,id_user) values(?,?,?,?,?,?,?,?,?,?,?,?,?)") ;
+        $requete->execute(array($patient->CIN ,$patient->Last_Name, $patient->First_Name , $patient->Date_Of_birth , $patient->tel , $patient->address ,'0' ,'0' , $patient->date_rendez , $patient->Heure_rendez,$patient->service_id, $patient->service ,$patient->id_user )) ;
     }
 
     function getServices(){

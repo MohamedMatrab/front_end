@@ -28,7 +28,7 @@ $coord= $stmt->fetch(PDO::FETCH_ASSOC);
       <div class="footer-section">
         <h1>Dent<span id="dent_all">All</span></h1>
         <p>
-          Far far away, behind the word mountains, far from the countries.
+        Bienvenue dans dentall.
         </p>
         <section class="footer-icons">
           <a href="<?php echo isset($coord['facebook'])? $coord['facebook'] : '#' ;?>">

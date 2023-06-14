@@ -11,7 +11,9 @@ ob_start();
         <div class="mb-5">
             <p>Metrics for</p>
             <h2><?php
-                $date = date('l, j F Y', strtotime(date('Y-m-d')));
+                setlocale(LC_TIME, 'fr_FR');
+                date_default_timezone_set('Europe/Paris');
+                $date = utf8_encode(strftime('%A, %e %B %Y', strtotime(date('Y-m-d'))));                
                 echo $date;
                 ?></h2>
         </div>

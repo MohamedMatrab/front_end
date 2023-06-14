@@ -12,7 +12,7 @@ if (!isset($_SESSION['USER']) || $_SESSION['USER']['role'] == 0) {
 include_once "Models/get_user_info.php";
 ?>
 
-<html lang="en">
+<html lang="fr">
 
 <head>
   <meta charset="UTF-8" />

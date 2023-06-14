@@ -11,7 +11,7 @@ $obj = new connect();
 $obj->usersTable();
 ?>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-xr+L5Zu0WT9CZd6cfmP6D1k4qTYYI40tNgQF3eJZIQjhHm8ALbKfRUSg9DZ1Ew2xOTc4JSKuU+J7lZ8F3bcNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"  crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 <link rel="stylesheet" href="style/style_homepage.css">
 
 
