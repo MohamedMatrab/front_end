@@ -79,9 +79,9 @@ $services = $specialite_stmt->fetchAll(PDO::FETCH_ASSOC);
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="#">Actualités</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="#">Témoingnages</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link " aria-current="page" href="index.php?action=contact">Contact</a>
                         </li>
