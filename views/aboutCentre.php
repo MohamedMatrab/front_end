@@ -109,7 +109,7 @@
             </div>
         </div>
         <div>
-            <a class="to-contact" href="">Contactez-nous +</a>
+            <a class="to-contact" href="index.php?action=contact">Contactez-nous +</a>
         </div>
     </div>
     <?php  endif ; ?>
