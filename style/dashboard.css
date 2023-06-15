@@ -1118,7 +1118,7 @@ input[type="file"] {
   position: absolute;
   z-index: 2;
   left: 50%;
-  top: 50%;
+  top: 20%;
   opacity: 0;
   transform: translate(-50%,-50%);
   transition-delay: 0.1s;
@@ -1131,7 +1131,7 @@ input[type="file"] {
 }
 @keyframes top-to-bottom {
   to {
-      top: 56%;
+      top: 23%;
       opacity: 1 ;
     }
 }
