@@ -10,7 +10,7 @@ $(document).ready(function () {
     let label = document.createElement("label");
     label.htmlFor = "my_image";
     label.innerHTML = "Select Image";
-    let input = document.querySelector("input");
+    let input = document.createElement("input");
     input.type = "file";
     input.className = "form-control mt-4";
     input.name = "my_image";
