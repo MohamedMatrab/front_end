@@ -64,7 +64,7 @@ $coord = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="card-img">
               <img src="upload/<?= $table1[$key1]['image1']; ?>" alt="" class="img-fluid">
             </div>
-            <h3><a href="service_details.php?service=<?= $tabb['ID'] ?>" class="stretched-link"><?= $tabb['Nom_du_service']; ?></a></h3>
+            <h3><a href="index.php?action=service&service=<?= $tabb['ID'] ?>" class="stretched-link"><?= $tabb['Nom_du_service']; ?></a></h3>
             <p><?= substr($table1[$key1]['descr1'], 0, 100) ?>...</p>
           </div>
         </div>

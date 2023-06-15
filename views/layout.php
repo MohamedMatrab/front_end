@@ -36,7 +36,6 @@ $coord = $stmt_2->fetch(PDO::FETCH_ASSOC);
                     <div class="contact col-8 ">
                         <i class="fa-solid fa-phone fs-6 "></i>
                         <a class="fs-6" href="tel:<?php echo isset($coord['numero_1']) ? $coord['numero_1'] : '?'; ?>">Call Us <?php echo isset($coord['numero_1']) ? $coord['numero_1']."  " : ' ? '; ?></a>
-                        <a class="fs-6" href="tel:<?php echo isset($coord['numero_2']) ? $coord['numero_2'] : '?'; ?>"> -<?php echo isset($coord['numero_2']) ? $coord['numero_2'] : '?'; ?></a>
                     </div>
                     <div class="social d-flex justify-content-between align-items-center col-2">
                         <a class="a-icon" href="<?php echo isset($coord['instagram']) ? $coord['instagram'] : '#'; ?>"><i class="fa-brands fa-instagram"></i></a>
