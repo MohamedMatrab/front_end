@@ -53,11 +53,7 @@
                 header("Location: ../dashboard.php?action=centre");
             }
             
-        // }else {
-        //     $em = "Veuillez entrer toute information";
-        //     $_SESSION['message'] = $em;
-        //     header("Location: ../dashboard.php?action=addCentreInfo");
-        // }
+
 
 
 ?>
