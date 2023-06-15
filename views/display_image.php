@@ -20,6 +20,10 @@ $stmt_img->execute();
 $image = $stmt_img->fetch(PDO::FETCH_ASSOC)['ordonnance'];
 ?>
 <style>
+    .container-image{
+        text-align: center;
+        margin-top: 8rem;
+    }
     .image {
         width: 80%;
         height: auto;
@@ -27,7 +31,7 @@ $image = $stmt_img->fetch(PDO::FETCH_ASSOC)['ordonnance'];
     }
 </style>
 
-<div>
+<div class="container-image">
     <img src="<?= 'data:image/jpg;base64,' . base64_encode($image) ?>" class="image">
 </div>
 
